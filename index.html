@@ -2,147 +2,513 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BRODA SHOP</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#080b14;
-color:#f5f5f5;
-line-height:1.5
+  font-family:Arial,Helvetica,sans-serif;
+  background:#070b14;
+  color:#f5f5f5;
+  line-height:1.5;
 }
-button,input{font:inherit}
-button{cursor:pointer}
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+/* HEADER */
 .header{
-height:70px;background:#0d111d;border-bottom:1px solid #242b3a;
-display:flex;align-items:center;padding:0 25px;gap:25px;
-position:sticky;top:0;z-index:20
+  height:76px;
+  background:#0c111d;
+  border-bottom:1px solid #252c3c;
+  display:flex;
+  align-items:center;
+  padding:0 5%;
+  gap:30px;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
-.logo{font-size:23px;font-weight:800;color:#f0c94b;white-space:nowrap}
-.nav{display:flex;gap:20px;align-items:center;flex:1}
-.nav a{color:#d9dce4;text-decoration:none;cursor:pointer}
-.nav a:hover{color:#f0c94b}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  color:#f0c84b;
+  white-space:nowrap;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+  margin-left:auto;
+}
+
+.nav a{
+  color:#c8ccd5;
+  font-size:15px;
+}
+
+.nav a:hover{
+  color:#f0c84b;
+}
+
 .search{
-background:#151b29;border:1px solid #303849;border-radius:8px;
-padding:10px 14px;color:white;width:190px
+  width:180px;
+  height:42px;
+  border:1px solid #30394c;
+  border-radius:9px;
+  background:#141a28;
+  color:white;
+  padding:0 14px;
+  outline:none;
 }
-.btn{
-border:0;border-radius:7px;padding:11px 18px;
-background:#e5b93f;color:#111;font-weight:700
-}
-.btn.dark{background:#171d2a;color:#fff;border:1px solid #303849}
-.container{display:flex;min-height:calc(100vh - 70px)}
-.sidebar{
-width:245px;background:#0d111b;border-right:1px solid #252c3b;
-padding:25px 15px
-}
-.sidebar h3{font-size:12px;color:#8e96a8;margin:20px 10px 8px;text-transform:uppercase}
-.side{
-display:block;color:#cdd2dc;text-decoration:none;padding:11px 13px;
-border-radius:7px;margin:3px 0;cursor:pointer
-}
-.side:hover,.side.active{background:#e5b93f;color:#111;font-weight:700}
-.main{flex:1;padding:28px;max-width:1500px;margin:auto;width:100%}
 
+.header-btn{
+  border:1px solid #30394c;
+  background:#141a28;
+  color:#fff;
+  padding:10px 16px;
+  border-radius:8px;
+}
+
+.signup{
+  background:#f0c84b;
+  color:#101010;
+  border-color:#f0c84b;
+  font-weight:bold;
+}
+
+/* HERO */
 .hero{
-background:linear-gradient(110deg,#161d2d,#25220f);
-border:1px solid #34394a;border-radius:12px;
-padding:38px;margin-bottom:25px
+  max-width:1200px;
+  margin:45px auto;
+  padding:0 25px;
 }
-.hero h1{font-size:34px;margin-bottom:10px}
-.hero p{color:#b9c0cd;margin-bottom:20px}
 
-.cards{
-display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:25px
+.hero-box{
+  min-height:390px;
+  border:1px solid #30384a;
+  border-radius:18px;
+  background:
+    linear-gradient(90deg,#151b29 0%,#111722 48%,#171810 100%);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
 }
-.card{
-background:#111725;border:1px solid #293142;border-radius:10px;padding:20px
+
+.hero-text{
+  width:58%;
+  padding:60px;
 }
-.card small{color:#929aaa}
-.card h2{margin-top:7px;color:#f0c94b}
+
+.hero-text h1{
+  font-size:48px;
+  line-height:1.1;
+  margin-bottom:22px;
+}
+
+.hero-text h1 span{
+  color:#f0c84b;
+}
+
+.hero-text p{
+  color:#b9bfcb;
+  font-size:18px;
+  max-width:560px;
+  margin-bottom:30px;
+}
+
+.primary{
+  display:inline-block;
+  background:#f0c84b;
+  color:#111;
+  padding:15px 28px;
+  border-radius:9px;
+  font-weight:700;
+  border:none;
+}
+
+.secondary{
+  display:inline-block;
+  border:1px solid #465067;
+  color:#fff;
+  padding:14px 26px;
+  border-radius:9px;
+  margin-left:10px;
+}
+
+.hero-art{
+  flex:1;
+  height:100%;
+  min-height:390px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:110px;
+  color:#f0c84b;
+}
+
+/* SECTION */
+.section{
+  max-width:1200px;
+  margin:0 auto 55px;
+  padding:0 25px;
+}
 
 .section-title{
-display:flex;justify-content:space-between;align-items:center;margin:25px 0 15px
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
 }
-.section-title h2{font-size:21px}
 
-.grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+.section-title h2{
+  font-size:25px;
 }
-.product{
-background:#111725;border:1px solid #293142;border-radius:10px;overflow:hidden
+
+.view{
+  color:#f0c84b;
+  font-size:14px;
 }
-.product-img{
-height:145px;background:#1b2231;display:flex;
-align-items:center;justify-content:center;color:#f0c94b;font-size:38px
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:15px;
 }
-.product-body{padding:15px}
-.product h3{font-size:16px;margin-bottom:7px}
-.price{color:#f0c94b;font-weight:800;margin:8px 0}
-.rating{color:#f0c94b;font-size:13px;margin-bottom:12px}
 
 .category{
-background:#131a28;border:1px solid #293142;padding:20px;
-border-radius:10px;text-align:center;cursor:pointer
-}
-.category:hover{border-color:#e5b93f}
-.category div{font-size:30px;margin-bottom:8px}
-.category p{color:#cbd0da}
-
-.two{
-display:grid;grid-template-columns:2fr 1fr;gap:20px
-}
-.list{
-background:#111725;border:1px solid #293142;border-radius:10px;padding:20px
-}
-.list-item{
-display:flex;justify-content:space-between;
-padding:13px 0;border-bottom:1px solid #252d3c
-}
-.list-item:last-child{border-bottom:0}
-
-.view{display:none}
-.view.active{display:block}
-
-.login{
-max-width:450px;margin:70px auto;background:#111725;
-border:1px solid #303849;border-radius:12px;padding:30px
-}
-.login h1{margin-bottom:20px;color:#f0c94b}
-.field{margin-bottom:15px}
-.field label{display:block;margin-bottom:7px;color:#b9c0cd}
-.field input{
-width:100%;background:#080d17;border:1px solid #303849;
-padding:12px;border-radius:7px;color:white
+  background:#111827;
+  border:1px solid #293247;
+  border-radius:12px;
+  padding:25px 12px;
+  text-align:center;
+  transition:.2s;
 }
 
-.footer{
-background:#0d111b;border-top:1px solid #252c3b;
-padding:30px;text-align:center;color:#8992a4;margin-top:35px
+.category:hover{
+  border-color:#f0c84b;
+  transform:translateY(-2px);
 }
 
-.mobile-menu{display:none}
-
-@media(max-width:1000px){
-.cards{grid-template-columns:repeat(2,1fr)}
-.grid{grid-template-columns:repeat(2,1fr)}
-.nav a{display:none}
-.sidebar{width:210px}
+.category-icon{
+  font-size:30px;
+  margin-bottom:12px;
 }
 
-@media(max-width:700px){
-.header{padding:0 12px;height:64px}
-.mobile-menu{display:block;background:none;border:0;color:white;font-size:25px}
-.logo{font-size:18px}
-.search{width:100px}
-.sidebar{display:none}
-.main{padding:15px}
-.cards,.grid{grid-template-columns:1fr}
-.two{grid-template-columns:1fr}
-.hero h1{font-size:26px}
+.category h3{
+  font-size:14px;
+}
+
+.category p{
+  color:#8f98a9;
+  font-size:12px;
+  margin-top:5px;
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.product{
+  background:#111827;
+  border:1px solid #293247;
+  border-radius:13px;
+  overflow:hidden;
+}
+
+.product-img{
+  height:165px;
+  background:#181e2c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:58px;
+  color:#f0c84b;
+}
+
+.product-body{
+  padding:18px;
+}
+
+.product-body h3{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.rating{
+  color:#f0c84b;
+  font-size:13px;
+}
+
+.product-desc{
+  color:#8f98a9;
+  font-size:13px;
+  margin:9px 0;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
+}
+
+.price{
+  color:#f0c84b;
+  font-weight:bold;
+}
+
+.cart{
+  background:#f0c84b;
+  border:0;
+  border-radius:7px;
+  padding:9px 12px;
+  font-weight:bold;
+}
+
+/* HOW IT WORKS */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.step{
+  background:#111827;
+  border:1px solid #293247;
+  border-radius:12px;
+  padding:25px;
+  text-align:center;
+}
+
+.step-number{
+  width:42px;
+  height:42px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0c84b;
+  color:#111;
+  font-weight:bold;
+}
+
+/* BENEFITS */
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.benefit{
+  background:#111827;
+  border:1px solid #293247;
+  border-radius:12px;
+  padding:24px;
+}
+
+.benefit h3{
+  margin:10px 0 7px;
+}
+
+.benefit p{
+  color:#9199a8;
+  font-size:13px;
+}
+
+/* REFERRAL */
+.referral{
+  max-width:1150px;
+  margin:20px auto 60px;
+  padding:38px 45px;
+  border:1px solid #3b3c2b;
+  border-radius:15px;
+  background:linear-gradient(90deg,#151b29,#1b1c13);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
+
+.referral h2{
+  color:#f0c84b;
+  margin-bottom:7px;
+}
+
+.referral p{
+  color:#b4bac5;
+}
+
+/* FOOTER */
+footer{
+  background:#0b101b;
+  border-top:1px solid #252c3c;
+  padding:45px 5% 25px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+footer h3{
+  color:#f0c84b;
+  margin-bottom:14px;
+}
+
+footer p,
+footer a{
+  display:block;
+  color:#8f98a9;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.copyright{
+  max-width:1200px;
+  margin:30px auto 0;
+  padding-top:20px;
+  border-top:1px solid #252c3c;
+  color:#697284;
+  font-size:13px;
+}
+
+/* MOBILE */
+.menu{
+  display:none;
+  font-size:27px;
+  background:none;
+  border:0;
+  color:white;
+}
+
+@media(max-width:900px){
+  .nav{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .header{
+    padding:0 20px;
+    gap:15px;
+  }
+
+  .search{
+    margin-left:auto;
+    width:150px;
+  }
+
+  .hero-box{
+    flex-direction:column;
+  }
+
+  .hero-text{
+    width:100%;
+    padding:38px 28px;
+  }
+
+  .hero-text h1{
+    font-size:38px;
+  }
+
+  .hero-art{
+    min-height:150px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .steps,
+  .benefits{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .logo{
+    font-size:20px;
+  }
+
+  .search{
+    width:125px;
+  }
+
+  .header-btn{
+    display:none;
+  }
+
+  .hero{
+    margin-top:25px;
+  }
+
+  .hero-text h1{
+    font-size:34px;
+  }
+
+  .hero-text p{
+    font-size:16px;
+  }
+
+  .secondary{
+    margin-left:0;
+    margin-top:10px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .steps,
+  .benefits,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .referral{
+    margin:20px 25px 45px;
+    padding:30px 25px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -150,400 +516,284 @@ padding:30px;text-align:center;color:#8992a4;margin-top:35px
 <body>
 
 <header class="header">
-<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-<div class="logo">BRODA SHOP</div>
+  <button class="menu">☰</button>
 
-<nav class="nav">
-<a onclick="show('home')">Home</a>
-<a onclick="show('shop')">Shop</a>
-<a onclick="show('creators')">Creators</a>
-<a onclick="show('earn')">Earn</a>
-<a onclick="show('about')">About</a>
-<a onclick="show('contact')">Contact</a>
-</nav>
+  <div class="logo">BRODA SHOP</div>
 
-<input class="search" placeholder="Search...">
-<button class="btn dark" onclick="show('login')">Login</button>
-<button class="btn" onclick="show('login')">Sign Up</button>
+  <nav class="nav">
+    <a href="#">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#creators">Creators</a>
+    <a href="#earn">Earn</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <input class="search" type="search" placeholder="Search...">
+
+  <button class="header-btn">Login</button>
+  <button class="header-btn signup">Sign Up</button>
 </header>
 
-<div class="container">
+<main>
 
-<aside class="sidebar" id="sidebar">
-<div class="side active" onclick="show('home')">Dashboard</div>
-<div class="side" onclick="show('shop')">Browse Content</div>
-<div class="side" onclick="show('purchases')">My Purchases</div>
-<div class="side" onclick="show('downloads')">Downloads</div>
-<div class="side" onclick="show('referrals')">Referrals</div>
-<div class="side" onclick="show('earn')">Earnings</div>
-<div class="side" onclick="show('wallet')">Withdrawals</div>
-<div class="side" onclick="show('transactions')">Transaction History</div>
-<div class="side" onclick="show('profile')">Profile Settings</div>
+<section class="hero">
+  <div class="hero-box">
 
-<h3>Content Creator</h3>
-<div class="side" onclick="show('upload')">Upload Content</div>
-<div class="side" onclick="show('content')">My Content</div>
-<div class="side" onclick="show('creator')">Creator Earnings</div>
-</aside>
+    <div class="hero-text">
+      <h1>BRODA SHOP<br><span>Discover, Download, Create & Earn!</span></h1>
 
-<main class="main">
+      <p>
+        Explore premium digital content, download what you need,
+        create your own content and earn from the Broda Shop community.
+      </p>
 
-<!-- HOME / MEMBER DASHBOARD -->
-<section id="home" class="view active">
+      <a class="primary" href="#shop">Explore Shop</a>
+      <a class="secondary" href="#earn">Start Earning</a>
+    </div>
 
-<div class="hero">
-<h1>Welcome to BRODA SHOP</h1>
-<p>Discover, download, create and earn from premium digital content.</p>
-<button class="btn" onclick="show('shop')">Browse Content</button>
-</div>
+    <div class="hero-art">◈</div>
 
-<div class="cards">
-<div class="card"><small>Total Earnings</small><h2>UGX 450,000</h2></div>
-<div class="card"><small>Total Referrals</small><h2>28</h2></div>
-<div class="card"><small>Total Purchases</small><h2>15</h2></div>
-<div class="card"><small>Available Balance</small><h2>UGX 320,000</h2></div>
-</div>
-
-<div class="two">
-<div class="list">
-<div class="section-title"><h2>Quick Actions</h2></div>
-<div class="list-item"><span>Browse Premium Content</span><button class="btn" onclick="show('shop')">Open</button></div>
-<div class="list-item"><span>View My Purchases</span><button class="btn dark" onclick="show('purchases')">Open</button></div>
-<div class="list-item"><span>Check Referrals</span><button class="btn dark" onclick="show('referrals')">Open</button></div>
-</div>
-
-<div class="list">
-<div class="section-title"><h2>Wallet</h2></div>
-<p>Available Balance</p>
-<h2 style="color:#f0c94b;margin:10px 0">UGX 320,000</h2>
-<button class="btn" onclick="show('wallet')">Withdraw</button>
-</div>
-</div>
-
-<div class="section-title"><h2>Popular Content Categories</h2></div>
-<div class="grid">
-<div class="category"><div>🎵</div><p>Music & Audio</p></div>
-<div class="category"><div>🎬</div><p>Videos</p></div>
-<div class="category"><div>📚</div><p>E-books & Guides</p></div>
-<div class="category"><div>🎨</div><p>Graphics & Templates</p></div>
-</div>
-
+  </div>
 </section>
 
 
-<!-- SHOP -->
-<section id="shop" class="view">
+<section class="section" id="shop">
 
-<div class="hero">
-<h1>BRODA SHOP PREMIUM DIGITAL CONTENT</h1>
-<p>Find digital products from creators and download instantly.</p>
-</div>
+  <div class="section-title">
+    <h2>Browse by Category</h2>
+    <a class="view" href="#">View All</a>
+  </div>
 
-<div class="section-title"><h2>Browse by Category</h2></div>
+  <div class="categories">
 
-<div class="grid">
-<div class="category"><div>🎵</div><p>Music & Audio</p></div>
-<div class="category"><div>🎥</div><p>Videos</p></div>
-<div class="category"><div>📖</div><p>E-books & Guides</p></div>
-<div class="category"><div>🖼️</div><p>Graphics & Templates</p></div>
-<div class="category"><div>🎓</div><p>Courses</p></div>
-<div class="category"><div>📦</div><p>Other Downloads</p></div>
-</div>
+    <a class="category" href="#">
+      <div class="category-icon">♫</div>
+      <h3>Music & Audio</h3>
+      <p>Sounds & music</p>
+    </a>
 
-<div class="section-title"><h2>Featured Products</h2></div>
+    <a class="category" href="#">
+      <div class="category-icon">▶</div>
+      <h3>Videos</h3>
+      <p>Video content</p>
+    </a>
 
-<div class="grid">
+    <a class="category" href="#">
+      <div class="category-icon">▤</div>
+      <h3>E-books & Guides</h3>
+      <p>Books & guides</p>
+    </a>
 
-<div class="product">
-<div class="product-img">🎵</div>
-<div class="product-body">
-<h3>Premium Music Pack</h3>
-<div class="rating">★★★★★</div>
-<div class="price">UGX 20,000</div>
-<button class="btn" onclick="alert('Added to cart')">Add to Cart</button>
-</div>
-</div>
+    <a class="category" href="#">
+      <div class="category-icon">◆</div>
+      <h3>Graphics & Templates</h3>
+      <p>Design resources</p>
+    </a>
 
-<div class="product">
-<div class="product-img">📚</div>
-<div class="product-body">
-<h3>Digital Business Guide</h3>
-<div class="rating">★★★★★</div>
-<div class="price">UGX 35,000</div>
-<button class="btn" onclick="alert('Added to cart')">Add to Cart</button>
-</div>
-</div>
+    <a class="category" href="#">
+      <div class="category-icon">▣</div>
+      <h3>Courses</h3>
+      <p>Learn new skills</p>
+    </a>
 
-<div class="product">
-<div class="product-img">🎨</div>
-<div class="product-body">
-<h3>Graphics Template Pack</h3>
-<div class="rating">★★★★☆</div>
-<div class="price">UGX 25,000</div>
-<button class="btn" onclick="alert('Added to cart')">Add to Cart</button>
-</div>
-</div>
+    <a class="category" href="#">
+      <div class="category-icon">+</div>
+      <h3>Other Downloads</h3>
+      <p>More content</p>
+    </a>
 
-<div class="product">
-<div class="product-img">🎓</div>
-<div class="product-body">
-<h3>Online Business Course</h3>
-<div class="rating">★★★★★</div>
-<div class="price">UGX 50,000</div>
-<button class="btn" onclick="alert('Added to cart')">Add to Cart</button>
-</div>
-</div>
-
-</div>
+  </div>
 </section>
 
 
-<!-- CREATORS -->
-<section id="creators" class="view">
-<div class="hero">
-<h1>Content Creators</h1>
-<p>Discover creators and their digital products.</p>
-</div>
+<section class="section">
 
-<div class="grid">
-<div class="card"><h2>Creator 01</h2><p>Music & Audio</p></div>
-<div class="card"><h2>Creator 02</h2><p>Courses</p></div>
-<div class="card"><h2>Creator 03</h2><p>Graphics</p></div>
-<div class="card"><h2>Creator 04</h2><p>E-books</p></div>
-</div>
+  <div class="section-title">
+    <h2>Featured Content</h2>
+    <a class="view" href="#shop">View All</a>
+  </div>
+
+  <div class="products">
+
+    <article class="product">
+      <div class="product-img">♫</div>
+      <div class="product-body">
+        <h3>Premium Music Pack</h3>
+        <div class="rating">★★★★★</div>
+        <p class="product-desc">High-quality digital music collection.</p>
+        <div class="price-row">
+          <span class="price">UGX 25,000</span>
+          <button class="cart">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">▶</div>
+      <div class="product-body">
+        <h3>Video Creator Pack</h3>
+        <div class="rating">★★★★★</div>
+        <p class="product-desc">Resources for digital video creators.</p>
+        <div class="price-row">
+          <span class="price">UGX 40,000</span>
+          <button class="cart">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">▤</div>
+      <div class="product-body">
+        <h3>Digital Business Guide</h3>
+        <div class="rating">★★★★★</div>
+        <p class="product-desc">A practical guide for digital business.</p>
+        <div class="price-row">
+          <span class="price">UGX 30,000</span>
+          <button class="cart">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">◆</div>
+      <div class="product-body">
+        <h3>Graphics Template Pack</h3>
+        <div class="rating">★★★★★</div>
+        <p class="product-desc">Ready-to-use graphics and templates.</p>
+        <div class="price-row">
+          <span class="price">UGX 35,000</span>
+          <button class="cart">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
 </section>
 
 
-<!-- EARN / REFERRALS -->
-<section id="earn" class="view">
-<div class="hero">
-<h1>Refer Friends. Earn More!</h1>
-<p>Share your referral link and earn commissions when people purchase.</p>
-<button class="btn" onclick="copyReferral()">Copy Referral Link</button>
-</div>
+<section class="section" id="about">
 
-<div class="cards">
-<div class="card"><small>Total Referrals</small><h2>28</h2></div>
-<div class="card"><small>Successful Referrals</small><h2>21</h2></div>
-<div class="card"><small>Referral Earnings</small><h2>UGX 180,000</h2></div>
-<div class="card"><small>Commission</small><h2>10%</h2></div>
-</div>
+  <div class="section-title">
+    <h2>How It Works</h2>
+  </div>
 
-<div class="list">
-<h2>Your Referral Link</h2>
-<p id="refLink" style="margin:15px 0;color:#f0c94b">
-https://broda-shop.onrender.com/?ref=broda123
-</p>
-</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Create Account</h3>
+      <p>Join the Broda Shop community.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Discover Content</h3>
+      <p>Browse digital products from creators.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Download</h3>
+      <p>Get instant access to your purchases.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <h3>Create & Earn</h3>
+      <p>Upload content and earn from your work.</p>
+    </div>
+
+  </div>
 </section>
 
 
-<!-- PURCHASES -->
-<section id="purchases" class="view">
-<div class="hero"><h1>My Purchases</h1><p>Your purchased digital content.</p></div>
-<div class="list">
-<div class="list-item"><span>Premium Music Pack</span><strong>UGX 20,000</strong></div>
-<div class="list-item"><span>Business Guide</span><strong>UGX 35,000</strong></div>
-<div class="list-item"><span>Graphics Pack</span><strong>UGX 25,000</strong></div>
-</div>
+<section class="section" id="creators">
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <div>🔒</div>
+      <h3>Secure Payments</h3>
+      <p>Safe and secure transactions for your purchases.</p>
+    </div>
+
+    <div class="benefit">
+      <div>⚡</div>
+      <h3>Instant Access</h3>
+      <p>Access your digital content immediately.</p>
+    </div>
+
+    <div class="benefit">
+      <div>👥</div>
+      <h3>Growing Community</h3>
+      <p>Connect with creators and digital-content buyers.</p>
+    </div>
+
+    <div class="benefit">
+      <div>24/7</div>
+      <h3>24/7 Support</h3>
+      <p>Help is available whenever you need it.</p>
+    </div>
+
+  </div>
 </section>
 
 
-<!-- DOWNLOADS -->
-<section id="downloads" class="view">
-<div class="hero"><h1>Downloads</h1><p>Access your purchased files.</p></div>
-<div class="list">
-<div class="list-item"><span>Premium Music Pack</span><button class="btn">Download</button></div>
-<div class="list-item"><span>Business Guide</span><button class="btn">Download</button></div>
-<div class="list-item"><span>Graphics Pack</span><button class="btn">Download</button></div>
-</div>
-</section>
+<section class="referral" id="earn">
 
+  <div>
+    <h2>Refer Friends. Earn More!</h2>
+    <p>Invite friends to Broda Shop and earn through the referral program.</p>
+  </div>
 
-<!-- WALLET -->
-<section id="wallet" class="view">
-<div class="hero">
-<h1>Wallet</h1>
-<p>Your available balance</p>
-<h1 style="color:#f0c94b">UGX 320,000</h1>
-<button class="btn">Request Withdrawal</button>
-</div>
-</section>
+  <a class="primary" href="#">Start Referring</a>
 
-
-<!-- TRANSACTIONS -->
-<section id="transactions" class="view">
-<div class="hero"><h1>Transaction History</h1></div>
-<div class="list">
-<div class="list-item"><span>Purchase</span><strong>UGX 20,000</strong></div>
-<div class="list-item"><span>Referral Commission</span><strong>+ UGX 10,000</strong></div>
-<div class="list-item"><span>Purchase</span><strong>UGX 35,000</strong></div>
-</div>
-</section>
-
-
-<!-- PROFILE -->
-<section id="profile" class="view">
-<div class="hero"><h1>Profile Settings</h1><p>Manage your account.</p></div>
-<div class="login">
-<div class="field"><label>Name</label><input value="Da Generalz"></div>
-<div class="field"><label>Email</label><input placeholder="Your email"></div>
-<button class="btn">Save Changes</button>
-</div>
-</section>
-
-
-<!-- UPLOAD -->
-<section id="upload" class="view">
-<div class="hero">
-<h1>Upload Content</h1>
-<p>Creators can upload digital products here.</p>
-</div>
-<div class="login">
-<div class="field"><label>Content Title</label><input placeholder="Product title"></div>
-<div class="field"><label>Price</label><input placeholder="UGX"></div>
-<div class="field"><label>File</label><input type="file"></div>
-<button class="btn">Upload Content</button>
-</div>
-</section>
-
-
-<!-- MY CONTENT -->
-<section id="content" class="view">
-<div class="hero"><h1>My Content</h1><p>Manage your uploaded products.</p></div>
-<div class="list">
-<div class="list-item"><span>My Digital Product</span><strong>Published</strong></div>
-</div>
-</section>
-
-
-<!-- CREATOR EARNINGS -->
-<section id="creator" class="view">
-<div class="hero">
-<h1>Creator Earnings</h1>
-<p>Your earnings from content sales.</p>
-<h1 style="color:#f0c94b">UGX 450,000</h1>
-</div>
-</section>
-
-
-<!-- LOGIN -->
-<section id="login" class="view">
-<div class="login">
-<h1>Login to BRODA SHOP</h1>
-<div class="field">
-<label>Email</label>
-<input type="email" placeholder="Enter email">
-</div>
-<div class="field">
-<label>Password</label>
-<input type="password" placeholder="Enter password">
-</div>
-<button class="btn" style="width:100%" onclick="show('home')">Login</button>
-</div>
-</section>
-
-
-<!-- ADMIN DASHBOARD -->
-<section id="admin" class="view">
-
-<div class="hero">
-<h1>ADMIN DASHBOARD</h1>
-<p>Manage BRODA SHOP platform activity.</p>
-</div>
-
-<div class="cards">
-<div class="card"><small>Total Users</small><h2>1,250</h2></div>
-<div class="card"><small>Total Creators</small><h2>85</h2></div>
-<div class="card"><small>Total Sales</small><h2>UGX 12.5M</h2></div>
-<div class="card"><small>Platform Revenue</small><h2>UGX 2.1M</h2></div>
-</div>
-
-<div class="two">
-<div class="list">
-<h2>Sales & Revenue Overview</h2>
-<div style="height:180px;display:flex;align-items:end;gap:12px;padding-top:25px">
-<div style="height:35%;width:12%;background:#e5b93f"></div>
-<div style="height:50%;width:12%;background:#e5b93f"></div>
-<div style="height:42%;width:12%;background:#e5b93f"></div>
-<div style="height:70%;width:12%;background:#e5b93f"></div>
-<div style="height:60%;width:12%;background:#e5b93f"></div>
-<div style="height:85%;width:12%;background:#e5b93f"></div>
-</div>
-</div>
-
-<div class="list">
-<h2>System Alerts</h2>
-<div class="list-item">Pending withdrawals <strong>8</strong></div>
-<div class="list-item">Support tickets <strong>12</strong></div>
-<div class="list-item">New creators <strong>5</strong></div>
-</div>
-</div>
-
-<div class="section-title"><h2>Recent Payments</h2></div>
-<div class="list">
-<div class="list-item"><span>Customer purchase</span><strong>UGX 50,000</strong></div>
-<div class="list-item"><span>Customer purchase</span><strong>UGX 35,000</strong></div>
-<div class="list-item"><span>Creator payment</span><strong>UGX 20,000</strong></div>
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about" class="view">
-<div class="hero">
-<h1>About BRODA SHOP</h1>
-<p>Broda Shop is a digital marketplace where people can discover, purchase, create and earn from digital content.</p>
-</div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" class="view">
-<div class="hero">
-<h1>Contact Us</h1>
-<p>We're here to help.</p>
-</div>
-<div class="login">
-<div class="field"><label>Name</label><input></div>
-<div class="field"><label>Email</label><input></div>
-<div class="field"><label>Message</label><input></div>
-<button class="btn">Send Message</button>
-</div>
 </section>
 
 </main>
-</div>
 
-<footer class="footer">
-© 2026 BRODA SHOP — Discover, Download, Create & Earn.
+
+<footer id="contact">
+
+  <div class="footer-grid">
+
+    <div>
+      <h3>BRODA SHOP</h3>
+      <p>Discover, download, create and earn from premium digital content.</p>
+    </div>
+
+    <div>
+      <h3>Shop</h3>
+      <a href="#">Music & Audio</a>
+      <a href="#">Videos</a>
+      <a href="#">E-books</a>
+      <a href="#">Courses</a>
+    </div>
+
+    <div>
+      <h3>Creators</h3>
+      <a href="#">Become a Creator</a>
+      <a href="#">Upload Content</a>
+      <a href="#">Creator Earnings</a>
+      <a href="#">Creator Support</a>
+    </div>
+
+    <div>
+      <h3>Support</h3>
+      <a href="#">Help Center</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 BRODA SHOP. All rights reserved.
+  </div>
+
 </footer>
-
-<script>
-function show(id){
-document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-const page=document.getElementById(id);
-if(page) page.classList.add('active');
-
-document.querySelectorAll('.side').forEach(s=>s.classList.remove('active'));
-if(window.innerWidth<=700){
-document.getElementById('sidebar').style.display='none';
-}
-window.scrollTo(0,0);
-}
-
-function toggleSidebar(){
-const s=document.getElementById('sidebar');
-s.style.display=s.style.display==='block'?'none':'block';
-}
-
-function copyReferral(){
-const text=document.getElementById('refLink').innerText;
-navigator.clipboard.writeText(text);
-alert('Referral link copied!');
-}
-</script>
 
 </body>
 </html>
