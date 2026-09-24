@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRODA SHOP - Member Dashboard</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#070b14;
+color:#fff;
+min-height:100vh;
+}
+
+:root{
+--bg:#070b14;
+--panel:#0d1422;
+--panel2:#111a2b;
+--gold:#f2c94c;
+--text:#f5f7fa;
+--muted:#9ba6b8;
+--border:#202b3d;
+--green:#25c281;
+}
+
+.header{
+height:72px;
+background:#0a101c;
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+padding:0 25px;
+gap:25px;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.logo{
+font-size:23px;
+font-weight:900;
+letter-spacing:1px;
+color:var(--gold);
+white-space:nowrap;
+}
+
+.search{
+flex:1;
+max-width:520px;
+margin:auto;
+position:relative;
+}
+
+.search input{
+width:100%;
+background:#111a2a;
+border:1px solid var(--border);
+border-radius:8px;
+padding:12px 16px;
+color:#fff;
+outline:none;
+}
+
+.search input::placeholder{color:#758196}
+
+.header-right{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.icon{
+font-size:20px;
+color:#cbd2dc;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar{
+width:38px;
+height:38px;
+border-radius:50%;
+background:var(--gold);
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.profile-name{
+font-size:14px;
+font-weight:bold;
+}
+
+.member{
+font-size:11px;
+color:var(--gold);
+margin-top:3px;
+}
+
+.layout{
+display:flex;
+min-height:calc(100vh - 72px);
+}
+
+.sidebar{
+width:250px;
+background:#090f1a;
+border-right:1px solid var(--border);
+padding:22px 14px;
+flex-shrink:0;
+}
+
+.side-title{
+font-size:11px;
+color:#66748a;
+font-weight:bold;
+padding:12px 12px 8px;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:12px;
+padding:11px 13px;
+margin:3px 0;
+border-radius:7px;
+color:#aeb8c8;
+font-size:14px;
+text-decoration:none;
+}
+
+.nav:hover{
+background:#121c2d;
+color:#fff;
+}
+
+.nav.active{
+background:var(--gold);
+color:#111;
+font-weight:bold;
+}
+
+.nav-icon{
+width:20px;
+text-align:center;
+}
+
+.content{
+flex:1;
+padding:28px;
+min-width:0;
+}
+
+.welcome{
+background:linear-gradient(120deg,#121d30,#0d1524);
+border:1px solid var(--border);
+border-radius:10px;
+padding:25px;
+margin-bottom:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.welcome h1{
+font-size:25px;
+margin-bottom:7px;
+}
+
+.welcome p{
+color:var(--muted);
+font-size:14px;
+}
+
+.status{
+border:1px solid #75631d;
+background:#17180e;
+border-radius:8px;
+padding:13px 18px;
+text-align:right;
+}
+
+.status span{
+display:block;
+font-size:11px;
+color:var(--muted);
+margin-bottom:4px;
+}
+
+.status strong{
+color:var(--gold);
+font-size:14px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-bottom:22px;
+}
+
+.card{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:9px;
+padding:19px;
+}
+
+.card-label{
+color:var(--muted);
+font-size:12px;
+margin-bottom:10px;
+}
+
+.card-value{
+font-size:22px;
+font-weight:800;
+}
+
+.gold{color:var(--gold)}
+.green{color:var(--green)}
+
+.card-small{
+font-size:11px;
+color:#718096;
+margin-top:7px;
+}
+
+.section{
+margin-bottom:22px;
+}
+
+.section-title{
+font-size:17px;
+font-weight:bold;
+margin-bottom:13px;
+}
+
+.referral{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:9px;
+padding:20px;
+}
+
+.referral p{
+color:var(--muted);
+font-size:13px;
+margin-bottom:13px;
+}
+
+.referral-box{
+display:flex;
+gap:10px;
+}
+
+.referral-box input{
+flex:1;
+background:#080d17;
+border:1px solid var(--border);
+border-radius:6px;
+padding:12px;
+color:#ddd;
+min-width:0;
+}
+
+.btn{
+border:0;
+border-radius:6px;
+padding:11px 17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-gold{
+background:var(--gold);
+color:#111;
+}
+
+.socials{
+display:flex;
+gap:9px;
+margin-top:13px;
+}
+
+.social{
+background:#162136;
+border:1px solid var(--border);
+color:#cfd6e0;
+padding:8px 13px;
+border-radius:5px;
+font-size:12px;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:20px;
+}
+
+.quick{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.quick a{
+text-decoration:none;
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:8px;
+padding:18px;
+color:#fff;
+}
+
+.quick a:hover{
+border-color:#66551c;
+}
+
+.quick-icon{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.quick strong{
+display:block;
+font-size:13px;
+}
+
+.quick small{
+color:var(--muted);
+display:block;
+margin-top:5px;
+font-size:11px;
+}
+
+.wallet{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:9px;
+padding:20px;
+}
+
+.balance{
+font-size:27px;
+font-weight:800;
+margin:9px 0 15px;
+}
+
+.wallet-row{
+display:flex;
+justify-content:space-between;
+border-top:1px solid var(--border);
+padding-top:12px;
+font-size:12px;
+color:var(--muted);
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.category{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:8px;
+padding:17px;
+text-align:center;
+}
+
+.category-icon{
+font-size:24px;
+margin-bottom:8px;
+}
+
+.category-name{
+font-size:12px;
+font-weight:bold;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:9px;
+overflow:hidden;
+}
+
+.table th,
+.table td{
+padding:14px;
+text-align:left;
+border-bottom:1px solid var(--border);
+font-size:12px;
+}
+
+.table th{
+color:#78869a;
+font-size:11px;
+text-transform:uppercase;
+}
+
+.table td{
+color:#d9dee7;
+}
+
+.badge{
+padding:5px 8px;
+border-radius:5px;
+background:#143426;
+color:#55d99e;
+font-size:10px;
+font-weight:bold;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.stat{
+background:var(--panel);
+border:1px solid var(--border);
+padding:17px;
+border-radius:8px;
+}
+
+.stat strong{
+font-size:20px;
+display:block;
+margin-bottom:5px;
+}
+
+.stat span{
+font-size:11px;
+color:var(--muted);
+}
+
+.footer{
+border-top:1px solid var(--border);
+margin-top:35px;
+padding:25px 0 5px;
+color:#69768a;
+font-size:11px;
+display:flex;
+justify-content:space-between;
+}
+
+@media(max-width:1050px){
+.sidebar{width:215px}
+.cards{grid-template-columns:repeat(2,1fr)}
+.categories{grid-template-columns:repeat(2,1fr)}
+.grid2{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+.header{
+padding:0 14px;
+gap:12px;
+}
+
+.logo{font-size:18px}
+.search{display:none}
+.profile-name,.member{display:none}
+
+.sidebar{
+width:62px;
+padding:15px 7px;
+}
+
+.side-title{
+display:none;
+}
+
+.nav{
+justify-content:center;
+padding:12px 4px;
+}
+
+.nav span:not(.nav-icon){
+display:none;
+}
+
+.content{
+padding:17px 12px;
+}
+
+.welcome{
+display:block;
+}
+
+.status{
+margin-top:15px;
+text-align:left;
+display:inline-block;
+}
+
+.cards{
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.card{
+padding:14px;
+}
+
+.card-value{
+font-size:17px;
+}
+
+.referral-box{
+display:block;
+}
+
+.referral-box .btn{
+margin-top:9px;
+width:100%;
+}
+
+.quick{
+grid-template-columns:1fr;
+}
+
+.categories{
+grid-template-columns:1fr 1fr;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+.footer{
+display:block;
+line-height:2;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="logo">BRODA SHOP</div>
+
+<div class="search">
+<input type="text" placeholder="Search content, creators, courses...">
+</div>
+
+<div class="header-right">
+<div class="icon">🔔</div>
+
+<div class="profile">
+<div class="avatar">DG</div>
+<div>
+<div class="profile-name">Da Generalz</div>
+<div class="member">Premium Member</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="side-title">Main Menu</div>
+
+<a class="nav active" href="dashboard.html">
+<span class="nav-icon">▦</span><span>Dashboard</span>
+</a>
+
+<a class="nav" href="index.html">
+<span class="nav-icon">◈</span><span>Browse Content</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">🛒</span><span>My Purchases</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">↓</span><span>Downloads</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">↗</span><span>Referrals</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">◉</span><span>Earnings</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">💳</span><span>Withdrawals</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">▤</span><span>Transaction History</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">⚙</span><span>Profile Settings</span>
+</a>
+
+<div class="side-title">Content Creator</div>
+
+<a class="nav" href="#">
+<span class="nav-icon">＋</span><span>Upload Content</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">▣</span><span>My Content</span>
+</a>
+
+<a class="nav" href="#">
+<span class="nav-icon">💰</span><span>Creator Earnings</span>
+</a>
+
+</aside>
+
+<main class="content">
+
+<section class="welcome">
+<div>
+<h1>Welcome back, Da Generalz 👋</h1>
+<p>Here's what's happening with your BRODA SHOP account today.</p>
+</div>
+
+<div class="status">
+<span>ACCOUNT STATUS</span>
+<strong>● Premium Member</strong>
+</div>
+</section>
+
+<section class="cards">
+
+<div class="card">
+<div class="card-label">TOTAL EARNINGS</div>
+<div class="card-value gold">UGX 450,000</div>
+<div class="card-small">↑ 12.5% this month</div>
+</div>
+
+<div class="card">
+<div class="card-label">TOTAL REFERRALS</div>
+<div class="card-value">28</div>
+<div class="card-small">↑ 4 new referrals</div>
+</div>
+
+<div class="card">
+<div class="card-label">TOTAL PURCHASES</div>
+<div class="card-value">15</div>
+<div class="card-small">3 this month</div>
+</div>
+
+<div class="card">
+<div class="card-label">AVAILABLE BALANCE</div>
+<div class="card-value green">UGX 320,000</div>
+<div class="card-small">Ready to withdraw</div>
+</div>
+
+</section>
+
+<section class="section">
+<div class="section-title">Your Referral Link</div>
+
+<div class="referral">
+<p>Share your unique referral link and earn commissions when your friends join and purchase.</p>
+
+<div class="referral-box">
+<input value="https://broda.shop/ref/DaGeneralz" readonly>
+<button class="btn btn-gold" onclick="copyReferral()">Copy Link</button>
+</div>
+
+<div class="socials">
+<button class="social">WhatsApp</button>
+<button class="social">Facebook</button>
+<button class="social">Telegram</button>
+<button class="social">X</button>
+</div>
+</div>
+</section>
+
+<div class="grid2">
+
+<section class="section">
+<div class="section-title">Quick Actions</div>
+
+<div class="quick">
+
+<a href="index.html">
+<div class="quick-icon">🛍️</div>
+<strong>Browse Content</strong>
+<small>Discover digital products</small>
+</a>
+
+<a href="#">
+<div class="quick-icon">💳</div>
+<strong>Withdraw Earnings</strong>
+<small>Request a withdrawal</small>
+</a>
+
+<a href="#">
+<div class="quick-icon">⬆️</div>
+<strong>Upload Content</strong>
+<small>Become a creator</small>
+</a>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-title">Wallet</div>
+
+<div class="wallet">
+<div class="card-label">AVAILABLE BALANCE</div>
+<div class="balance gold">UGX 320,000</div>
+
+<div class="wallet-row">
+<span>Pending</span>
+<strong>UGX 25,000</strong>
+</div>
+
+<br>
+
+<button class="btn btn-gold" style="width:100%">Withdraw Funds</button>
+</div>
+</section>
+
+</div>
+
+<section class="section">
+<div class="section-title">Popular Content Categories</div>
+
+<div class="categories">
+
+<div class="category">
+<div class="category-icon">🎵</div>
+<div class="category-name">Music & Audio</div>
+</div>
+
+<div class="category">
+<div class="category-icon">🎬</div>
+<div class="category-name">Videos</div>
+</div>
+
+<div class="category">
+<div class="category-icon">📚</div>
+<div class="category-name">E-books & Guides</div>
+</div>
+
+<div class="category">
+<div class="category-icon">🎨</div>
+<div class="category-name">Graphics & Templates</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="section-title">Recent Purchases</div>
+
+<table class="table">
+
+<thead>
+<tr>
+<th>Content</th>
+<th>Category</th>
+<th>Date</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Premium Business Guide</td>
+<td>E-books</td>
+<td>Sep 24, 2026</td>
+<td>UGX 35,000</td>
+<td><span class="badge">Completed</span></td>
+</tr>
+
+<tr>
+<td>Social Media Templates</td>
+<td>Graphics</td>
+<td>Sep 21, 2026</td>
+<td>UGX 20,000</td>
+<td><span class="badge">Completed</span></td>
+</tr>
+
+<tr>
+<td>Digital Marketing Course</td>
+<td>Courses</td>
+<td>Sep 18, 2026</td>
+<td>UGX 50,000</td>
+<td><span class="badge">Completed</span></td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="section">
+
+<div class="section-title">Referral Program</div>
+
+<div class="referral">
+
+<p>Your referral performance is growing. Keep sharing your link to earn more commissions.</p>
+
+<div class="stats">
+
+<div class="stat">
+<strong class="gold">28</strong>
+<span>Total Referrals</span>
+</div>
+
+<div class="stat">
+<strong>UGX 180,000</strong>
+<span>Referral Earnings</span>
+</div>
+
+<div class="stat">
+<strong class="green">UGX 6,429</strong>
+<span>Average per Referral</span>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section">
+
+<div class="section-title">Your Stats</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong>15</strong>
+<span>Total Purchases</span>
+</div>
+
+<div class="stat">
+<strong>28</strong>
+<span>People Referred</span>
+</div>
+
+<div class="stat">
+<strong class="gold">UGX 450,000</strong>
+<span>Total Earnings</span>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+<div>© 2026 BRODA SHOP. All rights reserved.</div>
+<div>Secure Payments &nbsp; • &nbsp; Instant Access &nbsp; • &nbsp; 24/7 Support</div>
+</footer>
+
+</main>
+</div>
+
+<script>
+function copyReferral(){
+const input=document.querySelector('.referral-box input');
+
+if(navigator.clipboard){
+navigator.clipboard.writeText(input.value).then(function(){
+alert('Referral link copied!');
+});
+}else{
+input.select();
+document.execCommand('copy');
+alert('Referral link copied!');
+}
+}
+</script>
+
+</body>
+</html>
