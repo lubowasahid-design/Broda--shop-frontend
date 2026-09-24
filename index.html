@@ -1,138 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Broda Shop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Broda Shop - Digital Marketplace</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
-
-    header {
-      background: #111;
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
-
-    header p {
-      margin: 8px 0 0;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .product {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .product h2 {
-      margin-top: 0;
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 15px 0;
-    }
-
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background: #333;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-      background: #111;
-      color: white;
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#07111f;
+ color:#fff
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.header{
+ background:#0b1627;
+ border-bottom:1px solid #24344b;
+ padding:14px;
+ display:flex;
+ align-items:center;
+ gap:14px;
+ position:sticky;
+ top:0;
+ z-index:10
+}
+.logo{
+ font-size:22px;
+ font-weight:bold;
+ color:#ffd21c;
+ white-space:nowrap
+}
+.search{
+ flex:1;
+ max-width:500px;
+ background:#101f34;
+ border:1px solid #31445d;
+ border-radius:10px;
+ padding:11px 14px;
+ color:white;
+ outline:none
+}
+.iconbtn{
+ background:#101f34;
+ border:1px solid #31445d;
+ color:white;
+ border-radius:9px;
+ padding:10px 13px
+}
+.layout{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{
+ width:240px;
+ background:#091525;
+ border-right:1px solid #24344b;
+ padding:18px 12px
+}
+.sidebar button{
+ width:100%;
+ text-align:left;
+ background:none;
+ border:0;
+ color:#b8c5d6;
+ padding:13px 14px;
+ border-radius:8px;
+ margin-bottom:4px
+}
+.sidebar button:hover,.sidebar button.active{
+ background:#172941;
+ color:#ffd21c
+}
+.main{
+ flex:1;
+ padding:25px;
+ max-width:1400px;
+ margin:auto
+}
+.hero{
+ background:linear-gradient(135deg,#132b49,#0b1627);
+ border:1px solid #2b405b;
+ border-radius:18px;
+ padding:35px;
+ margin-bottom:25px
+}
+.hero h1{font-size:36px;margin:0 0 12px}
+.hero p{color:#b9c6d7;font-size:17px}
+.yellow{
+ color:#ffd21c
+}
+.primary{
+ background:#ffd21c;
+ color:#111;
+ border:0;
+ border-radius:9px;
+ padding:12px 18px;
+ font-weight:bold
+}
+.secondary{
+ background:#14243a;
+ color:white;
+ border:1px solid #304762;
+ border-radius:9px;
+ padding:11px 17px
+}
+.section-title{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin:28px 0 15px
+}
+.categories,.products,.stats{
+ display:grid;
+ gap:16px
+}
+.categories{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.category{
+ background:#0e1d30;
+ border:1px solid #263b55;
+ padding:20px;
+ border-radius:14px;
+ text-align:center
+}
+.category span{font-size:32px}
+.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{
+ background:#0e1d30;
+ border:1px solid #263b55;
+ border-radius:14px;
+ padding:17px
+}
+.product-image{
+ height:130px;
+ border-radius:10px;
+ background:linear-gradient(135deg,#182f4b,#0a1524);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:45px;
+ margin-bottom:14px
+}
+.price{
+ color:#ffd21c;
+ font-size:20px;
+ font-weight:bold;
+ margin:10px 0
+}
+.rating{color:#ffd21c}
+.stats{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.stat{
+ background:#0e1d30;
+ border:1px solid #263b55;
+ border-radius:14px;
+ padding:20px
+}
+.stat small{color:#91a0b3}
+.stat strong{
+ display:block;
+ font-size:26px;
+ margin-top:8px
+}
+.panel{
+ background:#0e1d30;
+ border:1px solid #263b55;
+ border-radius:14px;
+ padding:22px;
+ margin-bottom:18px
+}
+.hidden{display:none}
+.form{
+ max-width:480px;
+ margin:40px auto
+}
+.form input{
+ width:100%;
+ padding:13px;
+ margin:8px 0 14px;
+ background:#081423;
+ border:1px solid #304762;
+ border-radius:8px;
+ color:white
+}
+.notice{
+ background:#122b40;
+ border-left:4px solid #ffd21c;
+ padding:14px;
+ border-radius:8px;
+ margin-bottom:18px
+}
+.table-row{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:14px 0;
+ border-bottom:1px solid #24344b
+}
+footer{
+ margin-top:40px;
+ padding:30px;
+ text-align:center;
+ color:#8291a5;
+ border-top:1px solid #24344b
+}
+@media(max-width:800px){
+ .sidebar{
+  position:fixed;
+  left:-250px;
+  top:69px;
+  bottom:0;
+  z-index:20;
+  transition:.2s
+ }
+ .sidebar.open{left:0}
+ .main{padding:16px}
+ .hero{padding:24px}
+ .hero h1{font-size:28px}
+ .logo{font-size:18px}
+ .search{max-width:none}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🛍️ BRODA SHOP</h1>
-    <p>Quality products at affordable prices</p>
-  </header>
+<header class="header">
+<button class="iconbtn" onclick="toggleMenu()">☰</button>
+<div class="logo">🛍️ BRODA SHOP</div>
+<input id="search" class="search" placeholder="Search digital content..." oninput="searchProducts()">
+<button class="iconbtn" onclick="showPage('cart')">🛒 <span id="cartCount">0</span></button>
+<button class="iconbtn" onclick="showPage('login')">👤</button>
+</header>
 
-  <div class="container">
+<div class="layout">
 
-    <h2>Our Products</h2>
+<aside id="sidebar" class="sidebar">
+<button class="active" onclick="showPage('home')">🏠 Marketplace</button>
+<button onclick="showPage('dashboard')">📊 Dashboard</button>
+<button onclick="showPage('purchases')">📥 My Purchases</button>
+<button onclick="showPage('referrals')">👥 Referrals</button>
+<button onclick="showPage('earnings')">💰 Earnings</button>
+<button onclick="showPage('wallet')">👛 Wallet</button>
+<button onclick="showPage('creator')">🎨 Creator Studio</button>
+<button onclick="showPage('transactions')">🧾 Transactions</button>
+<button onclick="showPage('profile')">⚙️ Profile Settings</button>
+<hr>
+<button onclick="showPage('login')">🔐 Login</button>
+<button onclick="showPage('signup')">📝 Sign Up</button>
+</aside>
 
-    <div class="products">
+<main class="main">
 
-      <div class="product">
-        <h2>Product 1</h2>
-        <p>Quality product from Broda Shop.</p>
-        <div class="price">UGX 10,000</div>
-        <button onclick="order('Product 1')">Order Now</button>
-      </div>
+<!-- HOME -->
+<section id="home" class="page">
 
-      <div class="product">
-        <h2>Product 2</h2>
-        <p>Quality product from Broda Shop.</p>
-        <div class="price">UGX 20,000</div>
-        <button onclick="order('Product 2')">Order Now</button>
-      </div>
+<div class="hero">
+<h1>BRODA SHOP <span class="yellow">Digital Marketplace</span></h1>
+<p>Discover, Download, Create & Earn!</p>
+<button class="primary" onclick="showPage('shop')">Explore Marketplace</button>
+<button class="secondary" onclick="showPage('signup')">Create Account</button>
+</div>
 
-      <div class="product">
-        <h2>Product 3</h2>
-        <p>Quality product from Broda Shop.</p>
-        <div class="price">UGX 30,000</div>
-        <button onclick="order('Product 3')">Order Now</button>
-      </div>
+<div class="section-title">
+<h2>Browse Categories</h2>
+</div>
 
-    </div>
-  </div>
+<div class="categories">
+<div class="category" onclick="filterCategory('Music')">🎵<br>Music & Audio</div>
+<div class="category" onclick="filterCategory('Videos')">🎬<br>Videos</div>
+<div class="category" onclick="filterCategory('Books')">📚<br>E-books & Guides</div>
+<div class="category" onclick="filterCategory('Graphics')">🎨<br>Graphics & Templates</div>
+<div class="category" onclick="filterCategory('Courses')">🎓<br>Courses</div>
+<div class="category" onclick="filterCategory('Other')">📦<br>Other Downloads</div>
+</div>
 
-  <footer>
-    © 2026 Broda Shop
-  </footer>
+<div class="section-title">
+<h2>Featured Content</h2>
+<button class="secondary" onclick="showPage('shop')">View All</button>
+</div>
 
-  <script>
-    function order(product) {
-      alert("You selected " + product + ". Broda Shop will contact you.");
-    }
-  </script>
+<div id="homeProducts" class="products"></div>
 
-</body>
-</html>
+<div class="section-title"><h2>How It Works</h2></div>
+
+<div class="categories">
+<div class="card">1️⃣<h3>Create Account</h3><p>Join Broda Shop and create your profile.</p></div>
+<div class="card">2️⃣<h3>Buy Content</h3><p>Choose digital products you want.</p></div>
+<div class="card">3️⃣<h3>Download</h3><p>Access your purchased content.</p></div>
+<div class="card">4️⃣<h3>Share & Earn</h3><p>
