@@ -4,111 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Broda Shop</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       color: #222;
     }
+
     header {
       background: #111;
       color: white;
-      padding: 20px;
+      padding: 25px 15px;
       text-align: center;
     }
-    header h1 { margin: 0; font-size: 30px; }
-    header p { margin: 8px 0 0; }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+    }
+
     .container {
       max-width: 900px;
       margin: auto;
       padding: 20px;
     }
-    .welcome {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      gap: 20px;
     }
+
     .product {
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    .product h3 { margin-top: 0; }
+
+    .product h2 {
+      margin-top: 0;
+    }
+
     .price {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
-      margin: 10px 0;
+      margin: 15px 0;
     }
+
     button {
-      width: 100%;
-      padding: 12px;
-      border: 0;
-      border-radius: 8px;
       background: #111;
       color: white;
-      font-size: 16px;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
       cursor: pointer;
+      font-size: 16px;
     }
-    button:hover { background: #333; }
+
+    button:hover {
+      background: #333;
+    }
+
     footer {
       text-align: center;
       padding: 25px;
-      color: #666;
+      margin-top: 30px;
+      background: #111;
+      color: white;
     }
   </style>
 </head>
+
 <body>
-<header>
-  <h1>🛍️ BRODA SHOP</h1>
-  <p>Welcome to Broda Shop</p>
-</header>
 
-<div class="container">
-  <div class="welcome">
-    <h2>Shop With Us</h2>
-    <p>Quality products. Simple shopping. Great service.</p>
+  <header>
+    <h1>🛍️ BRODA SHOP</h1>
+    <p>Quality products at affordable prices</p>
+  </header>
+
+  <div class="container">
+
+    <h2>Our Products</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <h2>Product 1</h2>
+        <p>Quality product from Broda Shop.</p>
+        <div class="price">UGX 10,000</div>
+        <button onclick="order('Product 1')">Order Now</button>
+      </div>
+
+      <div class="product">
+        <h2>Product 2</h2>
+        <p>Quality product from Broda Shop.</p>
+        <div class="price">UGX 20,000</div>
+        <button onclick="order('Product 2')">Order Now</button>
+      </div>
+
+      <div class="product">
+        <h2>Product 3</h2>
+        <p>Quality product from Broda Shop.</p>
+        <div class="price">UGX 30,000</div>
+        <button onclick="order('Product 3')">Order Now</button>
+      </div>
+
+    </div>
   </div>
 
-  <div class="products">
-    <div class="product">
-      <h3>Product 1</h3>
-      <p>Available product from Broda Shop.</p>
-      <div class="price">UGX 10,000</div>
-      <button onclick="order('Product 1')">Order Now</button>
-    </div>
+  <footer>
+    © 2026 Broda Shop
+  </footer>
 
-    <div class="product">
-      <h3>Product 2</h3>
-      <p>Available product from Broda Shop.</p>
-      <div class="price">UGX 20,000</div>
-      <button onclick="order('Product 2')">Order Now</button>
-    </div>
+  <script>
+    function order(product) {
+      alert("You selected " + product + ". Broda Shop will contact you.");
+    }
+  </script>
 
-    <div class="product">
-      <h3>Product 3</h3>
-      <p>Available product from Broda Shop.</p>
-      <div class="price">UGX 30,000</div>
-      <button onclick="order('Product 3')">Order Now</button>
-    </div>
-  </div>
-</div>
-
-<footer>© 2026 Broda Shop</footer>
-
-<script>
-  function order(product) {
-    alert("You selected " + product + ". Broda Shop will process your order.");
-  }
-</script>
 </body>
 </html>
