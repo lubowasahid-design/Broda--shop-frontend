@@ -1081,5 +1081,20 @@ footer{
   </div>
 </footer>
 
+<script>
+const API_BASE = "https://broda-shop-backend.onrender.com";
+
+async function checkBackend() {
+  try {
+    const response = await fetch(`${API_BASE}/api/health`);
+    const data = await response.json();
+    console.log("BRODA SHOP backend:", data);
+  } catch (error) {
+    console.error("BRODA SHOP backend connection failed:", error);
+  }
+}
+
+checkBackend();
+</script>
 </body>
 </html>
