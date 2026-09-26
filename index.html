@@ -1231,6 +1231,7 @@ signupLinks.forEach(link => {
       }
 
       alert("Account created successfully! Welcome to BRODA SHOP.");
+      window.location.hash = "login";
     } catch (error) {
       alert("Could not connect to BRODA SHOP. Please try again.");
       console.error(error);
