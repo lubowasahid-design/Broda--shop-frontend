@@ -1305,8 +1305,9 @@ document.getElementById("registerForm").addEventListener("submit", async functio
       localStorage.setItem("brodaToken", data.token);
     }
 
-    alert("Login successful!");
-    window.location.hash = "dashboard";
+    
+    window.location.href = 
+    "dashboard.html";
   } catch (error) {
     alert("Could not connect to BRODA SHOP.");
     console.error(error);
