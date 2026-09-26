@@ -1306,11 +1306,86 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     }
 
     alert("Login successful!");
+    window.location.hash = "dashboard";
   } catch (error) {
     alert("Could not connect to BRODA SHOP.");
     console.error(error);
   }
 });
+</script>
+  <section id="dashboard" style="display:none;padding:40px 20px;">
+  <div class="container" style="max-width:1000px;margin:auto;">
+    <h1 style="font-size:32px;margin-bottom:8px;">BRODA SHOP Dashboard</h1>
+    <p style="color:#9ba6b7;margin-bottom:30px;">Welcome to your account.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
+        <small style="color:#9ba6b7;">Earnings</small>
+        <h2 id="dashEarnings">0</h2>
+      </div>
+
+      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
+        <small style="color:#9ba6b7;">Referrals</small>
+        <h2 id="dashReferrals">0</h2>
+      </div>
+
+      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
+        <small style="color:#9ba6b7;">Purchases</small>
+        <h2 id="dashPurchases">0</h2>
+      </div>
+
+      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
+        <small style="color:#9ba6b7;">Balance</small>
+        <h2 id="dashBalance">0</h2>
+      </div>
+    </div>
+
+    <div style="margin-top:25px;background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
+      <h2>Referral Link</h2>
+      <p id="dashReferralLink" style="color:#9ba6b7;word-break:break-all;">Loading...</p>
+    </div>
+
+    <button onclick="logoutBroda()" style="margin-top:25px;background:#f2c94c;border:0;border-radius:8px;padding:13px 25px;font-weight:800;">
+      Logout
+    </button>
+  </div>
+</section>
+
+<script>
+function loadBrodaDashboard(){
+  const token = localStorage.getItem("brodaToken");
+  if(!token) return;
+
+  const dashboard = document.getElementById("dashboard");
+
+  if(window.location.hash === "#dashboard"){
+    dashboard.style.display = "block";
+
+    fetch("https://broda-shop-backend.onrender.com/api/dashboard", {
+      headers:{
+        "Authorization":"Bearer " + token
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("dashEarnings").textContent = data.earnings ?? 0;
+      document.getElementById("dashReferrals").textContent = data.referrals ?? 0;
+      document.getElementById("dashPurchases").textContent = data.purchases ?? 0;
+      document.getElementById("dashBalance").textContent = data.balance ?? 0;
+      document.getElementById("dashReferralLink").textContent = data.referralLink ?? "Not available";
+    })
+    .catch(error => console.error(error));
+  }
+}
+
+function logoutBroda(){
+  localStorage.removeItem("brodaToken");
+  window.location.hash = "";
+  window.location.reload();
+}
+
+window.addEventListener("hashchange", loadBrodaDashboard);
+loadBrodaDashboard();
 </script>
 </body>
 </html>
