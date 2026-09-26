@@ -901,5 +901,118 @@ alert('Referral link copied!');
 }
 </script>
 
+<script>
+const API = "https://broda-shop-b019.onrender.com";
+
+async function loadRealDashboard() {
+  const token = localStorage.getItem("brodaToken");
+
+  if (!token) {
+    window.location.href = "index.html#login";
+    return;
+  }
+
+  try {
+    const headers = {
+      Authorization: "Bearer " + token
+    };
+
+    const [userResponse, dashResponse] =
+      await Promise.all([
+        fetch(API + "/api/me", { headers }),
+        fetch(API + "/api/dashboard", { headers })
+      ]);
+
+    if (userResponse.status === 401 ||
+        dashResponse.status === 401) {
+      localStorage.removeItem("brodaToken");
+      window.location.href = "index.html#login";
+      return;
+    }
+
+    if (!userResponse.ok || !dashResponse.ok) {
+      throw new Error("Could not load account data");
+    }
+
+    const user = await userResponse.json();
+    const data = await dashResponse.json();
+
+    const money = value =>
+      "UGX " + Number(value || 0).toLocaleString("en-UG");
+
+    document.querySelector(".welcome h1").textContent =
+      "Welcome back, " + user.name + "!";
+
+    document.querySelector(".profile-name").textContent =
+      user.name;
+
+    document.querySelector(".avatar").textContent =
+      user.name.split(/\s+/).map(n => n[0]).join("")
+        .slice(0, 2).toUpperCase();
+
+    const cards = document.querySelectorAll(
+      ".cards .card-value"
+    );
+
+    cards[0].textContent = money(data.earnings);
+    cards[1].textContent =
+      Number(data.referrals || 0).toLocaleString();
+    cards[2].textContent =
+      Number(data.purchases || 0).toLocaleString();
+    cards[3].textContent = money(data.balance);
+
+    document.querySelector(".wallet .balance").textContent =
+      money(data.balance);
+
+    document.querySelector(".referral-box input").value =
+      data.referralLink;
+
+    document.querySelector(".status strong").textContent =
+      "● Member Account";
+
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach(section => {
+      const title = section.querySelector(".section-title");
+      if (!title) return;
+
+      if (title.textContent.trim() === "Referral Program") {
+        const stats = section.querySelectorAll(".stat strong");
+        if (stats[0]) {
+          stats[0].textContent = data.referrals || 0;
+        }
+        if (stats[1]) stats[1].textContent = "Not available yet";
+        if (stats[2]) stats[2].textContent = "Not available yet";
+      }
+
+      if (title.textContent.trim() === "Your Stats") {
+        const stats = section.querySelectorAll(".stat strong");
+        if (stats[0]) stats[0].textContent = data.purchases || 0;
+        if (stats[1]) stats[1].textContent = data.referrals || 0;
+        if (stats[2]) stats[2].textContent = money(data.earnings);
+      }
+
+      if (title.textContent.trim() === "Recent Purchases") {
+        const body = section.querySelector("tbody");
+        if (body) {
+          body.innerHTML =
+            '<tr><td colspan="5">Purchase history will appear here when connected.</td></tr>';
+        }
+      }
+    });
+
+    const walletRow = document.querySelector(".wallet-row strong");
+    if (walletRow) walletRow.textContent = "Not available yet";
+
+  } catch (error) {
+    console.error("Dashboard error:", error);
+    alert("Could not load your account data. Please try logging in again.");
+  }
+}
+
+loadRealDashboard();
+</script>
 </body>
+
+
 </html>
