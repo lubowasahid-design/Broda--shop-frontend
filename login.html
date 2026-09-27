@@ -43,13 +43,6 @@ Don't have an account? <a href="signup.html">Sign up</a>
 <p id="message" role="status" style="margin-top:20px"></p>
 </main>
 <script>
-document.getElementById("loginForm").addEventListener("submit",function(e){
-e.preventDefault();
-document.getElementById("message").textContent=
-"Login is not connected yet. The backend must verify your account before you can sign in.";
-});
-
-<script>
 const form = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
@@ -69,9 +62,7 @@ form.addEventListener("submit", async function (e) {
       "https://broda-shop-b019.onrender.com/api/auth/login",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       }
     );
@@ -99,6 +90,5 @@ form.addEventListener("submit", async function (e) {
   }
 });
 </script>
-
 </body>
 </html>
