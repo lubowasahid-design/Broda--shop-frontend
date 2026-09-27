@@ -6,8 +6,8 @@ export default {
       return new Response(
         JSON.stringify({
           success: true,
-          shop: "Broda Shop",
-          message: "Broda Shop is online"
+          shop: "Broda hub",
+          message: "Broda hub is online"
         }),
         {
           headers: {
@@ -20,7 +20,7 @@ export default {
     return new Response(
       JSON.stringify({
         success: true,
-        message: "Welcome to Broda Shop"
+        message: "Welcome to Broda hub"
       }),
       {
         headers: {
