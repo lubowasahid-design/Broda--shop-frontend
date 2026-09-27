@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload Content | BRODA SHOP</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#070b14;color:#f5f7fa}
+header,main{max-width:700px;margin:auto}
+header{padding:20px 0;border-bottom:1px solid #263246;display:flex;justify-content:space-between;gap:12px}
+.logo{color:#f2c94c;font-size:21px;font-weight:bold}
+a{color:#f2c94c;text-decoration:none}
+main{margin:35px auto}
+p{color:#9ba6b8;line-height:1.6}
+.panel{background:#0d1422;border:1px solid #263246;border-radius:12px;padding:22px}
+label{display:block;margin:18px 0 8px;font-size:14px}
+input,select,textarea{width:100%;padding:13px;background:#080d17;color:white;border:1px solid #263246;border-radius:7px;font-size:15px}
+textarea{min-height:100px}
+button{width:100%;padding:15px;margin-top:22px;background:#f2c94c;border:0;border-radius:7px;font-weight:bold;font-size:16px}
+#message{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">B · BRODA SHOP</div>
+  <a href="dashboard.html">← Dashboard</a>
+</header>
+
+<main>
+  <h1>Submit Your Content</h1>
+  <p>Submit your digital product for review by the Broda Shop admin.</p>
+
+  <div class="panel">
+    <form id="contentForm">
+      <label for="title">Content title *</label>
+      <input id="title" required maxlength="160" placeholder="Enter content title">
+
+      <label for="type">Category *</label>
+      <select id="type" required>
+        <option value="">Choose category</option>
+        <option>Music & Audio</option>
+        <option>Video</option>
+        <option>E-book</option>
+        <option>Course</option>
+        <option>Graphics & Templates</option>
+        <option>Other</option>
+      </select>
+
+      <label for="description">Description</label>
+      <textarea id="description" maxlength="2000" placeholder="Describe your product"></textarea>
+
+      <label for="price">Price in UGX *</label>
+      <input id="price" type="number" min="0" step="1" required placeholder="e.g. 25000">
+
+      <label for="fileUrl">Hosted file link *</label>
+      <input id="fileUrl" type="url" required placeholder="https://...">
+      <p>Paste a shareable link to your file. This version submits a link, not a file directly from your phone.</p>
+
+      <button id="submitButton" type="submit">Submit for Review</button>
+      <p id="message" role="status"></p>
+    </form>
+  </div>
+</main>
+
+<script>
+const API = "https://broda-shop-b019.onrender.com";
+const form = document.getElementById("contentForm");
+const message = document.getElementById("message");
+const button = document.getElementById("submitButton");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const token = localStorage.getItem("brodaToken");
+
+  if (!token) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Submitting...";
+  message.textContent = "";
+
+  try {
+    const response = await fetch(API + "/api/content", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({
+        title: document.getElementById("title").value.trim(),
+        type: document.getElementById("type").value,
+        description: document.getElementById("description").value.trim(),
+        price: Number(document.getElementById("price").value),
+        fileUrl: document.getElementById("fileUrl").value.trim()
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.status === 401) {
+      localStorage.removeItem("brodaToken");
+      localStorage.removeItem("brodaUser");
+      window.location.href = "login.html";
+      return;
+    }
+
+    if (!response.ok) {
+      throw new Error(data.error || "Submission failed.");
+    }
+
+    message.textContent =
+      "Success! Your content was submitted and is pending admin approval.";
+    form.reset();
+
+  } catch (error) {
+    message.textContent =
+      error.message === "Failed to fetch"
+        ? "Could not reach the server. Check your connection and try again."
+        : error.message;
+  } finally {
+    button.disabled = false;
+    button.textContent = "Submit for Review";
+  }
+});
+</script>
+</body>
+</html>
