@@ -908,7 +908,7 @@ async function loadRealDashboard() {
   const token = localStorage.getItem("brodaToken");
 
   if (!token) {
-    window.location.href = "index.html#login";
+    window.location.href = "login.html";
     return;
   }
 
@@ -926,7 +926,7 @@ async function loadRealDashboard() {
     if (userResponse.status === 401 ||
         dashResponse.status === 401) {
       localStorage.removeItem("brodaToken");
-      window.location.href = "index.html#login";
+      window.location.href = "login.html";
       return;
     }
 
