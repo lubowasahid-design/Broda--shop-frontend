@@ -1012,7 +1012,84 @@ async function loadRealDashboard() {
 
 loadRealDashboard();
 </script>
-</body>
+ <script src="https://unpkg.com/lucide@latest"></script>
+  
+<script>
+document.querySelectorAll(".nav").forEach(link => {
+  const label = link.querySelector("span:last-child")
+    ?.textContent.trim();
+
+  const icons = {
+    "Dashboard": "layout-dashboard",
+    "Browse Content": "compass",
+    "My Purchases": "shopping-bag",
+    "Downloads": "download",
+    "Referrals": "users",
+    "Earnings": "chart-no-axes-combined",
+    "Withdrawals": "wallet",
+    "Transaction History": "receipt-text",
+    "Profile Settings": "settings",
+    "Upload Content": "cloud-upload",
+    "My Content": "files",
+    "Creator Earnings": "hand-coins"
+  };
+
+  const icon = link.querySelector(".nav-icon");
+
+  if (icon && icons[label]) {
+    icon.innerHTML = `<i data-lucide="${icons[label]}"></i>`;
+  }
+});
+
+document.querySelectorAll(".quick a").forEach(link => {
+  const label = link.querySelector("strong")
+    ?.textContent.trim();
+
+  const icons = {
+    "Browse Content": "compass",
+    "Withdraw Earnings": "wallet",
+    "Upload Content": "cloud-upload"
+  };
+
+  const icon = link.querySelector(".quick-icon");
+
+  if (icon && icons[label]) {
+    icon.innerHTML = `<i data-lucide="${icons[label]}"></i>`;
+  }
+});
+
+document.querySelectorAll(".category").forEach(item => {
+  const label = item.querySelector(".category-name")
+    ?.textContent.trim();
+
+  const icons = {
+    "Music & Audio": "music",
+    "Videos": "clapperboard",
+    "E-books & Guides": "book-open",
+    "Graphics & Templates": "palette"
+  };
+
+  const icon = item.querySelector(".category-icon");
+
+  if (icon && icons[label]) {
+    icon.innerHTML = `<i data-lucide="${icons[label]}"></i>`;
+  }
+});
+
+const notification =
+  document.querySelector(".header-right .icon");
+
+if (notification) {
+  notification.innerHTML =
+    '<i data-lucide="bell"></i>';
+}
+
+if (window.lucide) {
+  lucide.createIcons();
+}
+</script>
+
+</body> 
 
 
 </html>
