@@ -1094,71 +1094,115 @@ if (window.lucide) {
 }
 </script>
   
-<!-- BRODA HUB CREATOR SERVICES -->
-<section id="creator-services" style="margin:24px 0;padding:20px;background:#0d1422;color:#fff;border:1px solid #3a3a42;border-radius:16px;font-family:Arial,sans-serif">
-  <h2 style="color:#f2c94c;margin-top:0">BRODA HUB SERVICES</h2>
-  <p style="color:#b8becb">Discover music, support creators and connect with the community.</p>
+<style>
+#creator-services {
+  margin: 28px 0;
+  padding: 24px;
+  background: #090909;
+  color: #fff;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#creator-services h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+#creator-services .intro {
+  color: #b8b8b8;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+#creator-services .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+#creator-services .service {
+  padding: 18px;
+  background: #111;
+  border: 1px solid #292929;
+  border-radius: 9px;
+}
+#creator-services h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+#creator-services .service p {
+  margin: 0;
+  color: #b8b8b8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+#creator-services a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #c62828;
+  padding-bottom: 3px;
+}
+@media(max-width:700px) {
+  #creator-services .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media(max-width:450px) {
+  #creator-services .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px">
-    <a href="upload-content.html" style="text-decoration:none;color:inherit">
-      <div style="padding:16px;background:#111a2b;border-radius:12px">
-        <h3>🎹 Beats Park</h3>
-        <p>Explore and share beats.</p>
-      </div>
-    </a>
-    <button type="button" onclick="alert('Subscription options will be connected to the payment system.')" style="padding:16px;background:#111a2b;color:white;border:1px solid #393f4b;border-radius:12px;text-align:left">
-      <h3>💳 Subscriptions</h3>
-      <p>Access creator subscriptions.</p>
-    </button>
-    <button type="button" onclick="hubFollow(this)" style="padding:16px;background:#111a2b;color:white;border:1px solid #393f4b;border-radius:12px">
-      <h3>👥 Follow</h3>
-      Follow a creator
-    </button>
-    <button type="button" onclick="hubLike(this)" style="padding:16px;background:#111a2b;color:white;border:1px solid #393f4b;border-radius:12px">
-      <h3>❤️ Like</h3>
-      <span>0 likes</span>
-    </button>
-    <div style="padding:16px;background:#111a2b;border-radius:12px">
-      <h3>💬 Comments</h3>
-      <input id="hubComment" placeholder="Write a comment..." style="box-sizing:border-box;width:100%;padding:10px;border-radius:8px">
-      <button type="button" onclick="hubComment()" style="margin-top:8px;padding:9px;background:#f2c94c;color:#111;border:0;border-radius:8px">Post comment</button>
-      <div id="hubComments" style="overflow-wrap:anywhere"></div>
-    </div>
+<section id="creator-services">
+  <h2>BRODA HUB SERVICES</h2>
+  <p class="intro">
+    Discover digital content and services across BRODA HUB.
+  </p>
+
+  <div class="services-grid">
+    <article class="service">
+      <h3>Music &amp; Audio</h3>
+      <p>Music releases, discovery and promotion.</p>
+    </article>
+
+    <article class="service">
+      <h3>Videos</h3>
+      <p>Video content and creator promotion.</p>
+    </article>
+
+    <article class="service">
+      <h3>Beats Park</h3>
+      <p>Explore beats and music production content.</p>
+      <a href="upload-content.html">Upload content</a>
+    </article>
+
+    <article class="service">
+      <h3>Subscriptions</h3>
+      <p>Creator subscription services.</p>
+    </article>
+
+    <article class="service">
+      <h3>Creator Community</h3>
+      <p>Follow creators and support their work.</p>
+    </article>
+
+    <article class="service">
+      <h3>Downloads</h3>
+      <p>Access available digital downloads.</p>
+    </article>
+
+    <article class="service">
+      <h3>E-books &amp; Courses</h3>
+      <p>Books and educational resources.</p>
+    </article>
+
+    <article class="service">
+      <h3>Graphics &amp; Templates</h3>
+      <p>Digital graphics and creative assets.</p>
+    </article>
   </div>
 </section>
-
-<script>
-function hubLike(button) {
-  const count = button.querySelector("span");
-  let likes = Number(button.dataset.likes || 0);
-  likes++;
-  button.dataset.likes = likes;
-  count.textContent = likes + (likes === 1 ? " like" : " likes");
-}
-
-function hubFollow(button) {
-  const following = button.dataset.following === "yes";
-  button.dataset.following = following ? "no" : "yes";
-  button.lastChild.textContent = following
-    ? "Follow a creator"
-    : "Following ✓";
-}
-
-function hubComment() {
-  const input = document.getElementById("hubComment");
-  const output = document.getElementById("hubComments");
-  const value = input.value.trim();
-  if (!value) {
-    alert("Please write a comment first.");
-    return;
-  }
-  const item = document.createElement("p");
-  item.textContent = value;
-  output.appendChild(item);
-  input.value = "";
-}
-</script>
-
 
 </body> 
 
