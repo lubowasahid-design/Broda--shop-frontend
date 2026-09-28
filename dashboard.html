@@ -612,17 +612,30 @@ Log out
 <span class="nav-icon">↗</span><span>Referrals</span>
 </a>
 
-<a class="nav" href="#">
-<span class="nav-icon">◉</span><span>Earnings</span>
+<a class="nav" href="#" onclick="let m=document.getElementById('wallet-menu');m.hidden=!m.hidden;let w=document.getElementById('wallet');w.hidden=!w.hidden;return false;">
+<span class="nav-icon">W</span><span>Wallet</span>
 </a>
 
-<a class="nav" href="#">
-<span class="nav-icon">💳</span><span>Withdrawals</span>
+
+<div id="wallet-menu" hidden style="padding-left:18px">
+<a class="nav" href="#wallet">Balance</a>
+<a class="nav" href="#wallet">Earnings</a>
+<a class="nav" href="#wallet">Withdraw</a>
+<a class="nav" href="#wallet">Payout Methods</a>
+<a class="nav" href="#wallet">History</a>
+</div>
+
+<a class="nav" href="#"
+onclick="let m=document.getElementById('analytics-menu');m.hidden=!m.hidden;return false;">
+<span class="nav-icon">A</span><span>Analytics</span>
 </a>
 
-<a class="nav" href="#">
-<span class="nav-icon">▤</span><span>Transaction History</span>
-</a>
+<div id="analytics-menu" hidden style="padding-left:18px">
+<a class="nav" href="#analytics">Streams</a>
+<a class="nav" href="#analytics">Tracks</a>
+<a class="nav" href="#analytics">Playlists</a>
+<a class="nav" href="#analytics">Stores</a>
+</div>
 
 <a class="nav" href="#">
 <span class="nav-icon">⚙</span><span>Profile Settings</span>
@@ -734,7 +747,7 @@ Log out
 </div>
 </section>
 
-<section class="section">
+<section class="section" id="wallet" hidden>
 <div class="section-title">Wallet</div>
 
 <div class="wallet">
