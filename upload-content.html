@@ -1,38 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Upload Content | BRODA HUB</title>
+<title>Start Earn | BRODA HUB</title>
 <style>
+:root{--bg:#090909;--panel:#111111;--line:#303030;--white:#fff;--muted:#b8b8b8;--red:#c62828;--green:#16a34a}
 *{box-sizing:border-box}
-body{margin:0;padding:20px;font-family:Arial,sans-serif;background:#070b14;color:#f5f7fa}
-header,main{max-width:700px;margin:auto}
-header{padding:20px 0;border-bottom:1px solid #263246;display:flex;justify-content:space-between;gap:12px}
-.logo{color:#f2c94c;font-size:21px;font-weight:bold}
-a{color:#f2c94c;text-decoration:none}
-main{margin:35px auto}
-p{color:#9ba6b8;line-height:1.6}
-.panel{background:#0d1422;border:1px solid #263246;border-radius:12px;padding:22px}
-label{display:block;margin:18px 0 8px;font-size:14px}
-input,select,textarea{width:100%;padding:13px;background:#080d17;color:white;border:1px solid #263246;border-radius:7px;font-size:15px}
-textarea{min-height:100px}
-button{width:100%;padding:15px;margin-top:22px;background:#f2c94c;border:0;border-radius:7px;font-weight:bold;font-size:16px}
-#message{overflow-wrap:anywhere}
+body{margin:0;padding:20px;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--white);line-height:1.5}
+header,main{max-width:760px;margin:auto}
+header{padding:18px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{color:var(--white);font-size:20px;font-weight:800;letter-spacing:.3px}
+a{color:var(--white);text-decoration:none}
+.back-link{border:1px solid var(--line);padding:9px 12px;border-radius:6px;font-size:14px}
+.back-link:hover{border-color:var(--red)}
+main{margin:32px auto}
+.eyebrow{color:#ef7777;font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+h1{font-size:clamp(27px,5vw,36px);line-height:1.15;margin:9px 0 10px}
+.intro{color:var(--muted);line-height:1.65;margin:0 0 24px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:clamp(18px,4vw,26px)}
+.panel h2{font-size:19px;margin:0 0 5px}
+.panel-intro{color:var(--muted);font-size:14px;margin:0 0 20px}
+label{display:block;margin:18px 0 7px;font-size:14px;font-weight:600}
+input,select,textarea{display:block;width:100%;padding:13px;background:#090909;color:var(--white);border:1px solid #414141;border-radius:6px;font:inherit;font-size:15px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:1px;border-color:var(--red)}
+textarea{min-height:100px;resize:vertical}
+.help{color:var(--muted);font-size:12px;line-height:1.55;margin:8px 0 0}
+button{width:100%;padding:14px;margin-top:22px;background:var(--red);color:#fff;border:0;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer}
+button:hover{background:#a91f1f}
+button:disabled{opacity:.65;cursor:wait}
+#message{overflow-wrap:anywhere;margin-bottom:0}
+footer{max-width:760px;margin:24px auto 0;border-top:1px solid var(--line);padding-top:16px;color:#888;font-size:12px}
+@media(max-width:480px){body{padding:14px}header{padding:14px 0}.logo{font-size:18px}.back-link{font-size:13px;padding:8px 10px}main{margin:25px auto}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">B · BRODA HUB</div>
-  <a href="dashboard.html">← Dashboard</a>
+  <a class="logo" href="dashboard.html">BRODA HUB</a>
+  <a class="back-link" href="dashboard.html">← Dashboard</a>
 </header>
 
 <main>
-  <h1>Submit Your Content</h1>
-  <p>Submit your digital product for review by the Broda hub admin.</p>
+  <div class="eyebrow">Creator workspace</div>
+  <h1>Start Earn</h1>
+  <p class="intro">Submit your music, videos or digital products for review. Approved content can then appear on BRODA HUB.</p>
 
   <div class="panel">
+    <h2>Submit content</h2>
+    <p class="panel-intro">Complete the details below. Your submission will be reviewed by the BRODA HUB admin.</p>
     <form id="contentForm">
       <label for="title">Content title *</label>
       <input id="title" required maxlength="160" placeholder="Enter content title">
@@ -40,29 +55,31 @@ button{width:100%;padding:15px;margin-top:22px;background:#f2c94c;border:0;borde
       <label for="type">Category *</label>
       <select id="type" required>
         <option value="">Choose category</option>
-        <option>Music & Audio</option>
+        <option>Music &amp; Audio</option>
         <option>Video</option>
         <option>E-book</option>
         <option>Course</option>
-        <option>Graphics & Templates</option>
+        <option>Graphics &amp; Templates</option>
         <option>Other</option>
       </select>
 
       <label for="description">Description</label>
-      <textarea id="description" maxlength="2000" placeholder="Describe your product"></textarea>
+      <textarea id="description" maxlength="2000" placeholder="Describe your content"></textarea>
 
       <label for="price">Price in UGX *</label>
       <input id="price" type="number" min="0" step="1" required placeholder="e.g. 25000">
 
       <label for="fileUrl">Hosted file link *</label>
       <input id="fileUrl" type="url" required placeholder="https://...">
-      <p>Paste a shareable link to your file. This version submits a link, not a file directly from your phone.</p>
+      <p class="help">Paste a shareable link to your file. This form submits a link; it does not upload a file directly from your phone.</p>
 
       <button id="submitButton" type="submit">Submit for Review</button>
-      <p id="message" role="status"></p>
+      <p id="message" role="status" aria-live="polite"></p>
     </form>
   </div>
 </main>
+
+<footer>© 2026 BRODA HUB</footer>
 
 <script>
 const API = "https://broda-shop-b019.onrender.com";
@@ -113,8 +130,8 @@ form.addEventListener("submit", async function(e) {
       throw new Error(data.error || "Submission failed.");
     }
 
-    message.textContent =
-      "Success! Your content was submitted and is pending admin approval.";
+    message.textContent = "Success! Your content was submitted and is pending admin approval.";
+    message.style.color = "var(--green)";
     form.reset();
 
   } catch (error) {
@@ -122,6 +139,7 @@ form.addEventListener("submit", async function(e) {
       error.message === "Failed to fetch"
         ? "Could not reach the server. Check your connection and try again."
         : error.message;
+    message.style.color = "#ef7777";
   } finally {
     button.disabled = false;
     button.textContent = "Submit for Review";
