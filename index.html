@@ -2,1208 +2,230 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRODA HUB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>BRODA HUB | Discover & Earn</title>
 <link rel="manifest" href="./manifest.json">
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-:root{
-  --bg:#070b14;
-  --nav:#080c15;
-  --card:#101827;
-  --card2:#141e2e;
-  --gold:#B8AA8A;
-  --gold2:#8F8268;
-  --white:#f5f7fb;
-  --muted:#9ba6b7;
-  --line:#263246;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--white);
-  line-height:1.5;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-/* HEADER */
-
-header{
-  background:var(--nav);
-  border-bottom:1px solid var(--line);
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-.header-inner{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  gap:25px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  min-width:max-content;
-}
-
-.logo-mark{
-  width:38px;
-  height:38px;
-  border-radius:9px;
-  background:var(--gold);
-  display:grid;
-  place-items:center;
-  color:#111722;
-  font-size:20px;
-  font-weight:900;
-}
-
-.logo-text{
-  font-size:21px;
-  font-weight:800;
-  letter-spacing:.5px;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:25px;
-  margin-left:auto;
-}
-
-.nav a{
-  color:#d6dce5;
-  font-size:14px;
-  font-weight:600;
-}
-
-.nav a:hover{
-  color:var(--gold);
-}
-
-.search{
-  width:210px;
-  height:40px;
-  border:1px solid var(--line);
-  background:#0d1420;
-  border-radius:7px;
-  display:flex;
-  align-items:center;
-  padding:0 12px;
-  color:var(--muted);
-}
-
-.search input{
-  width:100%;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:white;
-  font-size:13px;
-}
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:1px solid var(--line);
-  border-radius:7px;
-  background:#0d1420;
-  color:white;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-  font-size:17px;
-}
-
-.login{
-  color:#dce2ea;
-  font-size:14px;
-  font-weight:600;
-}
-
-.signup{
-    background:transparent;
-    color:#f5f7fa;
-    padding:10px 17px;
-    border:1px solid #3b4658;
-    border-radius:6px;
-    font-size:14px;
-    font-weight:600;
-    text-decoration:none;
-    transition:background 0.2s ease;
-}
-
-.signup:hover{
-    background:#171e2b;
-}
-
-
-
-/* HERO */
-
-.hero{
-  padding:70px 0 55px;
-  background:
-    radial-gradient(circle at 75% 35%,rgba(242,201,76,.09),transparent 34%),
-    var(--bg);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:55px;
-  align-items:center;
-}
-
-.eyebrow{
-  color:var(--gold);
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:1.8px;
-  margin-bottom:16px;
-}
-
-.hero h1{
-  font-size:52px;
-  line-height:1.08;
-  max-width:650px;
-  margin-bottom:20px;
-}
-
-.hero h1 span{
-  color:var(--gold);
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:17px;
-  max-width:570px;
-  margin-bottom:30px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:13px;
-  flex-wrap:wrap;
-}
-
-.btn-primary,
-.btn-secondary{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 23px;
-  border-radius:6px;
-  font-weight:800;
-  font-size:14px;
-}
-
-.btn-primary{
-  background:var(--gold);
-  color:#10151e;
-}
-
-.btn-secondary{
-  border:1px solid var(--line);
-  background:#101827;
-  color:white;
-}
-
-/* HERO ART */
-
-.hero-art{
-  min-height:350px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:#0d1421;
-  padding:22px;
-  position:relative;
-  overflow:hidden;
-}
-
-.art-window{
-  height:100%;
-  min-height:305px;
-  border-radius:10px;
-  border:1px solid #263247;
-  background:
-    linear-gradient(135deg,#111c2e 0%,#0b111d 55%,#171a20 100%);
-  padding:25px;
-  position:relative;
-}
-
-.art-top{
-  display:flex;
-  justify-content:space-between;
-  color:#8794a8;
-  font-size:12px;
-  margin-bottom:28px;
-}
-
-.art-title{
-  font-size:28px;
-  font-weight:800;
-  max-width:280px;
-  margin-bottom:15px;
-}
-
-.art-sub{
-  color:#8794a8;
-  font-size:13px;
-  max-width:260px;
-}
-
-.art-card{
-  position:absolute;
-  right:25px;
-  bottom:25px;
-  width:145px;
-  height:180px;
-  border-radius:10px;
-  background:linear-gradient(145deg,#f2c94c,#9e7310);
-  padding:14px;
-  color:#111722;
-}
-
-.art-card strong{
-  display:block;
-  font-size:20px;
-  margin-top:55px;
-}
-
-.art-card small{
-  font-size:10px;
-}
-
-/* SECTION */
-
-section{
-  padding:58px 0;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:25px;
-  gap:15px;
-}
-
-.section-head h2{
-  font-size:27px;
-}
-
-.section-head p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.view-all{
-  color:var(--gold);
-  font-size:13px;
-  font-weight:700;
-}
-
-/* CATEGORIES */
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:14px;
-}
-
-.category{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:24px 15px;
-  text-align:center;
-  transition:.2s;
-}
-
-.category:hover{
-  border-color:var(--gold2);
-  transform:translateY(-2px);
-}
-
-.category-icon{
-  width:48px;
-  height:48px;
-  margin:0 auto 13px;
-  border-radius:8px;
-  background:#182235;
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  font-size:22px;
-}
-
-.category h3{
-  font-size:13px;
-  margin-bottom:4px;
-}
-
-.category p{
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* PRODUCTS */
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
-}
-
-.product{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:9px;
-  overflow:hidden;
-}
-
-.product-image{
-  height:155px;
-  background:
-    linear-gradient(135deg,#1c293d,#0b111b);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--gold);
-  font-size:42px;
-  border-bottom:1px solid var(--line);
-}
-
-.product-body{
-  padding:17px;
-}
-
-.product-tag{
-  color:var(--gold);
-  text-transform:uppercase;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.8px;
-}
-
-.product h3{
-  font-size:15px;
-  margin:8px 0;
-}
-
-.product-desc{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:12px;
-}
-
-.rating{
-  color:var(--gold);
-  font-size:12px;
-  margin-bottom:14px;
-}
-
-.product-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-}
-
-.price{
-  font-size:16px;
-  font-weight:800;
-}
-
-.buy{
-  border:0;
-  background:var(--gold);
-  color:#111722;
-  padding:9px 12px;
-  border-radius:5px;
-  font-size:11px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-/* HOW IT WORKS */
-
-.how{
-  background:#0b111c;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.step{
-  text-align:center;
-  padding:8px 15px;
-}
-
-.step-number{
-  width:45px;
-  height:45px;
-  margin:0 auto 13px;
-  border:1px solid var(--gold2);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  font-weight:900;
-}
-
-.step h3{
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-.step p{
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* BENEFITS */
-
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.benefit{
-  padding:20px 5px;
-  display:flex;
-  gap:13px;
-}
-
-.benefit-icon{
-  color:var(--gold);
-  font-size:23px;
-}
-
-.benefit h3{
-  font-size:14px;
-  margin-bottom:4px;
-}
-
-.benefit p{
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* REFERRAL */
-
-.referral{
-  background:linear-gradient(105deg,#151d2c,#101722);
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:35px 40px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:25px;
-}
-
-.referral h2{
-  font-size:25px;
-  margin-bottom:6px;
-}
-
-.referral p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* FOOTER */
-
-footer{
-  background:#050810;
-  border-top:1px solid var(--line);
-  padding:48px 0 20px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:40px;
-  padding-bottom:35px;
-}
-
-.footer-brand p{
-  color:var(--muted);
-  font-size:12px;
-  max-width:280px;
-  margin-top:13px;
-}
-
-.footer h3{
-  font-size:13px;
-  margin-bottom:14px;
-}
-
-.footer a{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin:9px 0;
-}
-
-.footer a:hover{
-  color:var(--gold);
-}
-
-.footer-bottom{
-  border-top:1px solid var(--line);
-  padding-top:20px;
-  color:#687487;
-  font-size:11px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-}
-
-/* MOBILE */
-
-@media(max-width:950px){
-  .nav{
-    display:none;
-  }
-
-  .search{
-    margin-left:auto;
-  }
-
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .footer-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:600px){
-  .header-inner{
-    gap:9px;
-    min-height:65px;
-  }
-
-  .logo-text{
-    font-size:17px;
-  }
-
-  .logo-mark{
-    width:33px;
-    height:33px;
-  }
-
-  .search{
-    width:42px;
-    padding:0;
-    justify-content:center;
-  }
-
-  .search input{
-    display:none;
-  }
-
-  .header-actions .login,
-  .header-actions .signup{
-    display:none;
-  }
-
-  .hero{
-    padding:45px 0;
-  }
-
-  .hero h1{
-    font-size:37px;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  .hero-art{
-    min-height:290px;
-  }
-
-  .art-window{
-    min-height:245px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .steps{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .benefits{
-    grid-template-columns:1fr;
-  }
-
-  .referral{
-    flex-direction:column;
-    align-items:flex-start;
-    padding:28px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-  }
-}
+:root{--bg:#090909;--panel:#111;--panel2:#171717;--line:#303030;--white:#fff;--muted:#b5b5b5;--red:#c62828;--green:#16a34a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.site-header{position:sticky;top:0;z-index:20;background:#090909;border-bottom:1px solid var(--line)}
+.header-main{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-size:20px;font-weight:800;letter-spacing:.3px;white-space:nowrap}
+.brand span{color:#ef7777}
+.account-links{display:flex;align-items:center;gap:10px}
+.account-links a{font-size:14px;font-weight:700;padding:9px 12px;border-radius:6px}
+.signup{background:var(--red)}
+.login{border:1px solid var(--line)}
+.nav-wrap{border-top:1px solid #202020}
+.nav{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;padding:9px 0;scrollbar-width:thin}
+.nav a{font-size:13px;color:#ddd;padding:8px 12px;border-radius:5px}
+.nav a:hover,.nav a.active{background:var(--red);color:#fff}
+.search-row{padding:12px 0 14px}
+.search-box{display:flex;align-items:center;gap:10px;border:1px solid #444;border-radius:7px;background:#111;padding:0 12px;min-height:44px}
+.search-box span{color:#ef7777;font-size:20px}
+.search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font-size:15px;padding:10px 0}
+.search-box input::placeholder{color:#999}
+main{padding-bottom:36px}
+.intro{padding:30px 0 22px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.4px;color:#ef7777;text-transform:uppercase}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.12;margin:8px 0 10px}
+.intro p{color:var(--muted);max-width:680px;margin:0}
+.section{padding:24px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
+.section-head h2{font-size:22px;margin:0}
+.section-head p{font-size:13px;color:var(--muted);margin:4px 0 0}
+.status{font-size:13px;color:var(--muted);padding:16px 0}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.content-card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.content-type{background:#191919;border-bottom:1px solid var(--line);padding:13px 15px;color:#ef7777;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}
+.content-body{padding:15px}
+.content-body h3{font-size:17px;margin:0 0 7px;overflow-wrap:anywhere}
+.content-body p{color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px}
+.content-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:12px;font-size:13px}
+.price{font-weight:800}
+.creator-id{color:var(--muted);font-size:11px;overflow-wrap:anywhere}
+.empty{background:#111;border:1px dashed #444;border-radius:8px;padding:22px;color:var(--muted);font-size:14px}
+.categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.category{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:17px}
+.category strong{display:block;font-size:14px;margin-bottom:4px}
+.category span{font-size:12px;color:var(--muted)}
+.category:hover{border-color:#777}
+.earn-panel{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#111;border:1px solid var(--line);border-radius:9px;padding:22px}
+.earn-panel h2{font-size:21px;margin:0 0 5px}
+.earn-panel p{font-size:13px;color:var(--muted);margin:0}
+.primary-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:#fff;border:0;border-radius:6px;padding:11px 15px;font-weight:700;font-size:13px;white-space:nowrap}
+footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{padding-top:24px}}
+@media(max-width:480px){.container{width:92%}.header-main{min-height:60px}.brand{font-size:18px}.account-links{gap:5px}.account-links a{font-size:12px;padding:8px}.feed{grid-template-columns:1fr}.section{padding:19px 0}.section-head h2{font-size:20px}.earn-panel{align-items:flex-start;flex-direction:column}.primary-btn{width:100%}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container header-inner">
-
-    <a href="#" class="logo">
-      <div class="logo-mark">B</div>
-      <div class="logo-text">BRODA HUB</div>
-    </a>
-
-    <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#creators">Creators</a>
-      <a href="#earn">Earn</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+<header class="site-header">
+  <div class="container header-main">
+    <a class="brand" href="index.html">BRODA <span>HUB</span></a>
+    <div class="account-links">
+      <a class="login" href="login.html">Login</a>
+      <a class="signup" href="signup.html">Sign Up</a>
+    </div>
+  </div>
+  <div class="nav-wrap">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="active" href="index.html">Discover</a>
+      <a href="#content">Content</a>
+      <a href="#services">Services</a>
+      <a href="upload-content.html">Start Earn</a>
+      <a href="dashboard.html">Dashboard</a>
     </nav>
-
-    <div class="search">
-      <span>⌕</span>
-      <input type="text" placeholder="Search">
-    </div>
-
-    <div class="header-actions">
-      <button class="icon-btn" aria-label="Cart">▱</button>
-      <a href="login.html" class="login">Login</a>
-      <a href="signup.html" class="signup">Sign Up</a>
-    </div>
-
+  </div>
+  <div class="container search-row">
+    <label class="search-box" for="siteSearch">
+      <span aria-hidden="true">⌕</span>
+      <input id="siteSearch" type="search" placeholder="Search songs, videos, products and creators…" autocomplete="off">
+    </label>
   </div>
 </header>
 
-<main>
+<main class="container">
+  <section class="intro">
+    <div class="eyebrow">Discover on BRODA HUB</div>
+    <h1>Music, creators, videos and digital products.</h1>
+    <p>Explore approved creator content and digital services. Sign in to use account features and submit your own content for review.</p>
+  </section>
 
-<section class="hero">
-  <div class="container hero-grid">
-
-    <div>
-      <div class="eyebrow">PREMIUM DIGITAL MARKETPLACE</div>
-
-      <h1>
-        BRODA HUB<br>
-        <span>Discover, Download, Create &amp; Earn!</span>
-      </h1>
-
-      <p>
-        Discover premium digital content, support talented creators,
-        download instantly and earn by sharing with your community.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#shop" class="btn-primary">Explore Shop</a>
-        <a href="signup.html" class="btn-secondary">Start Earning</a>
-      </div>
-    </div>
-
-    <div class="hero-art">
-      <div class="art-window">
-
-        <div class="art-top">
-          <span>BRODA HUB</span>
-          <span>DIGITAL CONTENT</span>
-        </div>
-
-        <div class="art-title">
-          Premium Digital Content
-        </div>
-
-        <div class="art-sub">
-          Music, videos, e-books, courses, graphics and more.
-          Everything you need in one marketplace.
-        </div>
-
-        <div class="art-card">
-          <small>FEATURED</small>
-          <strong>CREATE.</strong>
-          <small>DOWNLOAD &amp; EARN</small>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<section id="shop">
-  <div class="container">
-
+  <section class="section" id="content">
     <div class="section-head">
       <div>
-        <h2>Browse by Category</h2>
-        <p>Find the digital content you need.</p>
+        <h2>Latest creator content</h2>
+        <p>Only approved content from BRODA HUB appears here.</p>
       </div>
-      <a href="#" class="view-all">View All</a>
     </div>
+    <div id="feedStatus" class="status" role="status">Loading approved content…</div>
+    <div id="contentFeed" class="feed"></div>
+  </section>
 
+  <section class="section" id="services">
+    <div class="section-head">
+      <div>
+        <h2>Explore services</h2>
+        <p>Choose the type of content or creator service you need.</p>
+      </div>
+    </div>
     <div class="categories">
-
-      <a class="category" href="#">
-        <div class="category-icon">♫</div>
-        <h3>Music &amp; Audio</h3>
-        <p>Premium audio</p>
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">▶</div>
-        <h3>Videos</h3>
-        <p>Video content</p>
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">▤</div>
-        <h3>E-books &amp; Guides</h3>
-        <p>Read &amp; learn</p>
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">◆</div>
-        <h3>Graphics &amp; Templates</h3>
-        <p>Creative assets</p>
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">▣</div>
-        <h3>Courses</h3>
-        <p>Learn new skills</p>
-      </a>
-
-      <a class="category" href="#">
-        <div class="category-icon">+</div>
-        <h3>Other Downloads</h3>
-        <p>More content</p>
-      </a>
-
+      <a class="category" href="#content" data-search="music audio songs"><strong>Music &amp; Audio</strong><span>Songs, audio and releases</span></a>
+      <a class="category" href="music-distribution.html"><strong>Music Distribution</strong><span>Prepare releases for delivery to supported streaming and download platforms</span></a>
+      <a class="category" href="music-promotion.html"><strong>Music Promotions</strong><span>Promote releases through available music-channel and campaign services</span></a>
+      <a class="category" href="#content" data-search="videos video"><strong>Videos</strong><span>Creator video content</span></a>
+      <a class="category" href="#content" data-search="beats instrumentals"><strong>Beats Park</strong><span>Beats and instrumentals</span></a>
+      <a class="category" href="#content" data-search="ebooks books guides"><strong>E-books &amp; Guides</strong><span>Digital reading</span></a>
+      <a class="category" href="#content" data-search="courses learning"><strong>Courses</strong><span>Skills and learning</span></a>
+      <a class="category" href="#content" data-search="graphics templates design"><strong>Graphics &amp; Templates</strong><span>Creative digital assets</span></a>
+      <a class="category" href="#content" data-search="downloads digital products"><strong>Downloads</strong><span>Digital products</span></a>
+      <a class="category" href="upload-content.html"><strong>Creator Studio</strong><span>Submit content for review</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<section>
-  <div class="container">
-
-    <div class="section-head">
+  <section class="section">
+    <div class="earn-panel">
       <div>
-        <h2>Featured Content</h2>
-        <p>Discover popular digital products from our creators.</p>
+        <h2>Ready to create and earn?</h2>
+        <p>Sign in to your account, then submit your music, videos or digital products for admin review.</p>
       </div>
-      <a href="#" class="view-all">View All</a>
+      <a class="primary-btn" href="upload-content.html">Start Earn</a>
     </div>
-
-    <div class="products">
-
-      <article class="product">
-        <div class="product-image">♫</div>
-        <div class="product-body">
-          <div class="product-tag">Music &amp; Audio</div>
-          <h3>Premium Music Collection</h3>
-          <div class="product-desc">
-            High-quality digital music collection.
-          </div>
-          <div class="rating">★★★★★</div>
-          <div class="product-bottom">
-            <div class="price">UGX 25,000</div>
-            <button class="buy">Add to Cart</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product">
-        <div class="product-image">▶</div>
-        <div class="product-body">
-          <div class="product-tag">Videos</div>
-          <h3>Creator Video Pack</h3>
-          <div class="product-desc">
-            Premium video resources for creators.
-          </div>
-          <div class="rating">★★★★★</div>
-          <div class="product-bottom">
-            <div class="price">UGX 35,000</div>
-            <button class="buy">Add to Cart</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product">
-        <div class="product-image">▤</div>
-        <div class="product-body">
-          <div class="product-tag">E-books</div>
-          <h3>Digital Success Guide</h3>
-          <div class="product-desc">
-            Practical knowledge for growing online.
-          </div>
-          <div class="rating">★★★★★</div>
-          <div class="product-bottom">
-            <div class="price">UGX 20,000</div>
-            <button class="buy">Add to Cart</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product">
-        <div class="product-image">◆</div>
-        <div class="product-body">
-          <div class="product-tag">Graphics</div>
-          <h3>Premium Design Templates</h3>
-          <div class="product-desc">
-            Ready-to-use professional templates.
-          </div>
-          <div class="rating">★★★★★</div>
-          <div class="product-bottom">
-            <div class="price">UGX 30,000</div>
-            <button class="buy">Add to Cart</button>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<section class="how">
-  <div class="container">
-
-    <div class="section-head">
-      <div>
-        <h2>How It Works</h2>
-        <p>Everything is simple and straightforward.</p>
-      </div>
-    </div>
-
-    <div class="steps">
-
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Create Your Account</h3>
-        <p>Sign up and become part of BRODA HUB.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Discover Content</h3>
-        <p>Browse premium digital products.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Download Instantly</h3>
-        <p>Purchase and access your content.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Create &amp; Earn</h3>
-        <p>Upload content and earn from your audience.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<section id="about">
-  <div class="container">
-
-    <div class="benefits">
-
-      <div class="benefit">
-        <div class="benefit-icon">✓</div>
-        <div>
-          <h3>Secure Payments</h3>
-          <p>Your transactions are protected.</p>
-        </div>
-      </div>
-
-      <div class="benefit">
-        <div class="benefit-icon">↓</div>
-        <div>
-          <h3>Instant Access</h3>
-          <p>Get your digital content immediately.</p>
-        </div>
-      </div>
-
-      <div class="benefit">
-        <div class="benefit-icon">◎</div>
-        <div>
-          <h3>Growing Community</h3>
-          <p>Connect with creators and customers.</p>
-        </div>
-      </div>
-
-      <div class="benefit">
-        <div class="benefit-icon">?</div>
-        <div>
-          <h3>24/7 Support</h3>
-          <p>We're here whenever you need help.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section id="earn">
-  <div class="container">
-
-    <div class="referral">
-
-      <div>
-        <h2>Refer Friends. Earn More!</h2>
-        <p>
-          Invite your friends to BRODA HUB and earn rewards
-          through our referral program.
-        </p>
-      </div>
-
-      <a href="signup.html" class="btn-primary">Start Earning</a>
-
-    </div>
-
-  </div>
-</section>
-
+  </section>
 </main>
 
-
-<footer id="contact">
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-        <div class="logo">
-          <div class="logo-mark">B</div>
-          <div class="logo-text">BRODA HUB</div>
-        </div>
-
-        <p>
-          A premium digital marketplace where people
-          discover, create, download and earn.
-        </p>
-      </div>
-
-      <div class="footer">
-        <h3>Marketplace</h3>
-        <a href="#">Shop</a>
-        <a href="#">Categories</a>
-        <a href="#">Featured Content</a>
-        <a href="#">Creators</a>
-      </div>
-
-      <div class="footer">
-        <h3>Earn</h3>
-        <a href="#">Become a Creator</a>
-        <a href="#">Referral Program</a>
-        <a href="#">Creator Earnings</a>
-        <a href="#">Withdrawals</a>
-      </div>
-
-      <div class="footer">
-        <h3>Support</h3>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Help Center</a>
-        <a href="#">Terms &amp; Privacy</a>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 BRODA HUB. All rights reserved.</span>
-      <span>Premium Digital Marketplace</span>
-    </div>
-
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 BRODA HUB</span>
+    <span>Discover · Create · Earn</span>
   </div>
 </footer>
 
 <script>
-const API_BASE = "https://broda-shop-backend.onrender.com";
+const API_BASE = "https://broda-shop-b019.onrender.com";
+const feed = document.getElementById("contentFeed");
+const status = document.getElementById("feedStatus");
+const search = document.getElementById("siteSearch");
+let approvedContent = [];
 
-async function checkBackend() {
-  try {
-    const response = await fetch(`${API_BASE}/api/health`);
-    const data = await response.json();
-    console.log("BRODA HUB backend:", data);
-  } catch (error) {
-    console.error("BRODA HUB backend connection failed:", error);
-  }
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
 }
 
-checkBackend();async function apiFetch(path, options = {}) {
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {})
-    }
+function renderContent() {
+  const term = search.value.trim().toLowerCase();
+  const items = approvedContent.filter(item =>
+    [item.title, item.description, item.type, item.creatorId]
+      .some(value => String(value ?? "").toLowerCase().includes(term))
+  );
+
+  feed.innerHTML = "";
+
+  if (!items.length) {
+    status.hidden = false;
+    status.textContent = term
+      ? "No approved content matches your search."
+      : "No approved content is available yet. Creator uploads will appear here after admin approval.";
+    return;
+  }
+
+  status.hidden = true;
+  items.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "content-card";
+    card.innerHTML = `
+      <div class="content-type">${escapeHTML(item.type || "Digital content")}</div>
+      <div class="content-body">
+        <h3>${escapeHTML(item.title)}</h3>
+        <p>${escapeHTML(item.description || "No description provided.")}</p>
+        <div class="content-meta">
+          <span class="price">${Number(item.price) > 0 ? "UGX " + Number(item.price).toLocaleString("en-UG") : "Free"}</span>
+          <span class="creator-id">Creator: ${escapeHTML(item.creatorId || "BRODA HUB creator")}</span>
+        </div>
+      </div>`;
+    feed.appendChild(card);
   });
-
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.error || data.message || "Request failed");
-  }
-
-  return data;
 }
-</script>
 
+search.addEventListener("input", renderContent);
 
-  <section id="dashboard" style="display:none;padding:40px 20px;">
-  <div class="container" style="max-width:1000px;margin:auto;">
-    <h1 style="font-size:32px;margin-bottom:8px;">BRODA HUB Dashboard</h1>
-    <p style="color:#9ba6b7;margin-bottom:30px;">Welcome to your account.</p>
+document.querySelectorAll("[data-search]").forEach(link => {
+  link.addEventListener("click", () => {
+    search.value = link.dataset.search.split(" ")[0];
+    renderContent();
+  });
+});
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
-        <small style="color:#9ba6b7;">Earnings</small>
-        <h2 id="dashEarnings">0</h2>
-      </div>
-
-      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
-        <small style="color:#9ba6b7;">Referrals</small>
-        <h2 id="dashReferrals">0</h2>
-      </div>
-
-      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
-        <small style="color:#9ba6b7;">Purchases</small>
-        <h2 id="dashPurchases">0</h2>
-      </div>
-
-      <div style="background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
-        <small style="color:#9ba6b7;">Balance</small>
-        <h2 id="dashBalance">0</h2>
-      </div>
-    </div>
-
-    <div style="margin-top:25px;background:#101827;border:1px solid #263246;border-radius:12px;padding:22px;">
-      <h2>Referral Link</h2>
-      <p id="dashReferralLink" style="color:#9ba6b7;word-break:break-all;">Loading...</p>
-    </div>
-
-    <button onclick="logoutBroda()" style="margin-top:25px;background:#f2c94c;border:0;border-radius:8px;padding:13px 25px;font-weight:800;">
-      Logout
-    </button>
-  </div>
-</section>
-
-<script>
-function loadBrodaDashboard(){
-  const token = localStorage.getItem("brodaToken");
-  if(!token) return;
-
-  const dashboard = document.getElementById("dashboard");
-
-  if(window.location.hash === "#dashboard"){
-    dashboard.style.display = "block";
-
-    fetch("https://broda-shop-backend.onrender.com/api/dashboard", {
-      headers:{
-        "Authorization":"Bearer " + token
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("dashEarnings").textContent = data.earnings ?? 0;
-      document.getElementById("dashReferrals").textContent = data.referrals ?? 0;
-      document.getElementById("dashPurchases").textContent = data.purchases ?? 0;
-      document.getElementById("dashBalance").textContent = data.balance ?? 0;
-      document.getElementById("dashReferralLink").textContent = data.referralLink ?? "Not available";
-    })
-    .catch(error => console.error(error));
+async function loadApprovedContent() {
+  try {
+    const response = await fetch(API_BASE + "/api/content");
+    if (!response.ok) throw new Error("Content request failed");
+    const data = await response.json();
+    approvedContent = Array.isArray(data) ? data : [];
+    renderContent();
+  } catch (error) {
+    status.hidden = false;
+    status.textContent = "Content could not be loaded right now. Please refresh and try again.";
+    console.error("BRODA HUB content feed:", error);
   }
 }
+loadApprovedContent();
 
-function logoutBroda(){
-  localStorage.removeItem("brodaToken");
-  window.location.hash = "";
-  window.location.reload();
-}
-
-window.addEventListener("hashchange", loadBrodaDashboard);
-loadBrodaDashboard();
-</script>
-  <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js")
-      .catch(error => console.error(
-        "Service worker registration failed:", error
-      ));
+    navigator.serviceWorker.register("./sw.js").catch(error =>
+      console.error("Service worker registration failed:", error)
+    );
   });
 }
 </script>
