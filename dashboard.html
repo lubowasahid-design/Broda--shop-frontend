@@ -635,6 +635,36 @@ onclick="let m=document.getElementById('analytics-menu');m.hidden=!m.hidden;retu
 <a class="nav" href="#analytics">Tracks</a>
 <a class="nav" href="#analytics">Playlists</a>
 <a class="nav" href="#analytics">Stores</a>
+  <button class="nav" type="button"
+onclick="let f=document.getElementById('analytics-filters');f.hidden=!f.hidden;return false;"
+style="width:100%;text-align:left;background:transparent;border:0;color:inherit;cursor:pointer">
+Filter
+</button>
+
+<div id="analytics-filters" hidden style="padding:10px">
+<label>Label</label>
+<select><option>All</option></select>
+
+<label>Artist</label>
+<select><option>All</option></select>
+
+<label>Release</label>
+<select><option>All</option></select>
+
+<label>Track</label>
+<select><option>All</option></select>
+
+<label>Country</label>
+<select><option>All</option></select>
+
+<label>Store</label>
+<select><option>All</option></select>
+
+<button type="button" class="btn btn-gold"
+onclick="alert('Live filtering requires analytics data to be connected.')">
+Update Results
+</button>
+</div>
 </div>
 
 <a class="nav" href="#">
