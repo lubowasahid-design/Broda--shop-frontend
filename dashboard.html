@@ -122,7 +122,8 @@ async function loadRealDashboard(){
     console.error("Could not load account data.");
   }
 }
-showView("Dashboard");
+const requestedView = new URLSearchParams(location.search).get("view");
+showView(requestedView === "wallet" ? "Wallet" : requestedView === "analytics" ? "Analytics" : requestedView === "services" ? "Services" : "Dashboard");
 loadContentFeed();
 loadRealDashboard();
 </script>
