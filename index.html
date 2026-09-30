@@ -64,6 +64,48 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px
 .footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:760px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{padding-top:24px}}
 @media(max-width:480px){.container{width:92%}.header-main{min-height:60px}.brand{font-size:18px}.account-links{gap:5px}.account-links a{font-size:12px;padding:8px}.feed{grid-template-columns:1fr}.section{padding:19px 0}.section-head h2{font-size:20px}.earn-panel{align-items:flex-start;flex-direction:column}.primary-btn{width:100%}}
+  /* BRODA HUB bottom navigation */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding-bottom: 75px;
+  }
+
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #090909;
+    border-top: 1px solid #333;
+    padding: 8px 3px;
+  }
+
+  .mobile-bottom-nav a,
+  .mobile-bottom-nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: transparent;
+    border: 0;
+    color: #eee;
+    text-decoration: none;
+    font-size: 11px;
+    padding: 5px 0;
+  }
+
+  .mobile-bottom-nav .nav-icon {
+    font-size: 21px;
+  }
+}
 </style>
 </head>
 <body>
@@ -75,16 +117,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px
       <a class="signup" href="signup.html">Sign Up</a>
     </div>
   </div>
-  <div class="nav-wrap">
-  <nav class="container nav" aria-label="Main navigation">
-    <a class="active" href="index.html">Discover</a>
-    <a href="#content">Content</a>
-    <a href="#services">Services</a>
-    <a href="dashboard.html?view=wallet">Wallet</a>
-    <a href="dashboard.html?view=analytics">Analytics</a>
-    <a href="upload-content.html">Upload Content</a>
-  </nav>
-</div>
+
   <div class="container search-row">
     <label class="search-box" for="siteSearch">
       <span aria-hidden="true">⌕</span>
@@ -230,6 +263,38 @@ if ("serviceWorker" in navigator) {
     );
   });
 }
+</script>
+  <nav class="mobile-bottom-nav" aria-label="Main navigation">
+  <a href="index.html">
+    <span class="nav-icon">⌂</span>
+    <span>Home</span>
+  </a>
+
+  <a href="#content">
+    <span class="nav-icon">♫</span>
+    <span>Music</span>
+  </a>
+
+  <a href="#content">
+    <span class="nav-icon">⌕</span>
+    <span>Explore</span>
+  </a>
+
+  <a href="#services">
+    <span class="nav-icon">▦</span>
+    <span>Services</span>
+  </a>
+
+  <button type="button" id="menuButton">
+    <span class="nav-icon">☰</span>
+    <span>Menu</span>
+  </button>
+</nav>
+
+<script>
+document.getElementById("menuButton").onclick = function () {
+  window.location.href = "dashboard.html";
+};
 </script>
 </body>
 </html>
