@@ -192,10 +192,10 @@ loadRealDashboard();
     });
   });
 
-  document.getElementById('mobile-menu-btn')
-    .addEventListener('click',()=>{
-      menu.hidden=!menu.hidden;
-    });
+ document.getElementById('mobile-menu-btn')
+  .addEventListener('click',()=>{
+    location.href='index.html';
+  }); 
 
   menu.querySelectorAll('[data-view]').forEach(btn=>{
     btn.addEventListener('click',()=>{
