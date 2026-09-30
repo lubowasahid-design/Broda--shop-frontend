@@ -94,7 +94,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px
       <span aria-hidden="true">⌕</span>
       <input id="siteSearch" type="search" placeholder="Search songs, videos, products and creators…" autocomplete="off">
     </label>
-    <button type="button" onclick="renderContent()" style="background:#c62828;color:#fff;border:0;border-radius:6px;padding:10px 12px;white-space:nowrap">Search</button>
+  <button type="button" onclick="document.getElementById('siteSearch').dispatchEvent(new Event('input'))" style="padding:10px 16px;background:var(--red);color:#fff;border:0;border-radius:6px;white-space:nowrap">Search</button>
   </div>
 </header>
 
