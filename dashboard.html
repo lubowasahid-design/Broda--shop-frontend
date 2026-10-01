@@ -250,7 +250,7 @@ loadRealDashboard();
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" hidden>
-  <a href="index.html">Home</a>
+  
   <button type="button" data-view="Wallet">Wallet</button>
   <button type="button" data-view="Analytics">Analytics</button>
   <a href="upload-content.html">Upload Content</a>
@@ -258,39 +258,52 @@ loadRealDashboard();
 </div>
 
 <script>
-(function(){
-  const bar=document.querySelector('.mobile-nav');
-  const menu=document.getElementById('mobile-menu');
+(function () {
+  const bar = document.querySelector('.mobile-nav');
+  const menu = document.getElementById('mobile-menu');
+  const menuBtn = document.getElementById('mobile-menu-btn');
 
-  bar.querySelectorAll('[data-tab]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      bar.querySelectorAll('[data-tab]').forEach(b=>
-        b.classList.toggle('active',b===btn)
-      );
-      menu.hidden=true;
-      const tab=btn.dataset.tab;
+  if (!bar || !menu || !menuBtn) return;
 
-     if(tab==='Home'){
-  window.location.href='index.html';
-}else if(tab==='Services'){
-  showView('Services');
-}else{
-  showView('Dashboard');
-  document.getElementById('home-panel').scrollIntoView({behavior:'smooth'});
-} 
+  bar.querySelectorAll('[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      bar.querySelectorAll('[data-tab]').forEach(b => {
+        b.classList.toggle('active', b === btn);
+      });
 
- document.getElementById('mobile-menu-btn')
-  .addEventListener('click',()=>{
+      menu.hidden = true;
+      menuBtn.classList.remove('active');
+
+      const tab = btn.dataset.tab;
+
+      if (tab === 'Home') {
+        showView('Dashboard');
+        document.getElementById('home-panel')
+          .scrollIntoView({ behavior: 'smooth' });
+      } else if (tab === 'Services') {
+        showView('Services');
+      } else {
+        showView('Dashboard');
+        document.getElementById('home-panel')
+          .scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  menuBtn.addEventListener('click', () => {
     menu.hidden = !menu.hidden;
-  }); 
+    menuBtn.classList.toggle('active', !menu.hidden);
+  });
 
-  menu.querySelectorAll('[data-view]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      menu.hidden=true;
+  menu.querySelectorAll('[data-view]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      menu.hidden = true;
+      menuBtn.classList.remove('active');
       showView(btn.dataset.view);
     });
   });
 })();
 </script>
+
 </body>
 </html>
