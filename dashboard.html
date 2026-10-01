@@ -270,14 +270,14 @@ loadRealDashboard();
       menu.hidden=true;
       const tab=btn.dataset.tab;
 
-      if(tab==='Services'){
-        showView('Services');
-      }else{
-        showView('Dashboard');
-        document.getElementById('home-panel').scrollIntoView();
-      }
-    });
-  });
+     if(tab==='Home'){
+  window.location.href='index.html';
+}else if(tab==='Services'){
+  showView('Services');
+}else{
+  showView('Dashboard');
+  document.getElementById('home-panel').scrollIntoView({behavior:'smooth'});
+} 
 
  document.getElementById('mobile-menu-btn')
   .addEventListener('click',()=>{
