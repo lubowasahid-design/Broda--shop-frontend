@@ -292,7 +292,8 @@ loadRealDashboard();
   });
 
   menuBtn.addEventListener('click', () => {
-  window.location.href = 'signup.html';
+  menu.hidden = !menu.hidden;
+  menuBtn.classList.toggle('active', !menu.hidden);
 });
   menu.querySelectorAll('[data-view]').forEach(btn => {
     btn.addEventListener('click', () => {
