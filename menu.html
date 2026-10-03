@@ -1,420 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRODA HUB | Menu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Browse — BRODA HUB</title>
 
-  <style>
-    :root{
-      --bg:#090909;
-      --panel:#111111;
-      --panel2:#151515;
-      --line:#2b2b2b;
-      --text:#ffffff;
-      --muted:#999999;
-      --red:#c62828;
-      --orange:#f28c28;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+  color: #111;
+  min-height: 100vh;
+}
 
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .topbar{
-      min-height:66px;
-      padding:12px 16px;
-      border-bottom:1px solid var(--line);
-      background:#0d0d0d;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      position:sticky;
-      top:0;
-      z-index:100;
-    }
+.brand {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
 
-    .back{
-      width:38px;
-      height:38px;
-      border:1px solid #444;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#151515;
-      font-size:22px;
-    }
+.brand span {
+  color: #e53935;
+}
 
-    .brand{
-      font-size:19px;
-      font-weight:800;
-      letter-spacing:1px;
-    }
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
 
-    .brand span{
-      color:var(--red);
-    }
+.top-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 9px 13px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+}
 
-    .account{
-      margin-left:auto;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
+.page {
+  width: min(1180px, 100%);
+  margin: auto;
+  padding: 22px 16px 100px;
+}
 
-    .profile{
-      width:36px;
-      height:36px;
-      border:1px solid #444;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#151515;
-      font-size:13px;
-      font-weight:700;
-    }
+.hero {
+  background: #111;
+  color: #fff;
+  border-radius: 18px;
+  padding: 26px 20px;
+  margin-bottom: 22px;
+}
 
-    main{
-      width:100%;
-      max-width:1100px;
-      margin:auto;
-      padding:25px 16px 40px;
-    }
+.hero h1 {
+  font-size: clamp(28px, 6vw, 44px);
+  margin-bottom: 8px;
+}
 
-    .heading{
-      margin-bottom:24px;
-    }
+.hero p {
+  color: #cfcfcf;
+  line-height: 1.5;
+  max-width: 650px;
+}
 
-    .heading h1{
-      font-size:28px;
-      margin-bottom:7px;
-    }
+.search {
+  margin-top: 20px;
+  display: flex;
+  background: #fff;
+  border-radius: 11px;
+  overflow: hidden;
+}
 
-    .heading p{
-      color:var(--muted);
-      font-size:13px;
-    }
+.search input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  padding: 15px;
+  font-size: 15px;
+}
 
-    .section{
-      margin-bottom:26px;
-    }
+.search button {
+  border: 0;
+  background: #e53935;
+  color: #fff;
+  padding: 0 18px;
+  font-weight: 700;
+}
 
-    .section-title{
-      font-size:12px;
-      color:#aaa;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:10px;
-    }
+.section {
+  margin-top: 28px;
+}
 
-    .menu-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:12px;
-    }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
 
-    .menu-card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      padding:18px;
-      min-height:120px;
-      transition:.15s;
-    }
+.section-head h2 {
+  font-size: 20px;
+}
 
-    .menu-card:hover{
-      border-color:#555;
-      background:var(--panel2);
-    }
+.section-head a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #666;
+}
 
-    .menu-card:active{
-      border-color:var(--red);
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
 
-    .menu-card h2{
-      font-size:15px;
-      margin-bottom:8px;
-    }
+.card {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+  padding: 18px;
+  min-height: 125px;
+  transition: .15s ease;
+}
 
-    .menu-card p{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.5;
-    }
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #bbb;
+}
 
-    .arrow{
-      margin-top:14px;
-      color:#bbb;
-      font-size:12px;
-    }
+.card-icon {
+  font-size: 25px;
+  margin-bottom: 14px;
+}
 
-    .danger{
-      border-color:#333;
-    }
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
 
-    .footer{
-      border-top:1px solid var(--line);
-      padding-top:20px;
-      margin-top:30px;
-      display:flex;
-      justify-content:space-between;
-      gap:15px;
-      color:#777;
-      font-size:11px;
-    }
+.card p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #707070;
+}
 
-    @media(max-width:760px){
-      .menu-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-    }
+.featured {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 12px;
+}
 
-    @media(max-width:520px){
-      main{
-        padding:20px 12px 35px;
-      }
+.featured-card {
+  min-height: 180px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 
-      .heading h1{
-        font-size:24px;
-      }
+.featured-card.dark {
+  background: #171717;
+  color: #fff;
+  border-color: #171717;
+}
 
-      .menu-grid{
-        grid-template-columns:1fr;
-        gap:9px;
-      }
+.featured-card.gray {
+  background: #eaeaea;
+}
 
-      .menu-card{
-        min-height:auto;
-        padding:16px;
-      }
+.featured-card h3 {
+  font-size: 21px;
+  margin-bottom: 6px;
+}
 
-      .footer{
-        flex-direction:column;
-      }
-    }
-  </style>
+.featured-card p {
+  color: #777;
+  font-size: 13px;
+}
+
+.featured-card.dark p {
+  color: #bbb;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 9px 5px;
+  z-index: 30;
+}
+
+.bottom-nav a {
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+  padding: 5px 10px;
+}
+
+.bottom-nav a.active {
+  color: #111;
+  font-weight: 800;
+}
+
+.bottom-nav span {
+  display: block;
+  font-size: 19px;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 801px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header class="topbar">
+  <div class="brand">BRODA <span>HUB</span></div>
 
-  <a class="back" href="dashboard.html" aria-label="Back to Dashboard">
-    ‹
-  </a>
-
-  <a class="brand" href="dashboard.html">
-    BRODA <span>HUB</span>
-  </a>
-
-  <div class="account">
-    <a class="profile" href="dashboard.html" aria-label="Dashboard">
-      BH
-    </a>
+  <div class="top-actions">
+    <a class="top-btn" href="dashboard.html">Dashboard</a>
   </div>
-
 </header>
 
+<main class="page">
 
-<main>
+  <section class="hero">
+    <h1>Browse</h1>
+    <p>
+      Discover music, videos, products, creators and services across BRODA HUB.
+    </p>
 
-  <div class="heading">
-    <h1>Menu</h1>
-    <p>Everything you need to manage and use BRODA HUB.</p>
-  </div>
-
-
-  <!-- ACCOUNT -->
-
-  <section class="section">
-
-    <div class="section-title">
-      Account
+    <div class="search">
+      <input type="search" placeholder="Search BRODA HUB...">
+      <button type="button">Search</button>
     </div>
-
-    <div class="menu-grid">
-
-      <a class="menu-card" href="dashboard.html">
-        <h2>Dashboard</h2>
-        <p>Return to your main BRODA HUB member dashboard.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-      <a class="menu-card" href="login.html">
-        <h2>Log In</h2>
-        <p>Sign in to a BRODA HUB account.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-      <a class="menu-card" href="signup.html">
-        <h2>Create Account</h2>
-        <p>Create a new BRODA HUB member account.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-    </div>
-
   </section>
 
-
-  <!-- MONEY -->
-
   <section class="section">
-
-    <div class="section-title">
-      Money & Earnings
+    <div class="section-head">
+      <h2>Featured</h2>
+      <a href="index.html">View all</a>
     </div>
 
-    <div class="menu-grid">
+    <div class="featured">
 
-      <a class="menu-card" href="dashboard.html?view=wallet">
-        <h2>Wallet</h2>
-        <p>Balance, earnings, payout methods, withdrawals and transaction history.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html#content" class="featured-card dark">
+        <h3>Music & Videos</h3>
+        <p>Discover songs, videos and creators.</p>
       </a>
 
-      <a class="menu-card" href="dashboard.html?view=analytics">
-        <h2>Analytics</h2>
-        <p>View streams, tracks, playlists, stores and performance information.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html#content" class="featured-card">
+        <h3>Creators</h3>
+        <p>Explore creator content.</p>
       </a>
 
-      <a class="menu-card" href="upload-content.html">
-        <h2>Start Earn</h2>
-        <p>Access creator earning opportunities and begin using eligible services.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html#services" class="featured-card gray">
+        <h3>Services</h3>
+        <p>Explore BRODA HUB services.</p>
       </a>
 
     </div>
-
   </section>
 
-
-  <!-- CREATOR -->
-
   <section class="section">
-
-    <div class="section-title">
-      Creator
+    <div class="section-head">
+      <h2>Music</h2>
     </div>
 
-    <div class="menu-grid">
+    <div class="grid">
 
-      <a class="menu-card" href="upload-content.html">
-        <h2>Upload Content</h2>
-        <p>Upload eligible music, videos and other creator content.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html#content" class="card">
+        <div class="card-icon">♫</div>
+        <h3>Songs</h3>
+        <p>Discover and listen to music.</p>
       </a>
 
-      <a class="menu-card" href="upload-content.html">
-        <h2>Creator Studio</h2>
-        <p>Manage your creator content and publishing workflow.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html#content" class="card">
+        <div class="card-icon">▣</div>
+        <h3>Albums</h3>
+        <p>Explore releases from creators.</p>
       </a>
 
-      <a class="menu-card" href="dashboard.html?view=services">
-        <h2>Services</h2>
+      <a href="index.html#content" class="card">
+        <div class="card-icon">♪</div>
+        <h3>Beats Park</h3>
+        <p>Discover beats and music resources.</p>
+      </a>
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">↗</div>
+        <h3>Music Promotion</h3>
+        <p>Promote music to a wider audience.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Videos</h2>
+    </div>
+
+    <div class="grid">
+
+      <a href="index.html#content" class="card">
+        <div class="card-icon">▶</div>
+        <h3>Videos</h3>
+        <p>Watch creator videos.</p>
+      </a>
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">↗</div>
+        <h3>Video Promotion</h3>
+        <p>Promote videos across the platform.</p>
+      </a>
+
+      <a href="upload-content.html" class="card">
+        <div class="card-icon">＋</div>
+        <h3>Upload Content</h3>
+        <p>Upload your music and videos.</p>
+      </a>
+
+      <a href="index.html#content" class="card">
+        <div class="card-icon">●</div>
+        <h3>Creators</h3>
+        <p>Discover creators and their content.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Shopping</h2>
+    </div>
+
+    <div class="grid">
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">□</div>
+        <h3>Products</h3>
+        <p>Browse products available on BRODA HUB.</p>
+      </a>
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">⌂</div>
+        <h3>Categories</h3>
+        <p>Explore different product categories.</p>
+      </a>
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">%</div>
+        <h3>Deals</h3>
+        <p>Discover available offers.</p>
+      </a>
+
+      <a href="index.html#services" class="card">
+        <div class="card-icon">→</div>
+        <h3>Sell on BRODA HUB</h3>
+        <p>Explore opportunities for sellers.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Services</h2>
+    </div>
+
+    <div class="grid">
+
+      <a href="dashboard.html?view=services" class="card">
+        <div class="card-icon">▦</div>
+        <h3>All Services</h3>
         <p>Open the BRODA HUB services area.</p>
-        <div class="arrow">Open →</div>
+      </a>
+
+      <a href="dashboard.html?view=services" class="card">
+        <div class="card-icon">◉</div>
+        <h3>Advertising</h3>
+        <p>Create and manage advertising opportunities.</p>
+      </a>
+
+      <a href="dashboard.html?view=services" class="card">
+        <div class="card-icon">⇄</div>
+        <h3>Distribution</h3>
+        <p>Explore music and content distribution.</p>
+      </a>
+
+      <a href="dashboard.html?view=services" class="card">
+        <div class="card-icon">✦</div>
+        <h3>Graphics</h3>
+        <p>Creative services for creators and businesses.</p>
       </a>
 
     </div>
-
   </section>
-
-
-  <!-- CONTENT -->
 
   <section class="section">
-
-    <div class="section-title">
-      Content
+    <div class="section-head">
+      <h2>Earn</h2>
     </div>
 
-    <div class="menu-grid">
+    <div class="grid">
 
-      <a class="menu-card" href="index.html">
-        <h2>Browse</h2>
-        <p>Discover products, music, videos and creator content.</p>
-        <div class="arrow">Open →</div>
+      <a href="upload-content.html" class="card">
+        <div class="card-icon">↗</div>
+        <h3>Start Earn</h3>
+        <p>Explore ways to earn through BRODA HUB.</p>
       </a>
 
-      <a class="menu-card" href="index.html#content">
-        <h2>Music & Videos</h2>
-        <p>Explore available music and video content.</p>
-        <div class="arrow">Open →</div>
+      <a href="index.html" class="card">
+        <div class="card-icon">◎</div>
+        <h3>Referrals</h3>
+        <p>Invite people and manage your referrals.</p>
       </a>
 
-      <a class="menu-card" href="index.html#services">
-        <h2>Shopping & Services</h2>
-        <p>Explore available products and BRODA HUB services.</p>
-        <div class="arrow">Open →</div>
+      <a href="dashboard.html?view=wallet" class="card">
+        <div class="card-icon">¤</div>
+        <h3>Wallet</h3>
+        <p>View your balance and payment activity.</p>
+      </a>
+
+      <a href="dashboard.html?view=analytics" class="card">
+        <div class="card-icon">▥</div>
+        <h3>Analytics</h3>
+        <p>Track streams, content and performance.</p>
       </a>
 
     </div>
-
   </section>
-
-
-  <!-- MORE -->
-
-  <section class="section">
-
-    <div class="section-title">
-      More
-    </div>
-
-    <div class="menu-grid">
-
-      <a class="menu-card" href="dashboard.html?view=services">
-        <h2>Subscriptions</h2>
-        <p>Access subscription-based creator and digital services.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-      <a class="menu-card" href="index.html">
-        <h2>Referrals</h2>
-        <p>Return to BRODA HUB and access available referral features.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-      <a class="menu-card" href="dashboard.html">
-        <h2>Back to Dashboard</h2>
-        <p>Return to the main member dashboard.</p>
-        <div class="arrow">Open →</div>
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <footer class="footer">
-    <span>© 2026 BRODA HUB</span>
-    <span>Member Menu</span>
-  </footer>
 
 </main>
 
+<nav class="bottom-nav">
+  <a href="index.html">
+    <span>⌂</span>
+    Home
+  </a>
 
-<script>
-  if (!localStorage.getItem("brodaToken")) {
-    location.href = "login.html";
-  }
-</script>
+  <a href="index.html#content">
+    <span>♫</span>
+    Music
+  </a>
+
+  <a href="menu.html" class="active">
+    <span>⌕</span>
+    Browse
+  </a>
+
+  <a href="dashboard.html?view=services">
+    <span>▣</span>
+    Services
+  </a>
+
+  <a href="dashboard.html">
+    <span>☰</span>
+    Dashboard
+  </a>
+</nav>
 
 </body>
 </html>
