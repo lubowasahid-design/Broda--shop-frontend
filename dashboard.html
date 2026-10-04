@@ -164,9 +164,8 @@ async function loadRealDashboard(){
   searchBox.setAttribute("aria-label", "Search BRODA HUB");
   searchBox.style.cssText =
     "display:none;position:absolute;top:72px;right:12px;" +
-    "z-index:100;width:min(300px,85vw);padding:12px;" +
-    "background:#111;color:white;border:1px solid #555;";
-
+    "z-index:100;width:min(210px,62vw);height:38px;padding:8px 10px;" +
+    "box-sizing:border-box;background:#111;color:white;border:1px solid #555;border-radius:6px;";
   header.appendChild(searchBox);
 
   searchBtn.addEventListener("click", function () {
