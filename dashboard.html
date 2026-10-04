@@ -291,15 +291,13 @@ loadRealDashboard();
 
       if (tab === 'Home') {
         showView('Dashboard');
-        document.getElementById('home-panel')
-          .scrollIntoView({ behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (tab === 'Services') {
         showView('Services');
       } else {
         showView('Dashboard');
-        document.getElementById('home-panel')
-          .scrollIntoView({ behavior: 'smooth' });
-      }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     });
   });
 
