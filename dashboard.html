@@ -210,11 +210,107 @@ showView(requestedView === "wallet" ? "Wallet" : requestedView === "analytics" ?
 loadContentFeed();
 loadRealDashboard();
 </script>
-  <style>
-
+<style>
 @media(max-width:560px){
 
-  html,body{
+  html,
+  body{
+    width:100%;
+    min-height:100%;
+    height:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  body{
+    padding-bottom:50px;
+  }
+
+  .navbar{
+    display:none!important;
+  }
+
+  .mobile-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:9999;
+    height:50px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items:stretch;
+    background:#090909;
+    border-top:1px solid #333;
+    padding:2px 3px;
+  }
+
+  .mobile-nav button,
+  .mobile-nav a{
+    width:100%;
+    height:44px;
+    min-height:44px;
+    padding:3px 0;
+    margin:0;
+    background:transparent;
+    border:0;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1px;
+    font-size:10px;
+    line-height:1;
+    text-decoration:none;
+  }
+
+  .mobile-nav button.active,
+  .mobile-nav a.active{
+    background:#c62828;
+    border-radius:4px;
+  }
+
+  .mobile-nav .nav-icon{
+    font-size:16px;
+    line-height:16px;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    bottom:58px;
+    left:10px;
+    right:10px;
+    z-index:9998;
+    background:#111;
+    border:1px solid #333;
+    padding:8px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu button{
+    display:block;
+    width:100%;
+    padding:11px;
+    background:#111;
+    color:#fff;
+    border:0;
+    border-bottom:1px solid #333;
+    text-align:left;
+  }
+
+  .mobile-menu[hidden]{
+    display:none!important;
+  }
+}
+
+
+<style>
+@media(max-width:560px){
+
+  html,
+  body{
     width:100%;
     min-height:100%;
     height:auto;
@@ -305,6 +401,73 @@ loadRealDashboard();
     display:none!important;
   }
 }
+
+@media(min-width:561px){
+  .mobile-nav,
+  .mobile-menu{
+    display:none!important;
+  }
+}
+</style>
+  .mobile-nav button,
+  .mobile-nav a{
+    width:100%;
+    height:44px;
+    min-height:44px;
+    padding:3px 0;
+    margin:0;
+    background:transparent;
+    border:0;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1px;
+    font-size:10px;
+    line-height:1;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+
+  .mobile-nav button.active,
+  .mobile-nav a.active{
+    background:#c62828;
+    border-radius:4px;
+  }
+
+  .mobile-nav .nav-icon{
+    font-size:16px;
+    line-height:16px;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    bottom:58px;
+    left:10px;
+    right:10px;
+    z-index:9998;
+    background:#111;
+    border:1px solid #333;
+    padding:8px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu button{
+    display:block;
+    width:100%;
+    padding:11px;
+    background:#111;
+    color:#fff;
+    border:0;
+    border-bottom:1px solid #333;
+    text-align:left;
+  }
+
+  .mobile-menu[hidden]{
+    display:none!important;
+  }
+}
   .mobile-nav button,
 .mobile-nav a{
   background:transparent;
@@ -336,7 +499,204 @@ loadRealDashboard();
   }
   .mobile-menu[hidden]{display:none}
 }
-@media(min-width:561px){.mobile-nav,.mobile-menu{display:none!important}}
+<style>
+@media(max-width:560px){
+
+  html,
+  body{
+    width:100%;
+    min-height:100%;
+    height:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  body{
+    padding-bottom:50px;
+  }
+
+  .navbar{
+    display:none!important;
+  }
+
+  .mobile-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:9999;
+    height:50px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items:stretch;
+    background:#090909;
+    border-top:1px solid #333;
+    padding:2px 3px;
+  }
+
+  .mobile-nav button,
+  .mobile-nav a{
+    width:100%;
+    height:44px;
+    min-height:44px;
+    padding:3px 0;
+    margin:0;
+    background:transparent;
+    border:0;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1px;
+    font-size:10px;
+    line-height:1;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+
+  .mobile-nav button.active,
+  .mobile-nav a.active{
+    background:#c62828;
+    border-radius:4px;
+  }
+
+  .mobile-nav .nav-icon{
+    font-size:16px;
+    line-height:16px;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    bottom:58px;
+    left:10px;
+    right:10px;
+    z-index:9998;
+    background:#111;
+    border:1px solid #333;
+    padding:8px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu button{
+    display:block;
+    width:100%;
+    padding:11px;
+    background:#111;
+    color:#fff;
+    border:0;
+    border-bottom:1px solid #333;
+    text-align:left;
+  }
+
+  .mobile-menu[hidden]{
+    display:none!important;
+  }
+}
+
+<style>
+@media(max-width:560px){
+
+  html,
+  body{
+    width:100%;
+    min-height:100%;
+    height:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  body{
+    padding-bottom:50px;
+  }
+
+  .navbar{
+    display:none!important;
+  }
+
+  .mobile-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:9999;
+    height:50px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items:stretch;
+    background:#090909;
+    border-top:1px solid #333;
+    padding:2px 3px;
+  }
+
+  .mobile-nav button,
+  .mobile-nav a{
+    width:100%;
+    height:44px;
+    min-height:44px;
+    padding:3px 0;
+    margin:0;
+    background:transparent;
+    border:0;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1px;
+    font-size:10px;
+    line-height:1;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+
+  .mobile-nav button.active,
+  .mobile-nav a.active{
+    background:#c62828;
+    border-radius:4px;
+  }
+
+  .mobile-nav .nav-icon{
+    font-size:16px;
+    line-height:16px;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    bottom:58px;
+    left:10px;
+    right:10px;
+    z-index:9998;
+    background:#111;
+    border:1px solid #333;
+    padding:8px;
+  }
+
+  .mobile-menu a,
+  .mobile-menu button{
+    display:block;
+    width:100%;
+    padding:11px;
+    background:#111;
+    color:#fff;
+    border:0;
+    border-bottom:1px solid #333;
+    text-align:left;
+  }
+
+  .mobile-menu[hidden]{
+    display:none!important;
+  }
+}
+
+@media(min-width:561px){
+  .mobile-nav,
+  .mobile-menu{
+    display:none!important;
+  }
+}
 </style>
 
 <nav class="mobile-nav" aria-label="Mobile navigation">
@@ -344,7 +704,7 @@ loadRealDashboard();
   <button data-tab="Music"><span class="nav-icon">♫</span>Music</button>
   <button data-tab="Explore"><span class="nav-icon">⌕</span>Explore</button>
   <button data-tab="Services"><span class="nav-icon">▣</span>Services</button>
-  <button type="button" id="mobile-menu-btn"><span class="nav-icon">☰</span>Menu</a>
+  <button type="button" id="mobile-menu-btn"><span class="nav-icon">☰</span>Menu</button>
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" hidden style="display:none!important;">
