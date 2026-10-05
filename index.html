@@ -2,116 +2,624 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#090909">
 <title>BRODA HUB | Discover & Earn</title>
 <link rel="manifest" href="./manifest.json">
+
 <style>
-:root{--bg:#090909;--panel:#111;--panel2:#171717;--line:#303030;--white:#fff;--muted:#b5b5b5;--red:#c62828;--green:#16a34a}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-.container{width:min(1120px,92%);margin:auto}
-.site-header{position:sticky;top:0;z-index:20;background:#090909;border-bottom:1px solid var(--line)}
-.header-main{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-size:20px;font-weight:800;letter-spacing:.3px;white-space:nowrap}
-.brand span{color:#ef7777}
-.account-links{display:flex;align-items:center;gap:10px}
-.account-links a{font-size:14px;font-weight:700;padding:9px 12px;border-radius:6px}
-.signup{background:var(--red)}
-.login{border:1px solid var(--line)}
-.nav-wrap{border-top:1px solid #202020}
-.nav{display:flex;gap:8px;overflow-x:auto;white-space:nowrap;padding:9px 0;scrollbar-width:thin}
-.nav a{font-size:13px;color:#ddd;padding:7px 10px;border-radius:7px;white-space:nowrap;flex-shrink:0}
-.nav a:hover,.nav a.active{background:var(--red);color:#fff}
-.search-row{padding:12px 0 14px}
-.search-box{display:flex;align-items:center;gap:10px;border:1px solid #444;border-radius:7px;background:#111;padding:0 12px;min-height:44px}
-.search-box span{color:#ef7777;font-size:20px}
-.search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font-size:15px;padding:10px 0}
-.search-box input::placeholder{color:#999}
-main{padding-bottom:36px}
-.intro{padding:30px 0 22px}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.4px;color:#ef7777;text-transform:uppercase}
-h1{font-size:clamp(28px,5vw,42px);line-height:1.12;margin:8px 0 10px}
-.intro p{color:var(--muted);max-width:680px;margin:0}
-.section{padding:24px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
-.section-head h2{font-size:22px;margin:0}
-.section-head p{font-size:13px;color:var(--muted);margin:4px 0 0}
-.status{font-size:13px;color:var(--muted);padding:16px 0}
-.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.content-card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden}
-.content-type{background:#191919;border-bottom:1px solid var(--line);padding:13px 15px;color:#ef7777;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}
-.content-body{padding:15px}
-.content-body h3{font-size:17px;margin:0 0 7px;overflow-wrap:anywhere}
-.content-body p{color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px}
-.content-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:12px;font-size:13px}
-.price{font-weight:800}
-.creator-id{color:var(--muted);font-size:11px;overflow-wrap:anywhere}
-.empty{background:#111;border:1px dashed #444;border-radius:8px;padding:22px;color:var(--muted);font-size:14px}
-.categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.category{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:17px}
-.category strong{display:block;font-size:14px;margin-bottom:4px}
-.category span{font-size:12px;color:var(--muted)}
-.category:hover{border-color:#777}
-.earn-panel{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#111;border:1px solid var(--line);border-radius:9px;padding:22px}
-.earn-panel h2{font-size:21px;margin:0 0 5px}
-.earn-panel p{font-size:13px;color:var(--muted);margin:0}
-.primary-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:#fff;border:0;border-radius:6px;padding:11px 15px;font-weight:700;font-size:13px;white-space:nowrap}
-footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px}
-.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:760px){.feed{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.intro{padding-top:24px}}
-@media(max-width:480px){.container{width:92%}.header-main{min-height:60px}.brand{font-size:18px}.account-links{gap:5px}.account-links a{font-size:12px;padding:8px}.feed{grid-template-columns:1fr}.section{padding:19px 0}.section-head h2{font-size:20px}.earn-panel{align-items:flex-start;flex-direction:column}.primary-btn{width:100%}}
-  /* BRODA HUB bottom navigation */
-.mobile-bottom-nav {
-  display: none;
+:root{
+  --bg:#090909;
+  --panel:#111;
+  --line:#303030;
+  --white:#fff;
+  --muted:#b5b5b5;
+  --red:#c62828;
+  --green:#16a34a;
 }
 
-@media (max-width: 560px) {
-  body {
-    padding-bottom: 75px;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  width:100%;
+  min-height:100%;
+  scroll-behavior:smooth;
+  overflow-y:auto;
+}
+
+body{
+  width:100%;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.5;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+.site-header{
+  position:relative;
+  width:100%;
+  z-index:20;
+  background:#090909;
+  border-bottom:1px solid var(--line);
+}
+
+.header-main{
+  min-height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.3px;
+  white-space:nowrap;
+}
+
+.brand span{
+  color:#ef7777;
+}
+
+.account-links{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.account-links a{
+  font-size:13px;
+  font-weight:700;
+  padding:8px 11px;
+  border-radius:5px;
+}
+
+.signup{
+  background:var(--red);
+}
+
+.login{
+  border:1px solid #444;
+}
+
+/* SEARCH */
+
+.search-row{
+  padding:8px 0 10px;
+}
+
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #444;
+  border-radius:5px;
+  background:#111;
+  padding:0 11px;
+  min-height:42px;
+}
+
+.search-box span{
+  color:#ef7777;
+  font-size:19px;
+}
+
+.search-box input{
+  width:100%;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font-size:14px;
+  padding:9px 0;
+}
+
+.search-box input::placeholder{
+  color:#999;
+}
+
+/* DESKTOP NAV */
+
+.desktop-nav-wrap{
+  border-top:1px solid #202020;
+}
+
+.desktop-nav{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  overflow-x:auto;
+  white-space:nowrap;
+  padding:7px 0;
+  scrollbar-width:thin;
+}
+
+.desktop-nav a{
+  flex:0 0 auto;
+  font-size:13px;
+  color:#ddd;
+  padding:7px 10px;
+  border-radius:5px;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active{
+  background:var(--red);
+  color:#fff;
+}
+
+/* MAIN */
+
+main{
+  width:100%;
+  padding-bottom:35px;
+}
+
+.intro{
+  padding:27px 0 20px;
+}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.3px;
+  color:#ef7777;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(28px,5vw,42px);
+  line-height:1.12;
+  margin:7px 0 9px;
+}
+
+.intro p{
+  color:var(--muted);
+  max-width:680px;
+  margin:0;
+  font-size:14px;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:22px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.section-head h2{
+  font-size:21px;
+  margin:0;
+}
+
+.section-head p{
+  font-size:13px;
+  color:var(--muted);
+  margin:4px 0 0;
+}
+
+.status{
+  font-size:13px;
+  color:var(--muted);
+  padding:15px 0;
+}
+
+/* CONTENT */
+
+.feed{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:13px;
+}
+
+.content-card{
+  min-width:0;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:7px;
+  overflow:hidden;
+}
+
+.content-type{
+  background:#191919;
+  border-bottom:1px solid var(--line);
+  padding:12px 14px;
+  color:#ef7777;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.content-body{
+  padding:14px;
+}
+
+.content-body h3{
+  font-size:16px;
+  margin:0 0 7px;
+  overflow-wrap:anywhere;
+}
+
+.content-body p{
+  color:var(--muted);
+  font-size:13px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  margin:0 0 13px;
+}
+
+.content-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-top:1px solid var(--line);
+  padding-top:11px;
+  font-size:13px;
+}
+
+.price{
+  font-weight:800;
+}
+
+.creator-id{
+  color:var(--muted);
+  font-size:11px;
+  overflow-wrap:anywhere;
+}
+
+.empty{
+  background:#111;
+  border:1px dashed #444;
+  border-radius:7px;
+  padding:21px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* SERVICES */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:11px;
+}
+
+.category{
+  display:block;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:16px;
+}
+
+.category strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.category span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.category:hover{
+  border-color:#777;
+}
+
+/* EARN */
+
+.earn-panel{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  background:#111;
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:21px;
+}
+
+.earn-panel h2{
+  font-size:20px;
+  margin:0 0 5px;
+}
+
+.earn-panel p{
+  font-size:13px;
+  color:var(--muted);
+  margin:0;
+}
+
+.primary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--red);
+  color:#fff;
+  border:0;
+  border-radius:5px;
+  padding:10px 15px;
+  font-weight:700;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:21px 0 85px;
+  color:#999;
+  font-size:12px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* MOBILE BOTTOM NAV */
+
+.mobile-bottom-nav{
+  display:none;
+}
+
+@media(max-width:900px){
+  .feed{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
-  .mobile-bottom-nav {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background: #090909;
-    border-top: 1px solid #333;
-    padding: 8px 3px;
+  .categories{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:560px){
+
+  body{
+    padding-bottom:60px;
+  }
+
+  .container{
+    width:calc(100% - 18px);
+  }
+
+  .header-main{
+    min-height:50px;
+    gap:8px;
+  }
+
+  .brand{
+    font-size:17px;
+  }
+
+  .account-links{
+    gap:5px;
+  }
+
+  .account-links a{
+    font-size:11px;
+    padding:7px 8px;
+  }
+
+  .search-row{
+    padding:6px 0 8px;
+  }
+
+  .search-box{
+    min-height:39px;
+    padding:0 9px;
+  }
+
+  .search-box input{
+    font-size:13px;
+    padding:8px 0;
+  }
+
+  .desktop-nav-wrap{
+    display:none;
+  }
+
+  .intro{
+    padding:21px 0 15px;
+  }
+
+  .eyebrow{
+    font-size:10px;
+  }
+
+  h1{
+    font-size:28px;
+    margin:6px 0 8px;
+  }
+
+  .intro p{
+    font-size:13px;
+  }
+
+  .section{
+    padding:18px 0;
+  }
+
+  .section-head{
+    margin-bottom:12px;
+  }
+
+  .section-head h2{
+    font-size:19px;
+  }
+
+  .section-head p{
+    font-size:12px;
+  }
+
+  .feed{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .content-body{
+    padding:13px;
+  }
+
+  .categories{
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+  }
+
+  .category{
+    padding:12px;
+  }
+
+  .category strong{
+    font-size:12px;
+  }
+
+  .category span{
+    font-size:11px;
+  }
+
+  .earn-panel{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:13px;
+    padding:16px;
+  }
+
+  .earn-panel h2{
+    font-size:18px;
+  }
+
+  .primary-btn{
+    width:100%;
+  }
+
+  footer{
+    padding-bottom:78px;
+  }
+
+  /* EXACTLY FIVE LEVEL BUTTONS */
+
+  .mobile-bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:60px;
+    z-index:9999;
+
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    align-items:stretch;
+
+    background:#090909;
+    border-top:1px solid #333;
+    padding:3px 2px env(safe-area-inset-bottom,3px);
   }
 
   .mobile-bottom-nav a,
-  .mobile-bottom-nav button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    background: transparent;
-    border: 0;
-    color: #eee;
-    text-decoration: none;
-    font-size: 11px;
-    padding: 5px 0;
+  .mobile-bottom-nav button{
+    min-width:0;
+    width:100%;
+    height:53px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:2px;
+    padding:3px 0;
+
+    background:transparent;
+    border:0;
+    border-radius:4px;
+
+    color:#eee;
+    text-decoration:none;
+    font-size:10px;
+    line-height:1;
   }
 
-  .mobile-bottom-nav .nav-icon {
-    font-size: 21px;
+  .mobile-bottom-nav .nav-icon{
+    display:block;
+    height:18px;
+    font-size:17px;
+    line-height:18px;
+  }
+
+  .mobile-bottom-nav a.active,
+  .mobile-bottom-nav button.active{
+    background:var(--red);
+    color:#fff;
+  }
+}
+
+@media(max-width:360px){
+  .brand{
+    font-size:16px;
+  }
+
+  .account-links a{
+    padding:6px 7px;
+  }
+
+  .categories{
+    grid-template-columns:1fr;
   }
 }
 </style>
 </head>
+
 <body>
+
 <header class="site-header">
+
   <div class="container header-main">
-    <a class="brand" href="index.html">BRODA <span>HUB</span></a>
+    <a class="brand" href="index.html">
+      BRODA <span>HUB</span>
+    </a>
+
     <div class="account-links">
       <a class="login" href="login.html">Login</a>
       <a class="signup" href="signup.html">Sign Up</a>
@@ -121,60 +629,146 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px
   <div class="container search-row">
     <label class="search-box" for="siteSearch">
       <span aria-hidden="true">⌕</span>
-      <input id="siteSearch" type="search" placeholder="Search songs, videos, products and creators…" autocomplete="off">
+      <input
+        id="siteSearch"
+        type="search"
+        placeholder="Search songs, videos, products and creators…"
+        autocomplete="off"
+      >
     </label>
-  
   </div>
+
+  <div class="desktop-nav-wrap">
+    <div class="container">
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="#content">Music</a>
+        <a href="#content">Explore</a>
+        <a href="#services">Services</a>
+        <a href="dashboard.html">Menu</a>
+      </nav>
+    </div>
+  </div>
+
 </header>
 
 <main class="container">
+
   <section class="intro">
     <div class="eyebrow">Discover on BRODA HUB</div>
-    <h1>Music, creators, videos and digital products.</h1>
-    <p>Explore approved creator content and digital services. Sign in to use account features and submit your own content for review.</p>
+
+    <h1>
+      Music, creators, videos and digital products.
+    </h1>
+
+    <p>
+      Explore approved creator content and digital services.
+      Sign in to use account features and submit your own content for review.
+    </p>
   </section>
 
   <section class="section" id="content">
+
     <div class="section-head">
       <div>
         <h2>Latest creator content</h2>
         <p>Only approved content from BRODA HUB appears here.</p>
       </div>
     </div>
-    <div id="feedStatus" class="status" role="status">Loading approved content…</div>
+
+    <div id="feedStatus" class="status" role="status">
+      Loading approved content…
+    </div>
+
     <div id="contentFeed" class="feed"></div>
+
   </section>
 
   <section class="section" id="services">
+
     <div class="section-head">
       <div>
         <h2>Explore services</h2>
         <p>Choose the type of content or creator service you need.</p>
       </div>
     </div>
+
     <div class="categories">
-      <a class="category" href="#content" data-search="music audio songs"><strong>Music &amp; Audio</strong><span>Songs, audio and releases</span></a>
-      <a class="category" href="music-distribution.html"><strong>Music Distribution</strong><span>Prepare releases for delivery to supported streaming and download platforms</span></a>
-      <a class="category" href="music-promotion.html"><strong>Music Promotions</strong><span>Promote releases through available music-channel and campaign services</span></a>
-      <a class="category" href="#content" data-search="videos video"><strong>Videos</strong><span>Creator video content</span></a>
-      <a class="category" href="#content" data-search="beats instrumentals"><strong>Beats Park</strong><span>Beats and instrumentals</span></a>
-      <a class="category" href="#content" data-search="ebooks books guides"><strong>E-books &amp; Guides</strong><span>Digital reading</span></a>
-      <a class="category" href="#content" data-search="courses learning"><strong>Courses</strong><span>Skills and learning</span></a>
-      <a class="category" href="#content" data-search="graphics templates design"><strong>Graphics &amp; Templates</strong><span>Creative digital assets</span></a>
-      <a class="category" href="#content" data-search="downloads digital products"><strong>Downloads</strong><span>Digital products</span></a>
-      <a class="category" href="upload-content.html"><strong>Creator Studio</strong><span>Submit content for review</span></a>
+
+      <a class="category" href="#content" data-search="music audio songs">
+        <strong>Music &amp; Audio</strong>
+        <span>Songs, audio and releases</span>
+      </a>
+
+      <a class="category" href="music-distribution.html">
+        <strong>Music Distribution</strong>
+        <span>Prepare releases for supported streaming and download platforms</span>
+      </a>
+
+      <a class="category" href="music-promotion.html">
+        <strong>Music Promotions</strong>
+        <span>Promote releases through available music-channel and campaign services</span>
+      </a>
+
+      <a class="category" href="#content" data-search="videos video">
+        <strong>Videos</strong>
+        <span>Creator video content</span>
+      </a>
+
+      <a class="category" href="#content" data-search="beats instrumentals">
+        <strong>Beats Park</strong>
+        <span>Beats and instrumentals</span>
+      </a>
+
+      <a class="category" href="#content" data-search="ebooks books guides">
+        <strong>E-books &amp; Guides</strong>
+        <span>Digital reading</span>
+      </a>
+
+      <a class="category" href="#content" data-search="courses learning">
+        <strong>Courses</strong>
+        <span>Skills and learning</span>
+      </a>
+
+      <a class="category" href="#content" data-search="graphics templates design">
+        <strong>Graphics &amp; Templates</strong>
+        <span>Creative digital assets</span>
+      </a>
+
+      <a class="category" href="#content" data-search="downloads digital products">
+        <strong>Downloads</strong>
+        <span>Digital products</span>
+      </a>
+
+      <a class="category" href="upload-content.html">
+        <strong>Creator Studio</strong>
+        <span>Submit content for review</span>
+      </a>
+
     </div>
   </section>
 
   <section class="section">
+
     <div class="earn-panel">
+
       <div>
         <h2>Ready to create and earn?</h2>
-        <p>Sign in to your account, then submit your music, videos or digital products for admin review.</p>
+
+        <p>
+          Sign in to your account, then submit your music,
+          videos or digital products for admin review.
+        </p>
       </div>
-      <a class="primary-btn" href="upload-content.html">Start Earn</a>
+
+      <a class="primary-btn" href="upload-content.html">
+        Start Earn
+      </a>
+
     </div>
+
   </section>
+
 </main>
 
 <footer>
@@ -184,93 +778,16 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:#999;font-size:12px
   </div>
 </footer>
 
-<script>
-const API_BASE = "https://broda-shop-b019.onrender.com";
-const feed = document.getElementById("contentFeed");
-const status = document.getElementById("feedStatus");
-const search = document.getElementById("siteSearch");
-let approvedContent = [];
+<!-- MOBILE NAVIGATION -->
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[char]);
-}
+<nav class="mobile-bottom-nav" aria-label="Main navigation">
 
-function renderContent() {
-  const term = search.value.trim().toLowerCase();
-  const items = approvedContent.filter(item =>
-    [item.title, item.description, item.type, item.creatorId]
-      .some(value => String(value ?? "").toLowerCase().includes(term))
-  );
-
-  feed.innerHTML = "";
-
-  if (!items.length) {
-    status.hidden = false;
-    status.textContent = term
-      ? "No approved content matches your search."
-      : "No approved content is available yet. Creator uploads will appear here after admin approval.";
-    return;
-  }
-
-  status.hidden = true;
-  items.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "content-card";
-    card.innerHTML = `
-      <div class="content-type">${escapeHTML(item.type || "Digital content")}</div>
-      <div class="content-body">
-        <h3>${escapeHTML(item.title)}</h3>
-        <p>${escapeHTML(item.description || "No description provided.")}</p>
-        <div class="content-meta">
-          <span class="price">${Number(item.price) > 0 ? "UGX " + Number(item.price).toLocaleString("en-UG") : "Free"}</span>
-          <span class="creator-id">Creator: ${escapeHTML(item.creatorId || "BRODA HUB creator")}</span>
-        </div>
-      </div>`;
-    feed.appendChild(card);
-  });
-}
-
-search.addEventListener("input", renderContent);
-
-document.querySelectorAll("[data-search]").forEach(link => {
-  link.addEventListener("click", () => {
-    search.value = link.dataset.search.split(" ")[0];
-    renderContent();
-  });
-});
-
-async function loadApprovedContent() {
-  try {
-    const response = await fetch(API_BASE + "/api/content");
-    if (!response.ok) throw new Error("Content request failed");
-    const data = await response.json();
-    approvedContent = Array.isArray(data) ? data : [];
-    renderContent();
-  } catch (error) {
-    status.hidden = false;
-    status.textContent = "Content could not be loaded right now. Please refresh and try again.";
-    console.error("BRODA HUB content feed:", error);
-  }
-}
-loadApprovedContent();
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(error =>
-      console.error("Service worker registration failed:", error)
-    );
-  });
-}
-</script>
-  <nav class="mobile-bottom-nav" aria-label="Main navigation">
-  <a href="index.html">
+  <a class="active" href="index.html">
     <span class="nav-icon">⌂</span>
     <span>Home</span>
   </a>
 
-  <a href="#content">
+  <a href="#content" data-nav-search="music">
     <span class="nav-icon">♫</span>
     <span>Music</span>
   </a>
@@ -285,16 +802,192 @@ if ("serviceWorker" in navigator) {
     <span>Services</span>
   </a>
 
-  <a href="dashboard.html" id="menuButton">
-  <span class="nav-icon">☰</span>
-  <span>Dashboard</span>
-</a>
+  <a href="dashboard.html">
+    <span class="nav-icon">☰</span>
+    <span>Menu</span>
+  </a>
+
 </nav>
 
 <script>
-document.getElementById("menuButton").onclick = function () {
-  window.location.href = "dashboard.html";
-};
+const API_BASE = "https://broda-shop-b019.onrender.com";
+
+const feed = document.getElementById("contentFeed");
+const status = document.getElementById("feedStatus");
+const search = document.getElementById("siteSearch");
+
+let approvedContent = [];
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+function renderContent() {
+
+  const term = search.value.trim().toLowerCase();
+
+  const items = approvedContent.filter(item =>
+    [
+      item.title,
+      item.description,
+      item.type,
+      item.creatorId,
+      item.creatorName,
+      item.creator
+    ].some(value =>
+      String(value ?? "").toLowerCase().includes(term)
+    )
+  );
+
+  feed.innerHTML = "";
+
+  if (!items.length) {
+
+    status.hidden = false;
+
+    status.textContent = term
+      ? "No approved content matches your search."
+      : "No approved content is available yet. Creator uploads will appear here after admin approval.";
+
+    return;
+  }
+
+  status.hidden = true;
+
+  items.forEach(item => {
+
+    const card = document.createElement("article");
+
+    card.className = "content-card";
+
+    card.innerHTML = `
+      <div class="content-type">
+        ${escapeHTML(item.type || "Digital content")}
+      </div>
+
+      <div class="content-body">
+
+        <h3>
+          ${escapeHTML(item.title || "Untitled content")}
+        </h3>
+
+        <p>
+          ${escapeHTML(item.description || "No description provided.")}
+        </p>
+
+        <div class="content-meta">
+
+          <span class="price">
+            ${
+              Number(item.price) > 0
+                ? "UGX " + Number(item.price).toLocaleString("en-UG")
+                : "Free"
+            }
+          </span>
+
+          <span class="creator-id">
+            Creator:
+            ${escapeHTML(
+              item.creatorName ||
+              item.creator ||
+              item.creatorId ||
+              "BRODA HUB creator"
+            )}
+          </span>
+
+        </div>
+
+      </div>
+    `;
+
+    feed.appendChild(card);
+  });
+}
+
+search.addEventListener("input", renderContent);
+
+document.querySelectorAll("[data-search]").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    const value = link.dataset.search || "";
+
+    search.value = value.split(" ")[0];
+
+    renderContent();
+
+  });
+
+});
+
+document.querySelectorAll("[data-nav-search]").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    search.value = link.dataset.navSearch || "";
+
+    renderContent();
+
+  });
+
+});
+
+async function loadApprovedContent() {
+
+  try {
+
+    const response =
+      await fetch(API_BASE + "/api/content");
+
+    if (!response.ok) {
+      throw new Error("Content request failed");
+    }
+
+    const data = await response.json();
+
+    approvedContent =
+      Array.isArray(data) ? data : [];
+
+    renderContent();
+
+  } catch (error) {
+
+    status.hidden = false;
+
+    status.textContent =
+      "Content could not be loaded right now. Please refresh and try again.";
+
+    console.error(
+      "BRODA HUB content feed:",
+      error
+    );
+  }
+}
+
+loadApprovedContent();
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener("load", () => {
+
+    navigator.serviceWorker
+      .register("./sw.js")
+      .catch(error =>
+        console.error(
+          "Service worker registration failed:",
+          error
+        )
+      );
+
+  });
+
+}
 </script>
 
 </body>
