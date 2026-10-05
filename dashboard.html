@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BRODA HUB | Dashboard</title>
 
 <style>
 :root{
-  --bg:#090909;
-  --panel:#111;
-  --panel2:#0d0d0d;
-  --line:#292929;
+  --bg:#050505;
+  --panel:#0d0d0d;
+  --panel2:#121212;
   --text:#fff;
-  --muted:#aaa;
-  --red:#c62828;
-  --green:#16a34a;
-  --orange:#f28c28;
+  --muted:#999;
+  --line:#242424;
+  --red:#e50914;
+  --orange:#ff7a00;
+  --green:#19c463;
 }
 
 *{
@@ -25,26 +25,19 @@
 }
 
 html{
-  width:100%;
-  min-height:100%;
-  background:var(--bg);
-  overflow-y:auto;
+  scroll-behavior:smooth;
 }
 
 body{
-  width:100%;
-  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
   overflow-x:hidden;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
 }
 
 button,
-input,
-select{
+a{
   font:inherit;
 }
 
@@ -57,531 +50,361 @@ a{
   text-decoration:none;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
-.topbar{
-  position:relative;
-  width:100%;
-  min-height:56px;
-  padding:8px 14px;
+.top-header{
+  min-height:64px;
+  padding:12px 18px;
   border-bottom:1px solid var(--line);
-  background:#0d0d0d;
   display:flex;
   align-items:center;
-  gap:10px;
-  z-index:1000;
-}
-
-.profile-link{
-  width:36px;
-  height:36px;
-  flex:0 0 36px;
-  border:1px solid #555;
-  border-radius:50%;
-  background:#171717;
-  display:grid;
-  place-items:center;
-}
-
-.profile-icon{
-  font-size:12px;
-  font-weight:700;
+  justify-content:space-between;
+  gap:15px;
+  background:#050505;
 }
 
 .brand{
-  font-size:18px;
+  font-size:21px;
   font-weight:800;
-  letter-spacing:1px;
-  white-space:nowrap;
+  letter-spacing:.5px;
 }
 
 .brand span{
   color:var(--red);
 }
 
-.header-actions{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.icon-btn{
-  width:34px;
-  height:34px;
-  border:1px solid #444;
+.profile{
+  width:38px;
+  height:38px;
+  border:1px solid #333;
   border-radius:50%;
-  background:#151515;
-  color:#fff;
-  display:grid;
-  place-items:center;
-  font-size:19px;
-}
-
-.icon-btn:active{
-  border-color:var(--red);
-}
-
-.account{
   display:flex;
   align-items:center;
-  gap:8px;
-}
-
-.account-name{
-  color:#ddd;
-  font-size:12px;
-}
-
-.logout{
-  background:transparent;
-  border:1px solid #555;
-  color:#fff;
-  padding:7px 9px;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.header-search{
-  position:absolute;
-  left:14px;
-  right:14px;
-  top:62px;
-  z-index:1100;
-  display:none;
-  height:42px;
-  padding:8px 12px;
-  background:#111;
-  color:#fff;
-  border:1px solid #555;
-  border-radius:5px;
-  outline:none;
-}
-
-.header-search:focus{
-  border-color:var(--red);
-}
-
-/* =========================
-   DESKTOP NAV
-========================= */
-
-.navbar{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  padding:8px 20px;
-  border-bottom:1px solid var(--line);
-  background:#0d0d0d;
-  overflow-x:auto;
-}
-
-.navbtn{
-  flex:0 0 auto;
-  border:1px solid transparent;
-  background:transparent;
-  color:#ccc;
-  padding:10px 14px;
-  border-radius:4px;
-  font-size:13px;
-}
-
-.navbtn:hover{
-  background:#1a1a1a;
-  border-color:#444;
-  color:#fff;
-}
-
-.navbtn.active{
-  background:var(--red);
-  border-color:var(--red);
-  color:#fff;
+  justify-content:center;
   font-weight:700;
+  background:#111;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* DESKTOP NAV */
+
+.desktop-nav{
+  display:flex;
+  gap:7px;
+  padding:10px 18px;
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;
+  background:#080808;
+}
+
+.desktop-nav button,
+.desktop-nav a{
+  border:0;
+  background:transparent;
+  color:#aaa;
+  padding:9px 13px;
+  border-radius:6px;
+  white-space:nowrap;
+}
+
+.desktop-nav button:hover,
+.desktop-nav a:hover{
+  color:#fff;
+  background:#151515;
+}
+
+.desktop-nav .active{
+  color:#fff;
+  background:#191919;
+  border-bottom:2px solid var(--red);
+}
+
+/* MAIN */
 
 main{
   width:100%;
-  max-width:1440px;
+  max-width:1200px;
   margin:0 auto;
-  padding:18px 22px 30px;
+  padding:22px 18px 100px;
 }
 
-.panel{
-  width:100%;
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
+
+.page-title{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.page-subtitle{
+  color:var(--muted);
+  margin-bottom:22px;
+  line-height:1.5;
+}
+
+/* CARDS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.card{
   background:var(--panel);
   border:1px solid var(--line);
+  border-radius:10px;
   padding:18px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.action{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 14px;
+  border-radius:6px;
+  background:#171717;
+  border:1px solid #303030;
+  color:#fff;
+}
+
+.action:hover{
+  border-color:var(--red);
+}
+
+.primary{
+  background:var(--red);
+  border-color:var(--red);
+}
+
+/* WALLET */
+
+.balance-card{
+  background:linear-gradient(135deg,#111,#080808);
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.balance-label{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.balance{
+  font-size:34px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.wallet-list{
+  display:grid;
+  gap:10px;
+}
+
+.wallet-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:15px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+
+/* ANALYTICS */
+
+.filter-button{
+  background:#151515;
+  border:1px solid #333;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:6px;
+  margin-bottom:12px;
+}
+
+.filter-panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:15px;
+  border-radius:9px;
   margin-bottom:16px;
 }
 
-.panel[hidden],
 .filter-panel[hidden]{
   display:none!important;
 }
 
-.panel-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.panel h2{
-  font-size:17px;
-}
-
-.muted{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content-grid{
+.filter-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-}
-
-.content-card{
-  background:#0c0c0c;
-  border:1px solid var(--line);
-  padding:15px;
-  min-width:0;
-}
-
-.content-card h3{
-  font-size:15px;
-  margin-bottom:7px;
-  overflow-wrap:anywhere;
-}
-
-.content-card p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  margin:6px 0;
-  overflow-wrap:anywhere;
-}
-
-.content-type{
-  display:inline-block;
-  padding:4px 6px;
-  margin-bottom:9px;
-  border:1px solid #444;
-  color:#ddd;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-}
-
-.content-price{
-  margin-top:10px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.empty-state{
-  grid-column:1/-1;
-  padding:20px;
-  border:1px dashed #444;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-}
-
-/* =========================
-   WALLET
-========================= */
-
-.wallet-grid{
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:10px;
 }
 
-.wallet-item{
-  background:#0c0c0c;
-  border:1px solid var(--line);
-  padding:15px;
-}
-
-.wallet-item h3{
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.wallet-item p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-}
-
-/* =========================
-   ANALYTICS
-========================= */
-
-.analytics-tabs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:15px;
-}
-
-.analytics-tabs button{
-  padding:9px 12px;
-  border:1px solid #383838;
-  background:#151515;
-  color:#ddd;
-}
-
-.analytics-tabs button:active{
-  border-color:var(--red);
-}
-
-.filter-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:11px;
-}
-
-.filter-grid label{
-  display:block;
-  color:#ccc;
-  font-size:12px;
-}
-
+.filter-grid input,
 .filter-grid select{
-  display:block;
   width:100%;
-  margin-top:6px;
-  padding:10px;
-  background:#090909;
+  background:#080808;
   color:#fff;
-  border:1px solid #444;
+  border:1px solid #333;
+  border-radius:6px;
+  padding:11px;
 }
 
-.filter-actions{
-  display:flex;
-  justify-content:flex-end;
-  margin-top:13px;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
 
-.action{
-  border:1px solid var(--red);
-  background:var(--red);
-  color:#fff;
-  padding:10px 14px;
-  font-weight:700;
+.stat{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:17px;
+  border-radius:9px;
 }
 
-.notice{
-  margin-top:11px;
-  color:var(--muted);
-  font-size:12px;
+.stat strong{
+  display:block;
+  font-size:24px;
+  margin-top:7px;
 }
 
-/* =========================
-   SERVICES
-========================= */
+/* SERVICES */
 
 .services-grid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:11px;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
 
 .service{
-  min-height:120px;
-  background:#101010;
+  padding:18px;
   border:1px solid var(--line);
-  padding:15px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+  background:var(--panel);
+  border-radius:10px;
 }
 
 .service h3{
-  font-size:14px;
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 
 .service p{
   color:var(--muted);
-  font-size:12px;
   line-height:1.5;
-  margin-bottom:12px;
 }
 
-.service a{
-  margin-top:auto;
-  font-size:12px;
-  border-bottom:1px solid var(--red);
-  padding-bottom:3px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:18px 0 5px;
-  border-top:1px solid var(--line);
-  color:#777;
-  font-size:11px;
-}
-
-/* =========================
-   MOBILE NAV
-========================= */
+/* MOBILE NAV */
 
 .mobile-nav{
   display:none;
 }
 
+/* MOBILE MENU */
+
 .mobile-menu{
+  position:fixed;
+  right:12px;
+  bottom:72px;
+  width:min(280px,calc(100vw - 24px));
+  background:#101010;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:8px;
+  z-index:1000;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.mobile-menu[hidden]{
   display:none;
 }
 
-/* =========================
-   TABLET
-========================= */
-
-@media(max-width:900px){
-
-  main{
-    padding:15px;
-  }
-
-  .content-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .services-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .wallet-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
+.mobile-menu a,
+.mobile-menu button{
+  width:100%;
+  display:block;
+  text-align:left;
+  padding:13px 12px;
+  background:transparent;
+  border:0;
+  color:#fff;
+  border-radius:6px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.mobile-menu a:hover,
+.mobile-menu button:hover{
+  background:#1b1b1b;
+}
 
-@media(max-width:560px){
+.mobile-menu a:first-child{
+  border-left:3px solid var(--red);
+}
 
-  body{
-    padding-bottom:50px;
-  }
+/* FOOTER */
 
-  .topbar{
-    min-height:50px;
-    height:50px;
-    padding:6px 9px;
-    gap:7px;
-  }
+footer{
+  text-align:center;
+  color:#777;
+  padding:30px 15px 90px;
+  border-top:1px solid var(--line);
+  margin-top:35px;
+}
 
-  .profile-link{
-    width:32px;
-    height:32px;
-    flex-basis:32px;
+/* MOBILE */
+
+@media(max-width:760px){
+
+  .top-header{
+    min-height:56px;
+    padding:9px 14px;
   }
 
   .brand{
-    font-size:16px;
+    font-size:19px;
   }
 
-  .header-actions{
-    gap:5px;
+  .profile{
+    width:34px;
+    height:34px;
   }
 
-  .icon-btn{
-    width:32px;
-    height:32px;
-    font-size:17px;
-  }
-
-  .account-name{
+  .desktop-nav{
     display:none;
-  }
-
-  .logout{
-    display:none;
-  }
-
-  .header-search{
-    left:8px;
-    right:8px;
-    top:55px;
-    height:40px;
-  }
-
-  .navbar{
-    display:none!important;
   }
 
   main{
-    padding:9px 8px 15px;
+    padding:16px 14px 90px;
   }
 
-  .panel{
-    padding:14px;
-    margin-bottom:12px;
+  .page-title{
+    font-size:23px;
   }
 
-  .panel-head{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:5px;
-  }
-
-  .content-grid{
+  .grid,
+  .services-grid{
     grid-template-columns:1fr;
   }
 
-  .services-grid{
-    grid-template-columns:1fr 1fr;
-    gap:7px;
-  }
-
-  .service{
-    min-height:125px;
-    padding:11px;
-  }
-
-  .service h3{
-    font-size:13px;
-  }
-
-  .wallet-grid{
-    grid-template-columns:1fr 1fr;
+  .stats{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .filter-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer{
-    flex-direction:column;
-    padding-bottom:10px;
+    grid-template-columns:1fr;
   }
 
   .mobile-nav{
@@ -589,92 +412,55 @@ main{
     left:0;
     right:0;
     bottom:0;
-    z-index:9999;
-    height:50px;
+    height:64px;
     display:grid;
     grid-template-columns:repeat(5,1fr);
     align-items:stretch;
-    padding:2px 3px;
     background:#090909;
-    border-top:1px solid #333;
+    border-top:1px solid #292929;
+    z-index:999;
   }
 
   .mobile-nav button{
-    width:100%;
-    height:44px;
+    min-width:0;
     border:0;
+    border-right:1px solid #1d1d1d;
     background:transparent;
-    color:#fff;
+    color:#888;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:1px;
-    padding:2px 0;
-    font-size:10px;
-    line-height:1;
+    gap:4px;
+    padding:4px 2px;
+  }
+
+  .mobile-nav button:last-child{
+    border-right:0;
   }
 
   .mobile-nav button.active{
-    background:var(--red);
-    border-radius:4px;
+    color:#fff;
+    border-top:2px solid var(--red);
   }
 
   .nav-icon{
-    font-size:16px;
-    line-height:16px;
+    font-size:18px;
+    line-height:1;
   }
 
-  .mobile-menu{
-    position:fixed;
-    left:8px;
-    right:8px;
-    bottom:57px;
-    z-index:9998;
-    background:#111;
-    border:1px solid #333;
-    padding:7px;
+  .mobile-nav button{
+    font-size:11px;
   }
 
-  .mobile-menu[hidden]{
-    display:none!important;
-  }
-
-  .mobile-menu a,
-  .mobile-menu button{
-    display:block;
-    width:100%;
-    padding:11px;
-    background:#111;
-    color:#fff;
-    border:0;
-    border-bottom:1px solid #333;
-    text-align:left;
-  }
-
-  .mobile-menu a:last-child,
-  .mobile-menu button:last-child{
-    border-bottom:0;
+  footer{
+    padding-bottom:80px;
   }
 }
 
-/* =========================
-   SMALL PHONES
-========================= */
-
-@media(max-width:360px){
-
-  .brand{
-    font-size:15px;
-  }
-
-  .services-grid,
-  .filter-grid{
-    grid-template-columns:1fr;
-  }
-
-  .wallet-grid{
-    grid-template-columns:1fr;
+@media(min-width:761px){
+  .mobile-menu{
+    display:none!important;
   }
 }
 </style>
@@ -682,1289 +468,418 @@ main{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="topbar">
-
-  <a class="profile-link"
-     href="dashboard.html"
-     aria-label="Profile">
-
-    <span class="profile-icon" id="avatar">BH</span>
-
-  </a>
-
-  <a class="brand"
-     href="dashboard.html">
-    BRODA <span>HUB</span>
-  </a>
-
-  <div class="header-actions">
-
-    <button
-      class="icon-btn"
-      id="notification-toggle"
-      type="button"
-      aria-label="Notifications"
-      aria-expanded="false">
-      ♧
-    </button>
-
-    <button
-      class="icon-btn"
-      id="search-toggle"
-      type="button"
-      aria-label="Search"
-      aria-expanded="false">
-      ⌕
-    </button>
-
-  </div>
-
-  <div class="account">
-
-    <div
-      class="account-name"
-      id="profile-name">
-      Member account
-    </div>
-
-    <button
-      class="logout"
-      type="button"
-      id="logout-btn">
-      Log out
-    </button>
-
-  </div>
-
-  <input
-    class="header-search"
-    id="header-search"
-    type="search"
-    placeholder="Search BRODA HUB..."
-    aria-label="Search BRODA HUB">
-
+<header class="top-header">
+  <div class="brand">BRODA <span>HUB</span></div>
+  <div class="profile" id="profile-icon">BH</div>
 </header>
 
-<!-- =========================
-     DESKTOP NAVIGATION
-========================= -->
-
-<nav
-  class="navbar"
-  aria-label="Main navigation">
-
-  <button
-    class="navbtn active"
-    id="dashboard-toggle"
-    type="button">
-    Dashboard
-  </button>
-
-  <a
-    class="navbtn"
-    href="index.html">
-    Browse
-  </a>
-
-  <a
-    class="navbtn"
-    href="upload-content.html">
-    Start Earn
-  </a>
-
-  <button
-    class="navbtn"
-    id="wallet-toggle"
-    type="button">
-    Wallet
-  </button>
-
-  <button
-    class="navbtn"
-    id="analytics-toggle"
-    type="button">
-    Analytics
-  </button>
-
-  <a
-    class="navbtn"
-    href="upload-content.html">
-    Creator Studio
-  </a>
-
-  <button
-    class="navbtn"
-    id="services-toggle"
-    type="button">
-    Services
-  </button>
-
+<nav class="desktop-nav">
+  <button class="active" data-view="Dashboard">Dashboard</button>
+  <a href="index.html">Browse</a>
+  <a href="upload-content.html">Start Earn</a>
+  <button data-view="Wallet">Wallet</button>
+  <button data-view="Analytics">Analytics</button>
+  <a href="upload-content.html">Creator Studio</a>
+  <button data-view="Services">Services</button>
 </nav>
-
-<!-- =========================
-     MAIN
-========================= -->
 
 <main>
 
   <!-- DASHBOARD -->
+  <section class="view active" id="view-Dashboard">
 
-  <section
-    class="panel"
-    id="home-panel">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">
+      Welcome to BRODA HUB. Discover content, manage your earnings and grow your creator activity.
+    </p>
 
-    <div class="panel-head">
+    <div class="grid">
 
-      <div>
-        <h2>Discover</h2>
+      <div class="card">
+        <h3>Discover</h3>
+        <p>Browse products, music, videos and other content from creators.</p>
+        <a class="action primary" href="index.html">Browse</a>
+      </div>
 
-        <p class="muted">
-          Recent approved content from BRODA HUB creators.
-        </p>
+      <div class="card">
+        <h3>Start Earn</h3>
+        <p>Upload your content and start building your creator activity.</p>
+        <a class="action" href="upload-content.html">Start Earn</a>
+      </div>
+
+      <div class="card">
+        <h3>Creator Studio</h3>
+        <p>Manage your creator content and publishing activity.</p>
+        <a class="action" href="upload-content.html">Open Studio</a>
       </div>
 
     </div>
 
-    <div
-      id="content-feed"
-      class="content-grid">
-
-      <p class="empty-state">
-        Loading creator content…
-      </p>
-
-    </div>
-
   </section>
-
 
   <!-- WALLET -->
+  <section class="view" id="view-Wallet">
 
-  <section
-    class="panel"
-    id="wallet-panel"
-    hidden>
+    <h1 class="page-title">Wallet</h1>
+    <p class="page-subtitle">Manage your balance, payouts and transaction history.</p>
 
-    <div class="panel-head">
-
-      <div>
-        <h2>Wallet</h2>
-
-        <p class="muted">
-          Manage your BRODA HUB earnings and payout information.
-        </p>
-      </div>
-
+    <div class="balance-card">
+      <div class="balance-label">Available Balance</div>
+      <div class="balance">UGX 0</div>
+      <div class="balance-label">USD equivalent will appear when available.</div>
     </div>
 
-    <div class="wallet-grid">
+    <div class="wallet-list">
 
-      <article class="wallet-item">
-        <h3>Balance</h3>
-        <p id="wallet-balance">UGX 0</p>
-      </article>
+      <div class="wallet-row">
+        <span>Payout Methods</span>
+        <button class="action" type="button">Manage</button>
+      </div>
 
-      <article class="wallet-item">
-        <h3>Earnings</h3>
-        <p id="wallet-earnings">UGX 0</p>
-      </article>
+      <div class="wallet-row">
+        <span>Transaction History</span>
+        <button class="action" type="button">View</button>
+      </div>
 
-      <article class="wallet-item">
-        <h3>Withdraw</h3>
-        <p>
-          Withdrawal requests will become available
-          when payout processing is connected.
-        </p>
-      </article>
-
-      <article class="wallet-item">
-        <h3>Payout methods</h3>
-        <p>
-          Manage your approved payout methods.
-        </p>
-      </article>
-
-      <article class="wallet-item">
-        <h3>History</h3>
-        <p>
-          Transaction and payout history will appear here.
-        </p>
-      </article>
+      <div class="wallet-row">
+        <span>Payouts</span>
+        <button class="action" type="button">View</button>
+      </div>
 
     </div>
 
   </section>
 
-
   <!-- ANALYTICS -->
+  <section class="view" id="view-Analytics">
 
-  <section
-    class="panel"
-    id="analytics-panel"
-    hidden>
+    <h1 class="page-title">Analytics</h1>
+    <p class="page-subtitle">
+      Track streams, tracks, playlists and stores.
+    </p>
 
-    <div class="panel-head">
+    <button class="filter-button" id="filter-btn" type="button">
+      Filter
+    </button>
 
-      <div>
-        <h2>Analytics</h2>
-
-        <p class="muted">
-          Streams, tracks, playlists and stores.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="analytics-tabs">
-
-      <button type="button">
-        Streams
-      </button>
-
-      <button type="button">
-        Tracks
-      </button>
-
-      <button type="button">
-        Playlists
-      </button>
-
-      <button type="button">
-        Stores
-      </button>
-
-      <button
-        type="button"
-        id="filter-toggle"
-        aria-expanded="false">
-        Filter
-      </button>
-
-    </div>
-
-    <div
-      id="analytics-filters"
-      class="filter-panel"
-      hidden>
+    <div class="filter-panel" id="filter-panel" hidden>
 
       <div class="filter-grid">
 
-        <label>
-          Label
-          <select id="filter-label">
-            <option>All</option>
-          </select>
-        </label>
+        <input type="text" id="filter-label" placeholder="Label">
 
-        <label>
-          Artist
-          <select id="filter-artist">
-            <option>All</option>
-          </select>
-        </label>
+        <input type="text" id="filter-artist" placeholder="Artist">
 
-        <label>
-          Release
-          <select id="filter-release">
-            <option>All</option>
-          </select>
-        </label>
+        <input type="text" id="filter-release" placeholder="Release">
 
-        <label>
-          Track
-          <select id="filter-track">
-            <option>All</option>
-          </select>
-        </label>
+        <input type="text" id="filter-track" placeholder="Track">
 
-        <label>
-          Country
-          <select id="filter-country">
-            <option>All</option>
-          </select>
-        </label>
+        <input type="text" id="filter-country" placeholder="Country">
 
-        <label>
-          Store
-          <select id="filter-store">
-            <option>All</option>
-          </select>
-        </label>
+        <select id="filter-store">
+          <option value="All">Store: All</option>
+          <option>Spotify</option>
+          <option>Apple Music</option>
+          <option>YouTube</option>
+          <option>TikTok</option>
+          <option>Amazon Music</option>
+        </select>
 
       </div>
 
-      <div class="filter-actions">
-
-        <button
-          class="action"
-          id="update-filters"
-          type="button">
-          Update results
-        </button>
-
-      </div>
+      <button class="action primary" id="update-results" type="button">
+        Update Results
+      </button>
 
     </div>
 
-    <p
-      class="notice"
-      id="analytics-notice">
-      Analytics data is not connected yet.
-    </p>
+    <div class="stats">
+
+      <div class="stat">
+        <span>Streams</span>
+        <strong>0</strong>
+      </div>
+
+      <div class="stat">
+        <span>Tracks</span>
+        <strong>0</strong>
+      </div>
+
+      <div class="stat">
+        <span>Playlists</span>
+        <strong>0</strong>
+      </div>
+
+      <div class="stat">
+        <span>Stores</span>
+        <strong>0</strong>
+      </div>
+
+    </div>
 
   </section>
 
-
   <!-- SERVICES -->
+  <section class="view" id="view-Services">
 
-  <section
-    class="panel"
-    id="services-panel"
-    hidden>
-
-    <div class="panel-head">
-
-      <div>
-        <h2>BRODA HUB Services</h2>
-
-        <p class="muted">
-          Creator, music, video and digital-content services.
-        </p>
-      </div>
-
-    </div>
+    <h1 class="page-title">BRODA HUB Services</h1>
+    <p class="page-subtitle">
+      Explore the services available on BRODA HUB.
+    </p>
 
     <div class="services-grid">
 
-      <article class="service">
-        <h3>Music &amp; Audio</h3>
-        <p>
-          Music releases, discovery and promotion.
-        </p>
-        <a href="upload-content.html">
-          Upload content
-        </a>
-      </article>
+      <div class="service">
+        <h3>Music Promotion</h3>
+        <p>Promote songs and reach more listeners.</p>
+      </div>
 
-      <article class="service">
-        <h3>Videos</h3>
-        <p>
-          Video content and creator promotion.
-        </p>
-        <a href="upload-content.html">
-          Upload content
-        </a>
-      </article>
+      <div class="service">
+        <h3>Video Promotion</h3>
+        <p>Promote videos and grow your audience.</p>
+      </div>
 
-      <article class="service">
+      <div class="service">
+        <h3>Music Distribution</h3>
+        <p>Distribute music through supported platforms.</p>
+      </div>
+
+      <div class="service">
         <h3>Beats Park</h3>
-        <p>
-          Beats and music production content.
-        </p>
-        <a href="upload-content.html">
-          Upload content
-        </a>
-      </article>
+        <p>Discover and share beats and audio content.</p>
+      </div>
 
-      <article class="service">
+      <div class="service">
+        <h3>Advertising</h3>
+        <p>Promote products, brands and creator content.</p>
+      </div>
+
+      <div class="service">
         <h3>Subscriptions</h3>
-        <p>
-          Creator subscription services.
-        </p>
-        <a href="index.html">
-          Browse services
-        </a>
-      </article>
-
-      <article class="service">
-        <h3>Creator Community</h3>
-        <p>
-          Discover and support creators.
-        </p>
-        <a href="index.html">
-          Browse content
-        </a>
-      </article>
-
-      <article class="service">
-        <h3>Downloads</h3>
-        <p>
-          Access available digital downloads.
-        </p>
-        <a href="index.html">
-          Browse content
-        </a>
-      </article>
-
-      <article class="service">
-        <h3>E-books &amp; Courses</h3>
-        <p>
-          Books and educational resources.
-        </p>
-        <a href="index.html">
-          Browse content
-        </a>
-      </article>
-
-      <article class="service">
-        <h3>Graphics &amp; Templates</h3>
-        <p>
-          Digital graphics and creative assets.
-        </p>
-        <a href="upload-content.html">
-          Upload content
-        </a>
-      </article>
+        <p>Build recurring support around your content.</p>
+      </div>
 
     </div>
 
   </section>
 
-
-  <footer class="footer">
-
-    <span>
-      © 2026 BRODA HUB
-    </span>
-
-    <span>
-      Member dashboard
-    </span>
-
-  </footer>
-
 </main>
 
+<footer>
+  © 2026 BRODA HUB
+</footer>
 
-<!-- =========================
-     MOBILE NAVIGATION
-========================= -->
 
-<nav
-  class="mobile-nav"
-  aria-label="Mobile navigation">
+<!-- MOBILE MENU -->
 
-  <button
-    class="active"
-    type="button"
-    data-tab="Home">
+<div class="mobile-menu" id="mobile-menu" hidden>
 
+  <a href="index.html">Browse</a>
+
+  <a href="signup.html">Sign Up / Create Account</a>
+
+  <a href="login.html">Log In</a>
+
+  <button type="button" data-view="Wallet">Wallet</button>
+
+  <button type="button" data-view="Analytics">Analytics</button>
+
+  <a href="upload-content.html">Start Earn / Upload Content</a>
+
+  <a href="upload-content.html">Creator Studio</a>
+
+  <button type="button" data-view="Services">Services</button>
+
+</div>
+
+
+<!-- MOBILE NAV -->
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+
+  <button class="active" type="button" data-tab="Home">
     <span class="nav-icon">⌂</span>
     Home
-
   </button>
 
-  <button
-    type="button"
-    data-tab="Music">
-
+  <button type="button" data-tab="Music">
     <span class="nav-icon">♫</span>
     Music
-
   </button>
 
-  <button
-    type="button"
-    data-tab="Explore">
-
+  <button type="button" data-tab="Explore">
     <span class="nav-icon">⌕</span>
     Explore
-
   </button>
 
-  <button
-    type="button"
-    data-tab="Services">
-
+  <button type="button" data-tab="Services">
     <span class="nav-icon">▣</span>
     Services
-
   </button>
 
-  <button
-    type="button"
-    id="mobile-menu-btn">
-
+  <button type="button" id="mobile-menu-btn">
     <span class="nav-icon">☰</span>
     Menu
-
   </button>
 
 </nav>
 
 
-<!-- =========================
-     MOBILE MENU
-========================= -->
-
-<div
-  class="mobile-menu"
-  id="mobile-menu"
-  hidden>
-
-  <a href="index.html">
-    Browse
-  </a>
-
-  <a href="signup.html">
-    Sign Up / Create Account
-  </a>
-
-  <a href="login.html">
-    Log In
-  </a>
-
-  <button
-    type="button"
-    data-view="Wallet">
-    Wallet
-  </button>
-
-  <button
-    type="button"
-    data-view="Analytics">
-    Analytics
-  </button>
-
-  <a href="upload-content.html">
-    Start Earn / Upload Content
-  </a>
-
-  <a href="upload-content.html">
-    Creator Studio
-  </a>
-
-  <button
-    type="button"
-    data-view="Services">
-    Services
-  </button>
-
-</div>
-
-
 <script>
-/* =========================
-   BRODA HUB CONFIG
-========================= */
 
-const API = "https://broda-shop-b019.onrender.com";
+const API_BASE = "https://broda-shop-b019.onrender.com";
 
+function showView(view){
 
-/* =========================
-   ELEMENTS
-========================= */
-
-const views = {
-  Dashboard: document.getElementById("home-panel"),
-  Wallet: document.getElementById("wallet-panel"),
-  Analytics: document.getElementById("analytics-panel"),
-  Services: document.getElementById("services-panel")
-};
-
-const navButtons = {
-  Dashboard: document.getElementById("dashboard-toggle"),
-  Wallet: document.getElementById("wallet-toggle"),
-  Analytics: document.getElementById("analytics-toggle"),
-  Services: document.getElementById("services-toggle")
-};
-
-
-/* =========================
-   VIEW CONTROL
-========================= */
-
-function showView(name){
-
-  if(!views[name]){
-    name = "Dashboard";
-  }
-
-  Object.entries(views).forEach(function([key,panel]){
-    panel.hidden = key !== name;
+  document.querySelectorAll(".view").forEach(function(section){
+    section.classList.remove("active");
   });
 
-  Object.entries(navButtons).forEach(function([key,button]){
+  const target = document.getElementById("view-" + view);
 
-    const active = key === name;
-
-    button.classList.toggle("active",active);
-
-    button.setAttribute(
-      "aria-expanded",
-      String(active)
-    );
-
-  });
-
-  if(name === "Analytics"){
-
-    const filters =
-      document.getElementById("analytics-filters");
-
-    const filterButton =
-      document.getElementById("filter-toggle");
-
-    filters.hidden = true;
-
-    filterButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+  if(target){
+    target.classList.add("active");
   }
 
-  window.requestAnimationFrame(function(){
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+  document.querySelectorAll(".desktop-nav [data-view]").forEach(function(button){
+    button.classList.toggle(
+      "active",
+      button.dataset.view === view
+    );
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
 }
 
 
-/* =========================
-   DESKTOP NAV
-========================= */
+/* DESKTOP VIEW BUTTONS */
 
-Object.entries(navButtons).forEach(function([name,button]){
+document.querySelectorAll(".desktop-nav [data-view]").forEach(function(button){
 
   button.addEventListener("click",function(){
-    showView(name);
+
+    showView(button.dataset.view);
+
   });
 
 });
 
 
-/* =========================
-   ANALYTICS FILTER
-========================= */
+/* FILTER */
 
-const filterToggle =
-  document.getElementById("filter-toggle");
+const filterButton = document.getElementById("filter-btn");
+const filterPanel = document.getElementById("filter-panel");
 
-const filters =
-  document.getElementById("analytics-filters");
+if(filterButton && filterPanel){
 
-filterToggle.addEventListener("click",function(){
+  filterButton.addEventListener("click",function(){
 
-  const opening = filters.hidden;
-
-  filters.hidden = !opening;
-
-  filterToggle.setAttribute(
-    "aria-expanded",
-    String(opening)
-  );
-
-});
-
-
-document
-  .getElementById("update-filters")
-  .addEventListener("click",function(){
-
-    document.getElementById(
-      "analytics-notice"
-    ).textContent =
-      "Filters selected. Live analytics data still needs to be connected.";
+    filterPanel.hidden = !filterPanel.hidden;
 
   });
 
-
-/* =========================
-   LOGOUT
-========================= */
-
-document
-  .getElementById("logout-btn")
-  .addEventListener("click",function(){
-
-    localStorage.removeItem("brodaToken");
-
-    window.location.href = "login.html";
-
-  });
+}
 
 
-/* =========================
-   HEADER SEARCH
-========================= */
+/* MOBILE NAV */
 
 (function(){
 
-  const searchButton =
-    document.getElementById("search-toggle");
+  const bar = document.querySelector(".mobile-nav");
+  const menu = document.getElementById("mobile-menu");
+  const menuButton = document.getElementById("mobile-menu-btn");
 
-  const searchBox =
-    document.getElementById("header-search");
+  if(!bar || !menu || !menuButton) return;
 
-  searchButton.addEventListener("click",function(){
 
-    const opening =
-      searchBox.style.display !== "block";
+  bar.querySelectorAll("[data-tab]").forEach(function(button){
 
-    searchBox.style.display =
-      opening ? "block" : "none";
+    button.addEventListener("click",function(){
 
-    searchButton.setAttribute(
-      "aria-expanded",
-      String(opening)
-    );
+      bar.querySelectorAll("[data-tab]").forEach(function(item){
+        item.classList.toggle(
+          "active",
+          item === button
+        );
+      });
 
-    if(opening){
-      searchBox.focus();
-    }
+      menu.hidden = true;
+      menuButton.classList.remove("active");
 
-  });
+      const tab = button.dataset.tab;
 
+      if(tab === "Home"){
 
-  searchBox.addEventListener("keydown",function(event){
+        showView("Dashboard");
 
-    if(event.key !== "Enter"){
-      return;
-    }
+      }
 
-    const term =
-      searchBox.value.trim();
+      else if(tab === "Music"){
 
-    if(!term){
-      return;
-    }
+        window.location.href = "index.html";
 
-    window.location.href =
-      "index.html?search=" +
-      encodeURIComponent(term);
+      }
 
-  });
+      else if(tab === "Explore"){
 
-})();
+        window.location.href = "index.html";
 
+      }
 
-/* =========================
-   NOTIFICATIONS
-========================= */
+      else if(tab === "Services"){
 
-(function(){
+        showView("Services");
 
-  const button =
-    document.getElementById("notification-toggle");
-
-  const header =
-    document.querySelector(".topbar");
-
-  const panel =
-    document.createElement("div");
-
-  panel.style.cssText =
-    "display:none;" +
-    "position:absolute;" +
-    "top:58px;" +
-    "right:10px;" +
-    "z-index:1200;" +
-    "width:min(300px,85vw);" +
-    "padding:15px;" +
-    "background:#111;" +
-    "color:#fff;" +
-    "border:1px solid #555;" +
-    "font-size:13px;" +
-    "line-height:1.5;";
-
-  panel.textContent =
-    "You're all caught up. Notifications will appear here when available.";
-
-  header.appendChild(panel);
-
-
-  button.addEventListener("click",function(){
-
-    const opening =
-      panel.style.display !== "block";
-
-    panel.style.display =
-      opening ? "block" : "none";
-
-    button.setAttribute(
-      "aria-expanded",
-      String(opening)
-    );
-
-  });
-
-})();
-
-
-/* =========================
-   CONTENT FEED
-========================= */
-
-async function loadContentFeed(){
-
-  const feed =
-    document.getElementById("content-feed");
-
-  try{
-
-    const response =
-      await fetch(API + "/api/content");
-
-    if(!response.ok){
-      throw new Error("Content request failed");
-    }
-
-    const items =
-      await response.json();
-
-    feed.replaceChildren();
-
-    if(
-      !Array.isArray(items) ||
-      items.length === 0
-    ){
-
-      const empty =
-        document.createElement("p");
-
-      empty.className =
-        "empty-state";
-
-      empty.textContent =
-        "No approved creator content is available yet. Approved uploads will appear here.";
-
-      feed.appendChild(empty);
-
-      return;
-    }
-
-
-    items.forEach(function(item){
-
-      const card =
-        document.createElement("article");
-
-      card.className =
-        "content-card";
-
-
-      const type =
-        document.createElement("span");
-
-      type.className =
-        "content-type";
-
-      type.textContent =
-        item.type || "Content";
-
-
-      const title =
-        document.createElement("h3");
-
-      title.textContent =
-        item.title || "Untitled content";
-
-
-      const description =
-        document.createElement("p");
-
-      description.textContent =
-        item.description ||
-        "No description provided.";
-
-
-      const creator =
-        document.createElement("p");
-
-      creator.textContent =
-        item.creatorName ||
-        item.creator ||
-        "Creator content";
-
-
-      const price =
-        document.createElement("div");
-
-      price.className =
-        "content-price";
-
-
-      const numericPrice =
-        Number(item.price || 0);
-
-      price.textContent =
-        numericPrice === 0
-          ? "Free"
-          : "UGX " +
-            numericPrice.toLocaleString("en-UG");
-
-
-      card.append(
-        type,
-        title,
-        description,
-        creator,
-        price
-      );
-
-      feed.appendChild(card);
+      }
 
     });
 
-  }catch(error){
+  });
 
-    console.error(
-      "Content feed error:",
-      error
-    );
 
-    feed.replaceChildren();
+  menuButton.addEventListener("click",function(){
 
-    const empty =
-      document.createElement("p");
+    menu.hidden = !menu.hidden;
 
-    empty.className =
-      "empty-state";
-
-    empty.textContent =
-      "Creator content could not load right now. Please try again later.";
-
-    feed.appendChild(empty);
-
-  }
-
-}
-
-
-/* =========================
-   REAL DASHBOARD DATA
-========================= */
-
-async function loadRealDashboard(){
-
-  const token =
-    localStorage.getItem("brodaToken");
-
-
-  if(!token){
-
-    window.location.href =
-      "login.html";
-
-    return;
-  }
-
-
-  try{
-
-    const headers = {
-      Authorization:
-        "Bearer " + token
-    };
-
-
-    const responses =
-      await Promise.all([
-
-        fetch(
-          API + "/api/me",
-          {headers}
-        ),
-
-        fetch(
-          API + "/api/dashboard",
-          {headers}
-        )
-
-      ]);
-
-
-    if(
-      responses.some(function(response){
-        return response.status === 401;
-      })
-    ){
-
-      localStorage.removeItem(
-        "brodaToken"
-      );
-
-      window.location.href =
-        "login.html";
-
-      return;
-    }
-
-
-    if(
-      responses.some(function(response){
-        return !response.ok;
-      })
-    ){
-
-      throw new Error(
-        "Account data could not be loaded."
-      );
-    }
-
-
-    const user =
-      await responses[0].json();
-
-    const data =
-      await responses[1].json();
-
-
-    const money =
-      function(value){
-
-        return "UGX " +
-          Number(value || 0)
-          .toLocaleString("en-UG");
-
-      };
-
-
-    const name =
-      user.name || "Member";
-
-
-    document.getElementById(
-      "profile-name"
-    ).textContent = name;
-
-
-    const initials =
-      name
-        .split(/\s+/)
-        .filter(Boolean)
-        .map(function(part){
-          return part[0];
-        })
-        .join("")
-        .slice(0,2)
-        .toUpperCase();
-
-
-    document.getElementById(
-      "avatar"
-    ).textContent =
-      initials || "BH";
-
-
-    document.getElementById(
-      "wallet-balance"
-    ).textContent =
-      money(data.balance);
-
-
-    document.getElementById(
-      "wallet-earnings"
-    ).textContent =
-      money(data.earnings);
-
-
-  }catch(error){
-
-    console.error(
-      "Dashboard error:",
-      error
-    );
-
-  }
-
-}
-
-
-/* =========================
-   MOBILE NAVIGATION
-========================= */
-
-(function(){
-
-  const bar =
-    document.querySelector(".mobile-nav");
-
-  const menu =
-    document.getElementById("mobile-menu");
-
-  const menuButton =
-    document.getElementById("mobile-menu-btn");
-
-
-  if(!bar || !menu || !menuButton){
-    return;
-  }
-
-
-  bar.querySelectorAll(
-    "[data-tab]"
-  ).forEach(function(button){
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        bar.querySelectorAll(
-          "[data-tab]"
-        ).forEach(function(item){
-
-          item.classList.toggle(
-            "active",
-            item === button
-          );
-
-        });
-
-
-        menu.hidden = true;
-
-        menuButton.classList.remove(
-          "active"
-        );
-
-
-        const tab =
-          button.dataset.tab;
-
-
-        if(tab === "Home"){
-
-          showView("Dashboard");
-
-        }
-
-        else if(tab === "Music"){
-
-          window.location.href =
-            "index.html";
-
-        }
-
-        else if(tab === "Explore"){
-
-          window.location.href =
-            "index.html";
-
-        }
-
-        else if(tab === "Services"){
-
-          showView("Services");
-
-        }
-
-      }
+    menuButton.classList.toggle(
+      "active",
+      !menu.hidden
     );
 
   });
 
 
-  menuButton.addEventListener(
-    "click",
-    function(){
+  menu.querySelectorAll("[data-view]").forEach(function(button){
 
-      menu.hidden =
-        !menu.hidden;
+    button.addEventListener("click",function(){
 
-      menuButton.classList.toggle(
-        "active",
-        !menu.hidden
-      );
+      menu.hidden = true;
 
-    }
-  );
+      menuButton.classList.remove("active");
 
+      showView(button.dataset.view);
 
-  menu.querySelectorAll(
-    "[data-view]"
-  ).forEach(function(button){
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        menu.hidden = true;
-
-        menuButton.classList.remove(
-          "active"
-        );
-
-        showView(
-          button.dataset.view
-        );
-
-      }
-    );
+    });
 
   });
 
 
-  menu.querySelectorAll(
-    "a"
-  ).forEach(function(link){
+  menu.querySelectorAll("a").forEach(function(link){
 
-    link.addEventListener(
-      "click",
-      function(){
+    link.addEventListener("click",function(){
 
-        menu.hidden = true;
+      menu.hidden = true;
 
-        menuButton.classList.remove(
-          "active"
-        );
+      menuButton.classList.remove("active");
 
-      }
-    );
+    });
 
   });
 
 })();
-
-
-/* =========================
-   INITIAL VIEW
-========================= */
-
-const requestedView =
-  new URLSearchParams(
-    window.location.search
-  ).get("view");
-
-
-if(requestedView === "wallet"){
-
-  showView("Wallet");
-
-}
-
-else if(requestedView === "analytics"){
-
-  showView("Analytics");
-
-}
-
-else if(requestedView === "services"){
-
-  showView("Services");
-
-}
-
-else{
-
-  showView("Dashboard");
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-loadContentFeed();
-
-loadRealDashboard();
 
 </script>
 
