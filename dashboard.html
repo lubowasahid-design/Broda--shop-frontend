@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BRODA HUB | Dashboard</title>
 
 <style>
 :root{
   --bg:#050505;
   --panel:#0d0d0d;
-  --panel2:#121212;
-  --text:#fff;
-  --muted:#999;
+  --text:#ffffff;
+  --muted:#999999;
   --line:#242424;
   --red:#e50914;
   --orange:#ff7a00;
-  --green:#19c463;
 }
 
 *{
@@ -36,37 +35,35 @@ body{
   overflow-x:hidden;
 }
 
-button,
-a{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
 a{
   color:inherit;
   text-decoration:none;
 }
 
-/* HEADER */
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 .top-header{
-  min-height:64px;
-  padding:12px 18px;
-  border-bottom:1px solid var(--line);
+  min-height:60px;
+  padding:10px 16px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  border-bottom:1px solid var(--line);
   background:#050505;
 }
 
 .brand{
-  font-size:21px;
+  font-size:20px;
   font-weight:800;
-  letter-spacing:.5px;
+  letter-spacing:.4px;
 }
 
 .brand span{
@@ -74,297 +71,146 @@ a{
 }
 
 .profile{
-  width:38px;
-  height:38px;
+  width:36px;
+  height:36px;
   border:1px solid #333;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:13px;
   font-weight:700;
   background:#111;
 }
 
-/* DESKTOP NAV */
+
+/* =========================
+   DESKTOP NAV
+========================= */
 
 .desktop-nav{
   display:flex;
-  gap:7px;
-  padding:10px 18px;
+  align-items:center;
+  gap:6px;
+  padding:9px 16px;
   border-bottom:1px solid var(--line);
-  overflow-x:auto;
   background:#080808;
+  overflow-x:auto;
 }
 
-.desktop-nav button,
 .desktop-nav a{
-  border:0;
-  background:transparent;
+  padding:9px 12px;
   color:#aaa;
-  padding:9px 13px;
   border-radius:6px;
   white-space:nowrap;
 }
 
-.desktop-nav button:hover,
 .desktop-nav a:hover{
   color:#fff;
   background:#151515;
 }
 
-.desktop-nav .active{
+.desktop-nav a.active{
   color:#fff;
-  background:#191919;
+  background:#171717;
   border-bottom:2px solid var(--red);
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
 
 main{
   width:100%;
   max-width:1200px;
   margin:0 auto;
-  padding:22px 18px 100px;
+  padding:22px 16px 100px;
 }
 
-.view{
-  display:none;
-}
-
-.view.active{
-  display:block;
-}
-
-.page-title{
+.dashboard-title{
   font-size:28px;
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 
-.page-subtitle{
+.dashboard-subtitle{
   color:var(--muted);
-  margin-bottom:22px;
   line-height:1.5;
+  margin-bottom:24px;
 }
 
-/* CARDS */
 
-.grid{
+/* =========================
+   DASHBOARD CONTENT
+========================= */
+
+.dashboard-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
 
-.card{
+.dashboard-card{
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:10px;
   padding:18px;
 }
 
-.card h3{
+.dashboard-card h2{
+  font-size:18px;
   margin-bottom:8px;
 }
 
-.card p{
+.dashboard-card p{
   color:var(--muted);
   line-height:1.5;
 }
 
-.action{
+.card-link{
   display:inline-block;
   margin-top:15px;
   padding:10px 14px;
   border-radius:6px;
-  background:#171717;
-  border:1px solid #303030;
-  color:#fff;
+  border:1px solid #333;
+  background:#151515;
 }
 
-.action:hover{
+.card-link:hover{
   border-color:var(--red);
 }
 
-.primary{
+.card-link.primary{
   background:var(--red);
   border-color:var(--red);
 }
 
-/* WALLET */
 
-.balance-card{
-  background:linear-gradient(135deg,#111,#080808);
-  border:1px solid #292929;
-  border-radius:12px;
-  padding:22px;
-  margin-bottom:18px;
-}
-
-.balance-label{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.balance{
-  font-size:34px;
-  font-weight:800;
-  margin-top:8px;
-}
-
-.wallet-list{
-  display:grid;
-  gap:10px;
-}
-
-.wallet-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:15px;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:8px;
-}
-
-/* ANALYTICS */
-
-.filter-button{
-  background:#151515;
-  border:1px solid #333;
-  color:#fff;
-  padding:10px 15px;
-  border-radius:6px;
-  margin-bottom:12px;
-}
-
-.filter-panel{
-  background:var(--panel);
-  border:1px solid var(--line);
-  padding:15px;
-  border-radius:9px;
-  margin-bottom:16px;
-}
-
-.filter-panel[hidden]{
-  display:none!important;
-}
-
-.filter-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.filter-grid input,
-.filter-grid select{
-  width:100%;
-  background:#080808;
-  color:#fff;
-  border:1px solid #333;
-  border-radius:6px;
-  padding:11px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.stat{
-  background:var(--panel);
-  border:1px solid var(--line);
-  padding:17px;
-  border-radius:9px;
-}
-
-.stat strong{
-  display:block;
-  font-size:24px;
-  margin-top:7px;
-}
-
-/* SERVICES */
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.service{
-  padding:18px;
-  border:1px solid var(--line);
-  background:var(--panel);
-  border-radius:10px;
-}
-
-.service h3{
-  margin-bottom:8px;
-}
-
-.service p{
-  color:var(--muted);
-  line-height:1.5;
-}
-
-/* MOBILE NAV */
+/* =========================
+   MOBILE NAVIGATION
+========================= */
 
 .mobile-nav{
   display:none;
 }
 
-/* MOBILE MENU */
 
-.mobile-menu{
-  position:fixed;
-  right:12px;
-  bottom:72px;
-  width:min(280px,calc(100vw - 24px));
-  background:#101010;
-  border:1px solid #333;
-  border-radius:10px;
-  padding:8px;
-  z-index:1000;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
-}
-
-.mobile-menu[hidden]{
-  display:none;
-}
-
-.mobile-menu a,
-.mobile-menu button{
-  width:100%;
-  display:block;
-  text-align:left;
-  padding:13px 12px;
-  background:transparent;
-  border:0;
-  color:#fff;
-  border-radius:6px;
-}
-
-.mobile-menu a:hover,
-.mobile-menu button:hover{
-  background:#1b1b1b;
-}
-
-.mobile-menu a:first-child{
-  border-left:3px solid var(--red);
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   text-align:center;
-  color:#777;
-  padding:30px 15px 90px;
+  color:#666;
   border-top:1px solid var(--line);
+  padding:28px 15px 90px;
   margin-top:35px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:760px){
 
@@ -387,59 +233,69 @@ footer{
   }
 
   main{
-    padding:16px 14px 90px;
+    padding:17px 14px 90px;
   }
 
-  .page-title{
+  .dashboard-title{
     font-size:23px;
   }
 
-  .grid,
-  .services-grid{
+  .dashboard-grid{
     grid-template-columns:1fr;
   }
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .filter-grid{
-    grid-template-columns:1fr;
-  }
+  /*
+     FIXED MOBILE NAV
+     All five buttons have exactly
+     equal width and the same height.
+  */
 
   .mobile-nav{
     position:fixed;
     left:0;
     right:0;
     bottom:0;
+
+    width:100%;
     height:64px;
+
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    align-items:stretch;
+
     background:#090909;
     border-top:1px solid #292929;
-    z-index:999;
+
+    z-index:9999;
   }
 
-  .mobile-nav button{
+  .mobile-nav a{
     min-width:0;
-    border:0;
-    border-right:1px solid #1d1d1d;
-    background:transparent;
-    color:#888;
+    width:100%;
+    height:64px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+
     gap:4px;
-    padding:4px 2px;
+
+    color:#888;
+    border-right:1px solid #1d1d1d;
+
+    font-size:11px;
+    text-align:center;
   }
 
-  .mobile-nav button:last-child{
+  .mobile-nav a:last-child{
     border-right:0;
   }
 
-  .mobile-nav button.active{
+  .mobile-nav a:hover{
+    color:#fff;
+  }
+
+  .mobile-nav a.active{
     color:#fff;
     border-top:2px solid var(--red);
   }
@@ -448,440 +304,238 @@ footer{
     font-size:18px;
     line-height:1;
   }
-
-  .mobile-nav button{
-    font-size:11px;
-  }
-
-  footer{
-    padding-bottom:80px;
-  }
 }
 
+
+/* =========================
+   DESKTOP ONLY
+========================= */
+
 @media(min-width:761px){
-  .mobile-menu{
+
+  .mobile-nav{
     display:none!important;
   }
+
 }
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="top-header">
-  <div class="brand">BRODA <span>HUB</span></div>
-  <div class="profile" id="profile-icon">BH</div>
+
+  <div class="brand">
+    BRODA <span>HUB</span>
+  </div>
+
+  <div class="profile">
+    BH
+  </div>
+
 </header>
 
+
+<!-- =========================
+     DESKTOP NAV
+========================= -->
+
 <nav class="desktop-nav">
-  <button class="active" data-view="Dashboard">Dashboard</button>
-  <a href="index.html">Browse</a>
-  <a href="upload-content.html">Start Earn</a>
-  <button data-view="Wallet">Wallet</button>
-  <button data-view="Analytics">Analytics</button>
-  <a href="upload-content.html">Creator Studio</a>
-  <button data-view="Services">Services</button>
+
+  <a href="dashboard.html" class="active">
+    Dashboard
+  </a>
+
+  <a href="index.html">
+    Browse
+  </a>
+
 </nav>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
 
 <main>
 
-  <!-- DASHBOARD -->
-  <section class="view active" id="view-Dashboard">
+  <h1 class="dashboard-title">
+    Dashboard
+  </h1>
 
-    <h1 class="page-title">Dashboard</h1>
-    <p class="page-subtitle">
-      Welcome to BRODA HUB. Discover content, manage your earnings and grow your creator activity.
-    </p>
+  <p class="dashboard-subtitle">
+    Welcome to BRODA HUB. Discover content, products, music and videos from creators.
+  </p>
 
-    <div class="grid">
 
-      <div class="card">
-        <h3>Discover</h3>
-        <p>Browse products, music, videos and other content from creators.</p>
-        <a class="action primary" href="index.html">Browse</a>
-      </div>
+  <div class="dashboard-grid">
 
-      <div class="card">
-        <h3>Start Earn</h3>
-        <p>Upload your content and start building your creator activity.</p>
-        <a class="action" href="upload-content.html">Start Earn</a>
-      </div>
 
-      <div class="card">
-        <h3>Creator Studio</h3>
-        <p>Manage your creator content and publishing activity.</p>
-        <a class="action" href="upload-content.html">Open Studio</a>
-      </div>
+    <div class="dashboard-card">
 
-    </div>
+      <h2>
+        Browse BRODA HUB
+      </h2>
 
-  </section>
+      <p>
+        Explore products, music, videos and creator content.
+      </p>
 
-  <!-- WALLET -->
-  <section class="view" id="view-Wallet">
-
-    <h1 class="page-title">Wallet</h1>
-    <p class="page-subtitle">Manage your balance, payouts and transaction history.</p>
-
-    <div class="balance-card">
-      <div class="balance-label">Available Balance</div>
-      <div class="balance">UGX 0</div>
-      <div class="balance-label">USD equivalent will appear when available.</div>
-    </div>
-
-    <div class="wallet-list">
-
-      <div class="wallet-row">
-        <span>Payout Methods</span>
-        <button class="action" type="button">Manage</button>
-      </div>
-
-      <div class="wallet-row">
-        <span>Transaction History</span>
-        <button class="action" type="button">View</button>
-      </div>
-
-      <div class="wallet-row">
-        <span>Payouts</span>
-        <button class="action" type="button">View</button>
-      </div>
+      <a
+        class="card-link primary"
+        href="index.html">
+        Browse
+      </a>
 
     </div>
 
-  </section>
 
-  <!-- ANALYTICS -->
-  <section class="view" id="view-Analytics">
+    <div class="dashboard-card">
 
-    <h1 class="page-title">Analytics</h1>
-    <p class="page-subtitle">
-      Track streams, tracks, playlists and stores.
-    </p>
+      <h2>
+        Discover Content
+      </h2>
 
-    <button class="filter-button" id="filter-btn" type="button">
-      Filter
-    </button>
+      <p>
+        Find new music, videos, products and other content from creators.
+      </p>
 
-    <div class="filter-panel" id="filter-panel" hidden>
-
-      <div class="filter-grid">
-
-        <input type="text" id="filter-label" placeholder="Label">
-
-        <input type="text" id="filter-artist" placeholder="Artist">
-
-        <input type="text" id="filter-release" placeholder="Release">
-
-        <input type="text" id="filter-track" placeholder="Track">
-
-        <input type="text" id="filter-country" placeholder="Country">
-
-        <select id="filter-store">
-          <option value="All">Store: All</option>
-          <option>Spotify</option>
-          <option>Apple Music</option>
-          <option>YouTube</option>
-          <option>TikTok</option>
-          <option>Amazon Music</option>
-        </select>
-
-      </div>
-
-      <button class="action primary" id="update-results" type="button">
-        Update Results
-      </button>
+      <a
+        class="card-link"
+        href="index.html">
+        Explore
+      </a>
 
     </div>
 
-    <div class="stats">
 
-      <div class="stat">
-        <span>Streams</span>
-        <strong>0</strong>
-      </div>
+    <div class="dashboard-card">
 
-      <div class="stat">
-        <span>Tracks</span>
-        <strong>0</strong>
-      </div>
+      <h2>
+        BRODA HUB
+      </h2>
 
-      <div class="stat">
-        <span>Playlists</span>
-        <strong>0</strong>
-      </div>
+      <p>
+        Your platform for content, creators, shopping, music and digital services.
+      </p>
 
-      <div class="stat">
-        <span>Stores</span>
-        <strong>0</strong>
-      </div>
+      <a
+        class="card-link"
+        href="index.html">
+        Enter BRODA HUB
+      </a>
 
     </div>
 
-  </section>
 
-  <!-- SERVICES -->
-  <section class="view" id="view-Services">
-
-    <h1 class="page-title">BRODA HUB Services</h1>
-    <p class="page-subtitle">
-      Explore the services available on BRODA HUB.
-    </p>
-
-    <div class="services-grid">
-
-      <div class="service">
-        <h3>Music Promotion</h3>
-        <p>Promote songs and reach more listeners.</p>
-      </div>
-
-      <div class="service">
-        <h3>Video Promotion</h3>
-        <p>Promote videos and grow your audience.</p>
-      </div>
-
-      <div class="service">
-        <h3>Music Distribution</h3>
-        <p>Distribute music through supported platforms.</p>
-      </div>
-
-      <div class="service">
-        <h3>Beats Park</h3>
-        <p>Discover and share beats and audio content.</p>
-      </div>
-
-      <div class="service">
-        <h3>Advertising</h3>
-        <p>Promote products, brands and creator content.</p>
-      </div>
-
-      <div class="service">
-        <h3>Subscriptions</h3>
-        <p>Build recurring support around your content.</p>
-      </div>
-
-    </div>
-
-  </section>
+  </div>
 
 </main>
+
 
 <footer>
   © 2026 BRODA HUB
 </footer>
 
 
-<!-- MOBILE MENU -->
+<!-- =========================
+     MOBILE NAV
+========================= -->
 
-<div class="mobile-menu" id="mobile-menu" hidden>
-
-  <a href="index.html">Browse</a>
-
-  <a href="signup.html">Sign Up / Create Account</a>
-
-  <a href="login.html">Log In</a>
-
-  <button type="button" data-view="Wallet">Wallet</button>
-
-  <button type="button" data-view="Analytics">Analytics</button>
-
-  <a href="upload-content.html">Start Earn / Upload Content</a>
-
-  <a href="upload-content.html">Creator Studio</a>
-
-  <button type="button" data-view="Services">Services</button>
-
-</div>
+<nav
+  class="mobile-nav"
+  aria-label="Mobile navigation">
 
 
-<!-- MOBILE NAV -->
+  <!-- HOME -->
 
-<nav class="mobile-nav" aria-label="Mobile navigation">
+  <a
+    href="dashboard.html"
+    class="active">
 
-  <button class="active" type="button" data-tab="Home">
-    <span class="nav-icon">⌂</span>
-    Home
-  </button>
+    <span class="nav-icon">
+      ⌂
+    </span>
 
-  <button type="button" data-tab="Music">
-    <span class="nav-icon">♫</span>
-    Music
-  </button>
+    <span>
+      Home
+    </span>
 
-  <button type="button" data-tab="Explore">
-    <span class="nav-icon">⌕</span>
-    Explore
-  </button>
+  </a>
 
-  <button type="button" data-tab="Services">
-    <span class="nav-icon">▣</span>
-    Services
-  </button>
 
-  <button type="button" id="mobile-menu-btn">
-    <span class="nav-icon">☰</span>
-    Menu
-  </button>
+  <!-- MUSIC -->
+
+  <a
+    href="index.html">
+
+    <span class="nav-icon">
+      ♫
+    </span>
+
+    <span>
+      Music
+    </span>
+
+  </a>
+
+
+  <!-- EXPLORE -->
+
+  <a
+    href="index.html">
+
+    <span class="nav-icon">
+      ⌕
+    </span>
+
+    <span>
+      Explore
+    </span>
+
+  </a>
+
+
+  <!-- SERVICES -->
+
+  <a
+    href="index.html#services">
+
+    <span class="nav-icon">
+      ▣
+    </span>
+
+    <span>
+      Services
+    </span>
+
+  </a>
+
+
+  <!-- MENU -->
+
+  <a
+    href="index.html">
+
+    <span class="nav-icon">
+      ☰
+    </span>
+
+    <span>
+      Menu
+    </span>
+
+  </a>
+
 
 </nav>
 
-
-<script>
-
-const API_BASE = "https://broda-shop-b019.onrender.com";
-
-function showView(view){
-
-  document.querySelectorAll(".view").forEach(function(section){
-    section.classList.remove("active");
-  });
-
-  const target = document.getElementById("view-" + view);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  document.querySelectorAll(".desktop-nav [data-view]").forEach(function(button){
-    button.classList.toggle(
-      "active",
-      button.dataset.view === view
-    );
-  });
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-
-/* DESKTOP VIEW BUTTONS */
-
-document.querySelectorAll(".desktop-nav [data-view]").forEach(function(button){
-
-  button.addEventListener("click",function(){
-
-    showView(button.dataset.view);
-
-  });
-
-});
-
-
-/* FILTER */
-
-const filterButton = document.getElementById("filter-btn");
-const filterPanel = document.getElementById("filter-panel");
-
-if(filterButton && filterPanel){
-
-  filterButton.addEventListener("click",function(){
-
-    filterPanel.hidden = !filterPanel.hidden;
-
-  });
-
-}
-
-
-/* MOBILE NAV */
-
-(function(){
-
-  const bar = document.querySelector(".mobile-nav");
-  const menu = document.getElementById("mobile-menu");
-  const menuButton = document.getElementById("mobile-menu-btn");
-
-  if(!bar || !menu || !menuButton) return;
-
-
-  bar.querySelectorAll("[data-tab]").forEach(function(button){
-
-    button.addEventListener("click",function(){
-
-      bar.querySelectorAll("[data-tab]").forEach(function(item){
-        item.classList.toggle(
-          "active",
-          item === button
-        );
-      });
-
-      menu.hidden = true;
-      menuButton.classList.remove("active");
-
-      const tab = button.dataset.tab;
-
-      if(tab === "Home"){
-
-        showView("Dashboard");
-
-      }
-
-      else if(tab === "Music"){
-
-        window.location.href = "index.html";
-
-      }
-
-      else if(tab === "Explore"){
-
-        window.location.href = "index.html";
-
-      }
-
-      else if(tab === "Services"){
-
-        showView("Services");
-
-      }
-
-    });
-
-  });
-
-
-  menuButton.addEventListener("click",function(){
-
-    menu.hidden = !menu.hidden;
-
-    menuButton.classList.toggle(
-      "active",
-      !menu.hidden
-    );
-
-  });
-
-
-  menu.querySelectorAll("[data-view]").forEach(function(button){
-
-    button.addEventListener("click",function(){
-
-      menu.hidden = true;
-
-      menuButton.classList.remove("active");
-
-      showView(button.dataset.view);
-
-    });
-
-  });
-
-
-  menu.querySelectorAll("a").forEach(function(link){
-
-    link.addEventListener("click",function(){
-
-      menu.hidden = true;
-
-      menuButton.classList.remove("active");
-
-    });
-
-  });
-
-})();
-
-</script>
 
 </body>
 </html>
